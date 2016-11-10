@@ -9,6 +9,8 @@
   
   <body>
     
+    <script language="javascript" type="text/javascript" src="../../sketches/p5.js"></script>
+    
     <p> THIS IS A WORK IN PROGRESS! <br>
     Most of this was taken from a document written by Dawson Bowhay.
     </p>
@@ -31,8 +33,8 @@
     You can try an interactive Mecanum drive train simulation below:
     </p>
     
-    <script src="/sketches/processing.min.js"></script>
-    <canvas data-processing-sources="/sketches/mecanum/mecanum.pde /sketches/mecanum/Robot.pde /sketches/mecanum/MecanumDrive.pde /sketches/mecanum/DrawRobot.pde /sketches/mecanum/TankDrive.pde"></canvas>
+    <script src="../../sketches/processing.min.js"></script>
+    <canvas data-processing-sources="../../sketches/mecanum/mecanum.pde ../../sketches/mecanum/Robot.pde ../../sketches/mecanum/MecanumDrive.pde ../../sketches/mecanum/DrawRobot.pde ../../sketches/mecanum/TankDrive.pde"></canvas>
     
     <h1> Lateral Movement Joystick </h1>
     
@@ -47,8 +49,7 @@
     </p>
     
     <div id="magnitude-direction-sketch"> </div>
-    <script language="javascript" type="text/javascript" src="magnitude_direction/libraries/p5.js"></script>
-    <script language="javascript" type="text/javascript" src="magnitude_direction/magnitude_direction.js"></script>
+    <script language="javascript" type="text/javascript" src="magnitude-direction/magnitude-direction.js"></script>
     
     <p>
     So we have 2 factors for determining how the robot should move: Direction and Magnitude. wpilib has built-in methods of finding these for a joystick, but it's important to know how to calculate them yourself.
@@ -131,9 +132,8 @@
     The table above shows the power needed to drive each wheel at the given angles. If you plot the points, they turn out to be sine equations. The front-right and back-left wheels are controlled by <em>y=sin(x&minus;1/4&pi;)</em>, where x is the angle the robot needs to drive and y is the power for the wheel. The front-left and back-right wheels are controlled by <em>y=sin(x+1/4&pi;)</em>.
     </p>
     
-    <p style="text-align:center;">
-    <img src="graph2.png" alt="Graph." style="width:574px; height:434px;">
-    </p>
+    <div id="wheel-graph-sketch"> </div>
+    <script language="javascript" type="text/javascript" src="wheel-graph/wheel-graph.js"></script>
     
     <h1> Putting It Together and Adding Turn </h1>
     
