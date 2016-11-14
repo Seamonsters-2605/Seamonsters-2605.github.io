@@ -76,11 +76,25 @@ var wheelGraphSketch = function( p ) {
   };
   
   p.mouseDragged = function() {
-    
+    if(p.mouseX < 0 || p.mouseY < 0
+        || p.mouseX > p.width || p.mouseY > p.height)
+      return;
+    selectedValue += (p.mouseX - p.pmouseX) / 100.0;
+    if(selectedValue < 0)
+      selectedValue = 0;
+    if(selectedValue > p.PI*2)
+      selectedValue = p.PI*2;
   };
   
   p.draw = function() {
+    p.background(255,255,255);
     p.image(graphImage, p.width - graphImage.width, 0);
+    
+    p.stroke(0,255,0);
+    p.strokeWeight(4);
+    var lineX = p.width-graphImage.width
+      + selectedValue / (p.PI*2) * graphImage.width;
+    p.line(lineX, 0, lineX, p.height)
     
     p.noStroke();
     p.textSize(24);
