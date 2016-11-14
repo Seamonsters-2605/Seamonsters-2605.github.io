@@ -1,16 +1,25 @@
 var wheelGraphSketch = function( p ) {
 
+  var ellipseMargin;
+  var ellipseSize;
+
   var graphImage;
   var selectedValue;
   
   p.setup = function() {
-    var canvas = p.createCanvas(1024, 400);
-    canvas.parent('wheel-graph-sketch');
+    ellipseMargin = 32;
+    ellipseSize = 350 - 2*ellipseMargin;
     
     graphImage = p.createGraphics(640, 400);
     drawGraphImage();
     
+    var canvas = p.createCanvas(ellipseSize + ellipseMargin*2 + graphImage.width, 400);
+    canvas.parent('wheel-graph-sketch');
+    
+    
     selectedValue = 0;
+    
+    
   };
   
   function drawGraphImage() {
@@ -79,7 +88,7 @@ var wheelGraphSketch = function( p ) {
     if(p.mouseX < 0 || p.mouseY < 0
         || p.mouseX > p.width || p.mouseY > p.height)
       return;
-    selectedValue += (p.mouseX - p.pmouseX) / 100.0;
+    selectedValue += (p.mouseX - p.pmouseX) / graphImage.width * p.PI*2;
     if(selectedValue < 0)
       selectedValue = 0;
     if(selectedValue > p.PI*2)
@@ -90,11 +99,20 @@ var wheelGraphSketch = function( p ) {
     p.background(255,255,255);
     p.image(graphImage, p.width - graphImage.width, 0);
     
-    p.stroke(0,255,0);
+    p.stroke(0, 255, 0);
     p.strokeWeight(4);
     var lineX = p.width-graphImage.width
       + selectedValue / (p.PI*2) * graphImage.width;
     p.line(lineX, 0, lineX, p.height)
+    
+    p.stroke(0);
+    var ellipseX = ellipseSize / 2 + ellipseMargin;
+    var ellipseY = p.height/2;
+    p.ellipse(ellipseX, ellipseY, ellipseSize, ellipseSize);
+    p.stroke(0, 255, 0);
+    p.line(ellipseX, ellipseY,
+           ellipseX + p.cos(selectedValue)*ellipseSize/2,
+           ellipseY - p.sin(selectedValue)*ellipseSize/2);
     
     p.noStroke();
     p.textSize(24);
