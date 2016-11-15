@@ -123,6 +123,36 @@ var wheelGraphSketch = function( p ) {
   function drawArrow(startX, startY, endX, endY, arrowSize) {
     
   };
+  
+  function drawMecanumWheel(wheelSpin, wheelVelocity) {
+    var mecanumWheelWidth = 36.0;
+    var mecanumWheelHeight = 96.0;
+    var mecanumRollerSpacing = 27.0;
+    
+    p.rectMode(p.CENTER);
+    p.imageMode(p.CENTER);
+    p.strokeWeight(3);
+    
+    // the wheel
+    p.fill(127, 127, 127);
+    p.rect(0, 0, mecanumWheelWidth, mecanumWheelHeight);
+    
+    var diagY = -mecanumWheelHeight / 2 - (wheelSpin % mecanumRollerSpacing) + mecanumRollerSpacing;
+    while(diagY < mecanumWheelHeight / 2 + mecanumWheelWidth) {
+      var diagEndOffset = 0;
+      if(diagY > mecanumWheelHeight / 2)
+        diagEndOffset = diagY - mecanumWheelHeight / 2;
+      var diagStartOffset = 0;
+      if(diagY - mecanumWheelWidth < -mecanumWheelHeight / 2)
+        diagStartOffset = diagY - mecanumWheelWidth + mecanumWheelHeight / 2;
+      p.line(-mecanumWheelWidth / 2 + diagEndOffset, diagY - diagEndOffset, mecanumWheelWidth / 2 + diagStartOffset, diagY - mecanumWheelWidth - diagStartOffset);
+      diagY += mecanumRollerSpacing;
+    }
+    
+    p.strokeWeight(1);
+    p.rectMode(p.CORNER);
+    p.imageMode(p.CORNER);
+  };
 };
 
 var wheelGraph = new p5(wheelGraphSketch);
