@@ -95,7 +95,22 @@ var wheelGraphSketch = function( p ) {
       }
     }
   
-    graphImage.strokeWeight(6);
+    // LABELS
+    graphImage.textAlign(p.RIGHT, p.BOTTOM);
+    graphImage.textSize(18);
+    graphImage.text("Wheel Angle",
+                    graphImage.width - 4, graphImage.height / 2 - 4)
+    
+    graphImage.strokeWeight(0.5);
+    graphImage.stroke(191, 0, 0);
+    graphImage.fill(191, 0, 0);
+    graphImage.textAlign(p.LEFT, p.TOP);
+    graphImage.text("y = sin(x - 1/4 π)", graphImage.width - 256, 16);
+    
+    graphImage.stroke(0, 0, 191);
+    graphImage.fill(0, 0, 191);
+    graphImage.textAlign(p.LEFT, p.TOP);
+    graphImage.text("y = sin(x + 1/4 π)", graphImage.width - 256, 48);
   }
   
   p.mouseClicked = function() {
