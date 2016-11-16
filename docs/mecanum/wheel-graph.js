@@ -130,12 +130,14 @@ var wheelGraphSketch = function( p ) {
     wheel1Movement += p.sin(selectedValue - p.PI/4) * 2;
     wheel2Movement += p.sin(selectedValue + p.PI/4) * 2;
     
+    p.fill(96, 96, 192);
     p.push();
     p.translate(ellipseX + robotWidth/2, ellipseY + robotHeight/2);
     p.scale(1, -1);
     drawMecanumWheel(-wheel2Movement);
     p.pop();
     
+    p.fill(192, 96, 96);
     p.push();
     p.translate(ellipseX - robotWidth/2, ellipseY + robotHeight/2);
     drawMecanumWheel(wheel1Movement);
@@ -146,6 +148,7 @@ var wheelGraphSketch = function( p ) {
     drawMecanumWheel(wheel1Movement);
     p.pop();
     
+    p.fill(96, 96, 192);
     p.push();
     p.translate(ellipseX - robotWidth/2, ellipseY - robotHeight/2);
     p.scale(1, -1);
@@ -164,7 +167,7 @@ var wheelGraphSketch = function( p ) {
     p.noStroke();
     p.textSize(24);
     p.textAlign(p.CENTER, p.TOP);
-    p.text("Work in progress!", p.width/2, 8);
+    p.text("Click and Drag", p.width/2, 8);
   };
   
   function drawArrow(startX, startY, endX, endY, arrowSize) {
@@ -180,8 +183,6 @@ var wheelGraphSketch = function( p ) {
     p.imageMode(p.CENTER);
     p.strokeWeight(3);
     
-    // the wheel
-    p.fill(127, 127, 127);
     p.rect(0, 0, mecanumWheelWidth, mecanumWheelHeight);
     
     var diagY = -mecanumWheelHeight / 2 - (wheelSpin % mecanumRollerSpacing) + mecanumRollerSpacing;
