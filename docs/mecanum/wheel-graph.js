@@ -2,13 +2,31 @@ var wheelGraphSketch = function( p ) {
 
   var ellipseMargin;
   var ellipseSize;
+  
+  var robotWidth;
+  var robotHeight;
+  
+  var mecanumWheelWidth;
+  var mecanumWheelHeight;
+  var mecanumRollerSpacing;
 
   var graphImage;
   var selectedValue;
   
+  var wheel1Movement;
+  var wheel2Movement;
+  
   p.setup = function() {
     ellipseMargin = 32;
     ellipseSize = 350 - 2*ellipseMargin;
+    robotWidth = 128;
+    robotHeight = 128;
+    mecanumWheelWidth = 36.0;
+    mecanumWheelHeight = 96.0;
+    mecanumRollerSpacing = 27.0;
+    
+    wheel1Movement = 0;
+    wheel2Movement = 0;
     
     graphImage = p.createGraphics(640, 400);
     drawGraphImage();
@@ -105,15 +123,44 @@ var wheelGraphSketch = function( p ) {
       + selectedValue / (p.PI*2) * graphImage.width;
     p.line(lineX, 0, lineX, p.height)
     
-    p.stroke(0);
+    
     var ellipseX = ellipseSize / 2 + ellipseMargin;
     var ellipseY = p.height/2;
+    
+    wheel1Movement += p.sin(selectedValue - p.PI/4) * 2;
+    wheel2Movement += p.sin(selectedValue + p.PI/4) * 2;
+    
+    p.push();
+    p.translate(ellipseX + robotWidth/2, ellipseY + robotHeight/2);
+    p.scale(1, -1);
+    drawMecanumWheel(-wheel2Movement);
+    p.pop();
+    
+    p.push();
+    p.translate(ellipseX - robotWidth/2, ellipseY + robotHeight/2);
+    drawMecanumWheel(wheel1Movement);
+    p.pop();
+    
+    p.push();
+    p.translate(ellipseX + robotWidth/2, ellipseY - robotHeight/2);
+    drawMecanumWheel(wheel1Movement);
+    p.pop();
+    
+    p.push();
+    p.translate(ellipseX - robotWidth/2, ellipseY - robotHeight/2);
+    p.scale(1, -1);
+    drawMecanumWheel(-wheel2Movement);
+    p.pop();
+    
+    p.stroke(0);
+    p.noFill();
     p.ellipse(ellipseX, ellipseY, ellipseSize, ellipseSize);
     p.stroke(0, 255, 0);
     p.line(ellipseX, ellipseY,
            ellipseX + p.cos(selectedValue)*ellipseSize/2,
            ellipseY - p.sin(selectedValue)*ellipseSize/2);
     
+    p.fill(0)
     p.noStroke();
     p.textSize(24);
     p.textAlign(p.CENTER, p.TOP);
@@ -124,11 +171,11 @@ var wheelGraphSketch = function( p ) {
     
   };
   
-  function drawMecanumWheel(wheelSpin, wheelVelocity) {
-    var mecanumWheelWidth = 36.0;
-    var mecanumWheelHeight = 96.0;
-    var mecanumRollerSpacing = 27.0;
+  function drawMecanumWheel(wheelSpin) {
+    if(wheelSpin < 0)
+      wheelSpin += mecanumRollerSpacing * p.ceil(-wheelSpin/mecanumRollerSpacing);
     
+    p.stroke(0);
     p.rectMode(p.CENTER);
     p.imageMode(p.CENTER);
     p.strokeWeight(3);
