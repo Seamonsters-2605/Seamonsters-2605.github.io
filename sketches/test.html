@@ -1,13 +1,30 @@
 <!DOCTYPE html>
 <html>
   
-  <head>
-    <title>Test</title>
-    <meta charset="UTF-8">
-  </head>
-  
-  <body>
-    <script src="effects.js"></script>  
-  </body>
+    <head>
+        <title>Test</title>
+        <meta charset="UTF-8">
+        
+        <script language="javascript" type="text/javascript" src="effects.js"></script>
+        
+        <script language="javascript" type="text/javascript" src="p5.js"></script>
+        <script language="javascript" type="text/javascript">
+            function setup() {
+                createCanvas(720, 400);
+            }
+
+            function draw() {
+                c = color(randomColor(127, 256, 256, 10,
+                                      0, 256, 256, 10,
+                                      0, 256, 256, 10));
+                background(c);
+            }
+        </script>
+        
+    </head>
+
+    <body>
+        
+    </body>
 
 </html>

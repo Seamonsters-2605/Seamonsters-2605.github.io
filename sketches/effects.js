@@ -1,36 +1,43 @@
 // return a color string
 // all values are 0 <= value < 256
-function randomColor(hueMin, hueMax, hueExp, satMin, satMax, satExp,
-                     valMin, valMax, valExp) {
-    if(hueMin > hueMax) {
+function randomColor(hueMin, hueMax, hueCen, hueExp,
+                     satMin, satMax, satCen, satExp,
+                     valMin, valMax, valCen, valExp) {
+    if(hueMax < hueMin) {
         hueMax += 256.0;
     }
-    h = weightedRandomRange(hueMin, hueMax, hueExp);
+    if(hueCen < hueMin) {
+        hueCen += 256.0;
+    }
+    h = weightedRandomRange(hueMin, hueMax, hueCen, hueExp);
     if(h > 250.0) {
         h -= 250.0;
     }
     
-    s = weightedRandomRange(satMin, satMax, satExp);
-    v = weightedRandomRange(valMin, valMax, valExp);
+    s = weightedRandomRange(satMin, satMax, satCen, satExp);
+    v = weightedRandomRange(valMin, valMax, valCen, valExp);
     
     return hsbToColorString(h, s, v);
 }
 
 // 0 for even distribution
-// higher values for bias towards 0.5
-function weightedRandom(exponent) {
+// higher values for bias towards center
+function weightedRandom(center, exponent) {
     r = Math.random();
+    console.log(r);
     if(r >= 0.5) {
-        return Math.pow(2.0 * (r - 0.5), exponent + 1) / 2.0 + 0.5;
+        return Math.pow(2.0 * (r - 0.5), exponent + 1) * (1.0 - center)
+               + center;
     } else {
-        r = 1.0 - r
-        return -Math.pow(2.0 * (r - 0.5), exponent + 1) / 2.0 + 0.5;
+        r = 1.0 - r;
+        center = 1.0 - center;
+        return -(Math.pow(2.0 * (r - 0.5), exponent + 1) * (1.0 - center)
+               + center) + 1.0;
     }
-    
 }
 
-function weightedRandomRange(min, max, exp) {
-    return weightedRandom(exp) * (max - min) + min;
+function weightedRandomRange(min, max, cen, exp) {
+    return weightedRandom((cen - min) / (max - min), exp) * (max - min) + min;
 }
 
 function rgbToColorString(r, g, b) {
