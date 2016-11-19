@@ -13,12 +13,13 @@
             
             function setup() {
                 createCanvas(720, 400);
-                textGraphic = createGraphics(720, 400);
+                textGraphic = createGraphics(256, 128);
                 
                 textGraphic.fill(255,255,255);
                 textGraphic.textSize(64);
                 textGraphic.textAlign(CENTER, CENTER);
-                textGraphic.text("text", width/2, height/2);
+                textGraphic.text("text",
+                                 textGraphic.width/2, textGraphic.height/2);
                 
                 glow(textGraphic, createGraphics);
             }
