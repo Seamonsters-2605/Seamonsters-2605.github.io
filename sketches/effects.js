@@ -1,3 +1,52 @@
+
+// timing
+var timingIndent = "";
+function timeStart(name) {
+    timeLog("start " + name);
+    timingIndent += "  ";
+    return new Date().getTime();
+}
+function timeEnd(name, startTime) {
+    timingIndent = timingIndent.substring(0, timingIndent.length - 2);
+    timeLog("end " + name
+            + " (" + (new Date().getTime() - startTime) + " millis)");
+}
+function timeLog(text) {
+    console.log(timingIndent + text);
+}
+
+
+function glow(graphics, f_createGraphics) {
+    glowTime = timeStart("glow");
+        // fix p5 bug:
+        graphics.canvas = graphics.elt;
+        
+        blur1Time = timeStart("blur 1");
+            graphics2 = f_createGraphics(graphics.width, graphics.height);
+            graphics2.canvas = graphics2.elt;
+            graphics2.image(graphics, 0, 0);
+            graphics2.filter(graphics.BLUR, 1);
+        timeEnd("blur 1", blur1Time);
+        
+        dilateTime = timeStart("dilate");
+            for(var i = 0; i < 20; i++)
+                graphics.filter(graphics.DILATE);
+        timeEnd("dilate", dilateTime);
+        
+        blur2Time = timeStart("blur 2");
+            graphics.filter(graphics.BLUR, 16);
+        timeEnd("blur 2", blur2Time);
+        
+        glowEffectTime = timeStart("glow effect");
+            for(var i = 0; i < 5; i++) {
+                graphics.filter(graphics.BLUR, 2);
+                graphics.image(graphics2, 0, 0);
+            }
+        timeEnd("glow effect", glowEffectTime);
+    timeEnd("glow", glowTime);
+}
+
+
 // return a color string
 // all values are 0 <= value < 256
 function randomColor(hueMin, hueMax, hueCen, hueExp,
