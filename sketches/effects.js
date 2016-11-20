@@ -61,7 +61,7 @@ function glow(graphics, f_createGraphics) {
 }
 
 
-function colorLayers(graphics, f_createGraphics,
+function colorLayers(graphics, f_createGraphics, variation,
                      hueMin, hueMax, hueCen, hueExp,
                      satMin, satMax, satCen, satExp,
                      valMin, valMax, valCen, valExp) {
@@ -81,7 +81,8 @@ function colorLayers(graphics, f_createGraphics,
                                           satMin, satMax, satCen, satExp,
                                           valMin, valMax, valCen, valExp));
                 graphics.image(graphics2,
-                               Math.random() * 6 - 3, Math.random() * 6 - 3);
+                               Math.random() * variation * 2 - variation,
+                               Math.random() * variation * 2 - variation);
                 graphics.noTint();
             }
         timeEnd(layerTime);
