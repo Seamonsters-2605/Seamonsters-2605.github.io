@@ -75,6 +75,21 @@ function colorLayers(graphics, f_createGraphics,
 }
 
 
+function invertGraphics(graphics) {
+    graphics.loadPixels();
+    numPixels = graphics.pixels.length;
+    for(var i = 0; i < numPixels; i++) {
+        c = graphics.pixels[i];
+        if(c == 0) {
+            graphics.pixels[i] = 255;
+        } else {
+            graphics.pixels[i] = 0;
+        }
+    }
+    graphics.updatePixels();
+}
+
+
 // return a color string
 // all values are 0 <= value < 256
 function randomColor(hueMin, hueMax, hueCen, hueExp,
