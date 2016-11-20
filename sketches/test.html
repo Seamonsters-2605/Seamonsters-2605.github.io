@@ -31,7 +31,7 @@
                             127, 255, 255, 5);
                 
                 var textGraphic2 = textGraphics[1];
-                textGraphic2.fill(255,255,255);
+                textGraphic2.fill(255,127,255);
                 textGraphic2.textSize(64);
                 textGraphic2.textAlign(CENTER, CENTER);
                 textGraphic2.text("glow",
@@ -51,6 +51,18 @@
                             0, 127, 63, 0,
                             127, 255, 255, 5,
                             127, 255, 255, 5);
+                
+                var textGraphic4 = textGraphics[3];
+                textGraphic4.fill(255,255,255);
+                textGraphic4.textSize(64);
+                textGraphic4.textAlign(CENTER, CENTER);
+                textGraphic4.text("glow",
+                                 textGraphic4.width/2, textGraphic4.height/2);
+                colorLayers(textGraphic4, createGraphics,
+                            0, 127, 63, 0,
+                            127, 255, 255, 5,
+                            127, 255, 255, 5);
+                glow(textGraphic4, createGraphics);
             }
 
             function draw() {
