@@ -21,6 +21,20 @@ function glow(graphics, f_createGraphics) {
         // fix p5 bug:
         graphics.canvas = graphics.elt;
         
+        posterizeTime = timeStart("alpha posterize");
+            graphics.loadPixels();
+            numPixels = graphics.pixels.length;
+            for(var i = 3; i < numPixels; i+=4) {
+                c = graphics.pixels[i];
+                if(c < 128) {
+                    graphics.pixels[i] = 0;
+                } else {
+                    graphics.pixels[i] = 255;
+                }
+            }
+            graphics.updatePixels();
+        timeEnd(posterizeTime);
+        
         blur1Time = timeStart("blur 1");
             graphics2 = f_createGraphics(graphics.width, graphics.height);
             graphics2.canvas = graphics2.elt;
@@ -29,7 +43,7 @@ function glow(graphics, f_createGraphics) {
         timeEnd(blur1Time);
         
         dilateTime = timeStart("dilate");
-            for(var i = 0; i < 20; i++)
+            for(var i = 0; i < 10; i++)
                 graphics.filter(graphics.DILATE);
         timeEnd(dilateTime);
         
