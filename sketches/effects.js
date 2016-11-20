@@ -4,12 +4,12 @@ var timingIndent = "";
 function timeStart(name) {
     timeLog("start " + name);
     timingIndent += "  ";
-    return new Date().getTime();
+    return [name, new Date().getTime()];
 }
-function timeEnd(name, startTime) {
+function timeEnd(startTime) {
     timingIndent = timingIndent.substring(0, timingIndent.length - 2);
-    timeLog("end " + name
-            + " (" + (new Date().getTime() - startTime) + " millis)");
+    timeLog("end " + startTime[0]
+            + " (" + (new Date().getTime() - startTime[1]) + " millis)");
 }
 function timeLog(text) {
     console.log(timingIndent + text);
@@ -26,24 +26,52 @@ function glow(graphics, f_createGraphics) {
             graphics2.canvas = graphics2.elt;
             graphics2.image(graphics, 0, 0);
             graphics2.filter(graphics.BLUR, 1);
-        timeEnd("blur 1", blur1Time);
+        timeEnd(blur1Time);
         
         dilateTime = timeStart("dilate");
             for(var i = 0; i < 20; i++)
                 graphics.filter(graphics.DILATE);
-        timeEnd("dilate", dilateTime);
+        timeEnd(dilateTime);
         
         blur2Time = timeStart("blur 2");
             graphics.filter(graphics.BLUR, 16);
-        timeEnd("blur 2", blur2Time);
+        timeEnd(blur2Time);
         
         glowEffectTime = timeStart("glow effect");
             for(var i = 0; i < 5; i++) {
                 graphics.filter(graphics.BLUR, 2);
                 graphics.image(graphics2, 0, 0);
             }
-        timeEnd("glow effect", glowEffectTime);
-    timeEnd("glow", glowTime);
+        timeEnd(glowEffectTime);
+    timeEnd(glowTime);
+}
+
+
+function colorLayers(graphics, f_createGraphics,
+                     hueMin, hueMax, hueCen, hueExp,
+                     satMin, satMax, satCen, satExp,
+                     valMin, valMax, valCen, valExp) {
+    colorLayersTime = timeStart("color layers");
+        graphics.canvas = graphics.elt;
+        
+        blurTime = timeStart("blur");
+            graphics2 = f_createGraphics(graphics.width, graphics.height);
+            graphics2.canvas = graphics2.elt;
+            graphics2.image(graphics, 0, 0);
+            graphics2.filter(graphics.BLUR, 1);
+        timeEnd(blurTime);
+        
+        layerTime = timeStart("layers");
+            for(var i = 0; i < 8; i++) {
+                graphics.tint(randomColor(hueMin, hueMax, hueCen, hueExp,
+                                          satMin, satMax, satCen, satExp,
+                                          valMin, valMax, valCen, valExp));
+                graphics.image(graphics2,
+                               Math.random() * 6 - 3, Math.random() * 6 - 3);
+                graphics.noTint();
+            }
+        timeEnd(layerTime);
+    timeEnd(colorLayersTime);
 }
 
 
@@ -73,7 +101,6 @@ function randomColor(hueMin, hueMax, hueCen, hueExp,
 // higher values for bias towards center
 function weightedRandom(center, exponent) {
     r = Math.random();
-    console.log(r);
     if(r >= 0.5) {
         return Math.pow(2.0 * (r - 0.5), exponent + 1) * (1.0 - center)
                + center;
