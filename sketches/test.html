@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  
+    <head>
+        <title>Test</title>
+        <meta charset="UTF-8">
+        
+        <script language="javascript" type="text/javascript" src="effects.js"></script>
+        
+        <script language="javascript" type="text/javascript" src="p5.js"></script>
+        <script language="javascript" type="text/javascript">
+            var textGraphic1, textGraphic2, textGraphic3;
+            
+            function setup() {
+                createCanvas(256, 384);
+                
+                textGraphic1 = createGraphics(256, 128);
+                textGraphic1.fill(255,255,255);
+                textGraphic1.textSize(64);
+                textGraphic1.textAlign(CENTER, CENTER);
+                textGraphic1.text("colors",
+                                 textGraphic1.width/2, textGraphic1.height/2);
+                colorLayers(textGraphic1, createGraphics,
+                            0, 127, 63, 0,
+                            127, 255, 255, 5,
+                            127, 255, 255, 5);
+                
+                textGraphic2 = createGraphics(256, 128);
+                textGraphic2.fill(255,255,255);
+                textGraphic2.textSize(64);
+                textGraphic2.textAlign(CENTER, CENTER);
+                textGraphic2.text("glow",
+                                 textGraphic2.width/2, textGraphic2.height/2);
+                glow(textGraphic2, createGraphics);
+                
+                textGraphic3 = createGraphics(256, 128);
+                textGraphic3.fill(255,255,255);
+                textGraphic3.stroke(255,255,255);
+                textGraphic3.strokeWeight(3);
+                textGraphic3.textSize(64);
+                textGraphic3.textAlign(CENTER, CENTER);
+                textGraphic3.text("colors",
+                                 textGraphic1.width/2, textGraphic1.height/2);
+                invertGraphics(textGraphic3);
+                colorLayers(textGraphic3, createGraphics,
+                            0, 127, 63, 0,
+                            127, 255, 255, 5,
+                            127, 255, 255, 5);
+            }
+
+            function draw() {
+                background(0);
+                image(textGraphic1, 0, 0);
+                image(textGraphic2, 0, textGraphic1.height);
+                image(textGraphic3,
+                      0, textGraphic1.height + textGraphic2.height);
+            }
+            
+            function copyGraphics(g) {
+                g2 = createGraphics(g.width, g.height);
+                g2.image(g, 0, 0);
+                return g2;
+            }
+        </script>
+        
+    </head>
+
+    <body>
+        
+    </body>
+
+</html>
