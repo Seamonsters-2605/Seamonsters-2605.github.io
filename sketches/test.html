@@ -9,31 +9,36 @@
         
         <script language="javascript" type="text/javascript" src="p5.js"></script>
         <script language="javascript" type="text/javascript">
-            var textGraphic1, textGraphic2, textGraphic3;
+            var textGraphics;
             
             function setup() {
-                createCanvas(256, 384);
+                textGraphics = [ ];
+                for(var i = 0; i < 4; i++) {
+                    textGraphics[i] = createGraphics(256, 128);
+                }
                 
-                textGraphic1 = createGraphics(256, 128);
+                createCanvas(256, 128 * textGraphics.length);
+                
+                var textGraphic1 = textGraphics[0];
                 textGraphic1.fill(255,255,255);
                 textGraphic1.textSize(64);
                 textGraphic1.textAlign(CENTER, CENTER);
                 textGraphic1.text("colors",
                                  textGraphic1.width/2, textGraphic1.height/2);
-                colorLayers(textGraphic1, createGraphics,
+                colorLayers(textGraphic1, createGraphics, 3,
                             0, 127, 63, 0,
                             127, 255, 255, 5,
                             127, 255, 255, 5);
                 
-                textGraphic2 = createGraphics(256, 128);
-                textGraphic2.fill(255,255,255);
+                var textGraphic2 = textGraphics[1];
+                textGraphic2.fill(255,127,255);
                 textGraphic2.textSize(64);
                 textGraphic2.textAlign(CENTER, CENTER);
                 textGraphic2.text("glow",
                                  textGraphic2.width/2, textGraphic2.height/2);
                 glow(textGraphic2, createGraphics);
                 
-                textGraphic3 = createGraphics(256, 128);
+                var textGraphic3 = textGraphics[2];
                 textGraphic3.fill(255,255,255);
                 textGraphic3.stroke(255,255,255);
                 textGraphic3.strokeWeight(3);
@@ -42,18 +47,31 @@
                 textGraphic3.text("colors",
                                  textGraphic1.width/2, textGraphic1.height/2);
                 invertGraphics(textGraphic3);
-                colorLayers(textGraphic3, createGraphics,
+                colorLayers(textGraphic3, createGraphics, 3,
                             0, 127, 63, 0,
                             127, 255, 255, 5,
                             127, 255, 255, 5);
+                
+                var textGraphic4 = textGraphics[3];
+                textGraphic4.fill(255,255,255);
+                textGraphic4.textSize(64);
+                textGraphic4.textAlign(CENTER, CENTER);
+                textGraphic4.text("glow",
+                                 textGraphic4.width/2, textGraphic4.height/2);
+                colorLayers(textGraphic4, createGraphics, 2,
+                            0, 127, 63, 0,
+                            127, 255, 255, 5,
+                            127, 255, 255, 5);
+                glow(textGraphic4, createGraphics);
             }
 
             function draw() {
                 background(0);
-                image(textGraphic1, 0, 0);
-                image(textGraphic2, 0, textGraphic1.height);
-                image(textGraphic3,
-                      0, textGraphic1.height + textGraphic2.height);
+                var y = 0;
+                for(var i = 0; i < textGraphics.length; i++) {
+                    image(textGraphics[i], 0, y);
+                    y += textGraphics[i].height;
+                }
             }
             
             function copyGraphics(g) {
