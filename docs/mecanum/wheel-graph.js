@@ -12,6 +12,7 @@
 
   var graphImage;
   var selectedValue;
+  var graphShown;
   
   var wheel1Movement;
   var wheel2Movement;
@@ -37,7 +38,7 @@
     
     
     selectedValue = 0;
-    
+    graphShown = false;
     
   };
   
@@ -114,10 +115,6 @@
     graphImage.text("y = sin(x + 1/4 π)", graphImage.width - 256, 48);
   }
   
-  p.mouseClicked = function() {
-    
-  };
-  
   p.mouseDragged = function() {
     if(p.mouseX < 0 || p.mouseY < 0
         || p.mouseX > p.width || p.mouseY > p.height)
@@ -131,14 +128,22 @@
   
   p.draw = function() {
     p.background(255,255,255);
-    p.image(graphImage, p.width - graphImage.width, 0);
-    
-    p.stroke(0, 255, 0);
     p.strokeWeight(4);
-    var lineX = p.width-graphImage.width
-      + selectedValue / (p.PI*2) * graphImage.width;
-    p.line(lineX, 0, lineX, p.height)
-    
+
+    if(p.key == 'g')
+      graphShown = true;
+
+    if(graphShown) {
+      p.image(graphImage, p.width - graphImage.width, 0);
+      
+      p.stroke(0, 255, 0);
+      var lineX = p.width-graphImage.width
+        + selectedValue / (p.PI*2) * graphImage.width;
+      p.line(lineX, 0, lineX, p.height)
+    } else {
+      p.textAlign(p.LEFT, p.CENTER);
+      p.text("Press G to show graph", p.width/2, p.height/2);
+    }
     
     var ellipseX = ellipseSize / 2 + ellipseMargin;
     var ellipseY = p.height/2;
@@ -184,10 +189,6 @@
     p.textSize(24);
     p.textAlign(p.CENTER, p.TOP);
     p.text("Click and Drag", p.width/2, 8);
-  };
-  
-  function drawArrow(startX, startY, endX, endY, arrowSize) {
-    
   };
   
   function drawMecanumWheel(wheelSpin) {
