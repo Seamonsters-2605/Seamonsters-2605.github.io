@@ -1,0 +1,54 @@
+html {
+    background-color: CadetBlue;
+}
+
+body {
+    background-color: white;    
+    
+    max-width: 1024pt;
+    border-radius: 12pt;
+    
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    
+    padding-left: 32pt;
+    padding-right: 32pt;
+    padding-top: 16pt;
+    padding-bottom: 16pt;
+}
+
+a:link {
+    color: #0044FF;
+}
+
+a:visited {
+    color: green;
+}
+
+a:hover {
+    color: DodgerBlue;
+}
+
+a:visited:hover {
+    color: DodgerBlue;
+}
+
+a:active {
+    color: OrangeRed;
+}
+
+a:visited:active {
+    color: OrangeRed;
+}
+
+h1 {
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+}
+
+li {
+    margin: 3pt;
+}
+
