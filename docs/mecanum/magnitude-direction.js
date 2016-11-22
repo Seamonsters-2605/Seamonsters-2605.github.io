@@ -6,7 +6,7 @@ var magnitudeDirectionSketch = function( p ) {
   
   p.setup = function() {
     p.pixelDensity(1);
-    var canvas = p.createCanvas(640, 400);
+    var canvas = p.createCanvas(640, 440);
     originX = 320;
     originY = 240;
     pointX = originX + 192;
