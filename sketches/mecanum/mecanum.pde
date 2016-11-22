@@ -10,7 +10,7 @@ float targetY;
 float targetRot;
 
 void setup() {
-  size(1024, 640);
+  size(1152, 640);
   setupRobot();
   
   targetPosEnabled = true;
@@ -61,8 +61,6 @@ void draw() {
   fill(0);
   textSize(20);
   text("Arrows to move, A/D to turn, 1-" + driveTrain.numWheels() * 2 + " to move individual wheels, M/O/T to switch drive trains, R to reset.", 8, height - 8);
-  textAlign(RIGHT, BOTTOM);
-  text("Jacob van't Hoog", width - 8, height - 8);
   textAlign(LEFT, BASELINE);
 }
 
