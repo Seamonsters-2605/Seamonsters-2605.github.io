@@ -1,3 +1,14 @@
+html {
+    background-color: CadetBlue;
+}
+
+body {
+    max-width: 600pt;
+    margin: auto;
+    background-color: white;
+    padding: 32pt;
+}
+
 a:link {
     color: blue;
 }
@@ -20,11 +31,6 @@ a:active {
 
 a:visited:active {
     color: OrangeRed;
-}
-
-body {
-    max-width: 600pt;
-    margin: auto;
 }
 
 h1 {
