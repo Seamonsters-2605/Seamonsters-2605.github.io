@@ -2,6 +2,10 @@ a:link {
     color: blue;
 }
 
+a:visited {
+    color: green;
+}
+
 a:hover {
     color: DodgerBlue;
 }
@@ -10,11 +14,11 @@ a:visited:hover {
     color: DodgerBlue;
 }
 
-a:visited {
-    color: green;
+a:active {
+    color: OrangeRed;
 }
 
-a:active {
+a:visited:active {
     color: OrangeRed;
 }
 
