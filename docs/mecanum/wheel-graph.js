@@ -1,4 +1,4 @@
-var wheelGraphSketch = function( p ) {
+﻿var wheelGraphSketch = function( p ) {
 
   var ellipseMargin;
   var ellipseSize;
@@ -17,6 +17,7 @@ var wheelGraphSketch = function( p ) {
   var wheel2Movement;
   
   p.setup = function() {
+    p.pixelDensity(1);
     ellipseMargin = 32;
     ellipseSize = 350 - 2*ellipseMargin;
     robotWidth = 128;
