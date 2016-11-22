@@ -15,7 +15,7 @@ a:active {
 }
 
 body {
-    width: 512pt;
+    max-width: 600pt;
     margin: auto;
 }
 
