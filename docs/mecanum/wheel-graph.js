@@ -187,8 +187,8 @@
     p.fill(0)
     p.noStroke();
     p.textSize(24);
-    p.textAlign(p.CENTER, p.TOP);
-    p.text("Click and Drag", p.width/2, 8);
+    p.textAlign(p.LEFT, p.TOP);
+    p.text("Click and Drag Left/Right", 16, 8);
   };
   
   function drawMecanumWheel(wheelSpin) {
