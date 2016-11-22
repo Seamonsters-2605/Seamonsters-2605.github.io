@@ -26,9 +26,9 @@ h1 {
 
 h2 {
     text-align: center;
-    margin-top: 16pt;
-    margin-right: 0pt;
-    margin-bottom: 0pt;
-    margin-left: 0pt;
+}
+
+li {
+    margin: 3pt;
 }
 
