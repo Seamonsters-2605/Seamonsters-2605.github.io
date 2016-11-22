@@ -3,10 +3,20 @@ html {
 }
 
 body {
+    background-color: white;    
+    
     max-width: 600pt;
-    margin: auto;
-    background-color: white;
-    padding: 32pt;
+    border-radius: 12pt;
+    
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 10pt;
+    margin-bottom: 10pt;
+    
+    padding-left: 32pt;
+    padding-right: 32pt;
+    padding-top: 16pt;
+    padding-bottom: 16pt;
 }
 
 a:link {
