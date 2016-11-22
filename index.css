@@ -6,6 +6,10 @@ a:hover {
     color: DodgerBlue;
 }
 
+a:visited:hover {
+    color: DodgerBlue;
+}
+
 a:visited {
     color: green;
 }
