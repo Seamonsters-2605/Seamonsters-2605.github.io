@@ -10,7 +10,7 @@ float targetY;
 float targetRot;
 
 void setup() {
-  size(1152, 640);
+  size(1152, 704);
   setupRobot();
   
   targetPosEnabled = true;
