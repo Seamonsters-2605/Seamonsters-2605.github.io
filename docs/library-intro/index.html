@@ -39,6 +39,50 @@
         <p>
             You will now have a folder in your Documents folder called “SeamonstersTemplate.” This has the Seamonsters code library in the “seamonsters” folder. To use this library, you just need to have your robot file in the SeamonstersTemplate folder.
         </p>
+        <h2>Gamepads</h2>
+        <p>
+            One useful thing the Seamonster library adds is support for gamepads. We normally use two Logitech gamepads for driving the robot in competitions. Wpilib treats gamepads as a single “joystick,” but they actually have 2 joysticks on them, which makes them confusing to work with. To make things easier Seamonsters library has a <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">Gamepad</a> class which adds extra features to the wpilib.Joystick class, such as distinguishing between the left and right joystick.
+        </p>
+        <p>
+            Try this code. It’s a variation on the first tank drive code you wrote earlier.
+        </p>
+        <p>
+            <code>
+                __author__ = "Your name here!" <br>
+                <br>
+                import wpilib <br>
+                import seamonsters.gamepad <br>
+                <br>
+                class TestRobot (wpilib.IterativeRobot): <br>
+                <br>
+                &nbsp;&nbsp;def robotInit(self): <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.leftFront = wpilib.CANTalon(2) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.rightFront = wpilib.CANTalon(1) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.leftBack = wpilib.CANTalon(0) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.rightBack = wpilib.CANTalon(3) <br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Instead of 2 joysticks, you just need one Gamepad, which has 2 <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;# joysticks on it. <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.gamepad = seamonsters.gamepad.Gamepad(0) <br>
+                <br>
+                &nbsp;&nbsp;def teleopPeriodic(self): <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Get the y position for the left and right joysticks on the <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;# Gamepad <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;leftSpeed = -self.gamepad.getLY() <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;rightSpeed = self.gamepad.getRY() <br>
+                <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.leftFront.set(leftSpeed) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.leftBack.set(leftSpeed) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.rightFront.set(rightSpeed) <br>
+                &nbsp;&nbsp;&nbsp;&nbsp;self.rightBack.set(rightSpeed) <br>
+                <br>
+                if __name__ == "__main__": <br>
+                &nbsp;&nbsp;wpilib.run(TestRobot) <br>
+            </code>
+        </p>
+        <p>
+            Full documentation for the <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">Gamepad</a> class is here.
+        </p>
         <p>
             I will add more to this document later.
         </p>
