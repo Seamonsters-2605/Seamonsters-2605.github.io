@@ -43,7 +43,7 @@
         
         <h2> Gamepads </h2>
         <p>
-            One useful thing the Seamonster library adds is support for gamepads. We normally use two Logitech gamepads for driving the robot in competitions. Wpilib treats gamepads as a single “joystick,” but they actually have 2 joysticks on them, which makes them confusing to work with. To make things easier Seamonsters library has a <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">Gamepad</a> class which adds extra features to the wpilib.Joystick class, such as distinguishing between the left and right joystick.
+            One useful thing that the Seamonsters library adds is support for gamepads. We normally use two Logitech gamepads for driving the robot in competitions. Wpilib treats gamepads as a single “joystick” with a single x and y axis, but they actually have 2 joysticks on them, which makes them more confusing to work with. To make things easier, the Seamonsters library has a <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">Gamepad</a> class which adds extra features to the wpilib.Joystick class, such as distinguishing between the left and right joystick.
         </p>
         <p>
             Try this code. It’s a variation on the first tank drive code you wrote earlier.
@@ -81,10 +81,10 @@
             Full documentation for the Gamepad class is <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">here</a>.
         </p>
         <p>
-        To deploy you could type <code>python robot.py deploy --builtin --nc</code> as usual, but I’ve written a custom deploy script that is easier to type and allows you to have robots not named “robot.py”. Instead, find the SeamonstersTemplate folder, hold shift and right click and choose “Open command window here,” and type: <code>deploy.bat nameOfYourRobot.py</code>.
+        To deploy you could type <code>python robot.py deploy --builtin --nc</code> as usual, but I’ve written a custom deploy script that is easier to type and allows you to have robots not named “robot.py”. Instead, find the SeamonstersTemplate folder, hold shift and right click and choose “Open command window here,” and type: <code>deploy.bat nameOfYourRobot.py</code>
         </p>
         <p>
-        You can now use the two joysticks on the gamepad, instead of two separate joysticks, to control your robot.
+        You can now use the two joysticks on the gamepad to control your robot.
         </p>
         
         <h2> Logging </h2>
