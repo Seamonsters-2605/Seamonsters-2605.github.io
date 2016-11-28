@@ -17,7 +17,7 @@
   
     <body>
         <p>
-        Code highlighting by <a href="https://tohtml.com/">tohtml.com</a>.
+            Code highlighting by <a href="https://tohtml.com/">tohtml.com</a>.
         </p>
         
         <h1> Using the Seamonsters Library </h1>
@@ -40,13 +40,21 @@
         <p>
             You will now have a folder in your Documents folder called “SeamonstersTemplate.” This has the Seamonsters code library in the “seamonsters” folder. To use this library, you just need to have your robot file in the SeamonstersTemplate folder.
         </p>
+        <p>
+            The following parts describe how to use various features of the library. You can read them in any order.
+        </p>
+        
+        <h2> Deploying </h2>
+        <p>
+        To deploy you can still use <code>python robot.py deploy --builtin --nc</code> as usual, but the seamonsters library comes with custom deploy script that is easier to remember type and allows you to have robots that aren't named “robot.py”. So instead, put your robot file in the SeamonstersTemplate folder, open a command prompt and navigate to the folder (<code>cd</code>) and type: <code>deploy.bat nameOfYourRobot.py</code>
+        </p>
         
         <h2> Gamepads </h2>
         <p>
             One useful thing that the Seamonsters library adds is support for gamepads. We normally use two Logitech gamepads for driving the robot in competitions. Wpilib treats gamepads as a single “joystick” with a single x and y axis, but they actually have 2 joysticks on them, which makes them more confusing to work with. To make things easier, the Seamonsters library has a <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">Gamepad</a> class which adds extra features to the wpilib.Joystick class, such as distinguishing between the left and right joystick.
         </p>
         <p>
-            Try this code. It’s a variation on the first tank drive code you wrote earlier.
+            Try this code. It’s a variation on the first tank drive code you wrote earlier. Instead of using 2 joysticks, it uses both joysticks on one gamepad.
         </p>
 <pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>import</span> wpilib
 <span style='color:#800000; font-weight:bold; '>import</span> seamonsters<span style='color:#808030; '>.</span>gamepad
@@ -79,12 +87,6 @@
 </pre>
         <p>
             Full documentation for the Gamepad class is <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html">here</a>.
-        </p>
-        <p>
-        To deploy you could type <code>python robot.py deploy --builtin --nc</code> as usual, but I’ve written a custom deploy script that is easier to type and allows you to have robots not named “robot.py”. Instead, find the SeamonstersTemplate folder, hold shift and right click and choose “Open command window here,” and type: <code>deploy.bat nameOfYourRobot.py</code>
-        </p>
-        <p>
-        You can now use the two joysticks on the gamepad to control your robot.
         </p>
         
         <h2> Logging </h2>
