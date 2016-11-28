@@ -100,10 +100,10 @@
         
         <h2> Modular Robots </h2>
         <p>
-        “Modular” robots allow you to split up your robot into separate robot classes which you can test individually. For example, maybe your robot can drive around, shoot balls, and use an arm to lift things. You might have make one robot file for driving, one for shooting, and one for the arm. Each of these files is an IterativeRobot, so you can test them individually. For example, maybe you’ve already bagged/tagged the robot, but you still need to test the arm&mdash;you can just deploy that file without the rest of the code.
+        “Modular” robots allow you to split up your robot into separate robot classes which you can test individually. For example, maybe your robot can drive around, shoot balls, and use an arm to lift things. You might have make one robot file for driving, one for shooting, and one for the arm. Each of these files is an IterativeRobot, so you can deploy them to the robot and test each capability individually. This makes it easier to collaborate, and also to work on a subsystem when you don't have full access to the robot. For example, maybe you’ve already bagged/tagged the robot, but you still need to test the arm&mdash;you can just deploy and test that file without the rest of the code.
         </p>
         <p>
-        When you eventually want to make a single robot program that can do all of those things, the Seamonsters library allows you to combine the different “modules” together to build a final robot. You can enable or disable these modules individually.
+        When you eventually want to make a single robot program that can do all of those things, the Seamonsters library allows you to combine the different “modules” together to build a final robot that combines the capabilities of each module. You can enable or disable these modules individually.
         </p>
         <p>
         Adding this capability to your robot is simple. You can make a Python script for each component of your robot, and have a simple <code>IterativeRobot</code> class in each to perform a small subset of your robot’s full capabilities. For example, you might have these files:
@@ -170,9 +170,6 @@
             <li>
                 <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/swerveDrive.html"><code>seamonsters.swerveDrive.SwerveDrive</code></a> For swerve drives.
             </li>
-            <li>
-                <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/drive.html#seamonsters.drive.AccelerationFilterDrive"><code>seamonsters.drive.AccelerationFilterDrive</code></a> Provides acceleration filtering to another drivetrain class.
-            </li>
         </ul>
         <p>
         These classes allow you to control how the robot moves, without needing to control the individual motors. All of the drivetrains use the same basic interface for driving them, so if you decide to change the drivetrain of your robot, you don’t have to rewrite all of your code:
@@ -197,6 +194,37 @@
                 You can set the drive mode of a drivetrain with <code>driveTrain.setDriveMode(mode)</code>. The drive modes are defined in <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/drive.html#seamonsters.drive.DriveInterface.DriveMode"><code>seamonsters.drive.DriveInterface.DriveMode</code></a>&mdash;they are called VOLTAGE, SPEED, and POSITION.
             </li>
         </ul>
+        <p>
+        The built in drive trains make it much simpler to write basic robots. Here is a simple mecanum drive robot:
+        </p>
+<pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>import</span> wpilib
+<span style='color:#800000; font-weight:bold; '>import</span> math
+<span style='color:#800000; font-weight:bold; '>from</span> seamonsters<span style='color:#808030; '>.</span>gamepad <span style='color:#800000; font-weight:bold; '>import</span> Gamepad
+<span style='color:#800000; font-weight:bold; '>from</span> seamonsters<span style='color:#808030; '>.</span>drive <span style='color:#800000; font-weight:bold; '>import</span> DriveInterface
+<span style='color:#800000; font-weight:bold; '>from</span> seamonsters<span style='color:#808030; '>.</span>holonomicDrive <span style='color:#800000; font-weight:bold; '>import</span> HolonomicDrive
+
+<span style='color:#800000; font-weight:bold; '>class</span> DriveTest <span style='color:#808030; '>(</span>wpilib<span style='color:#808030; '>.</span>IterativeRobot<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
+    
+    <span style='color:#800000; font-weight:bold; '>def</span> robotInit<span style='color:#808030; '>(</span>self<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
+        self<span style='color:#808030; '>.</span>gamepad <span style='color:#808030; '>=</span> Gamepad<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
+        
+        fl <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
+        fr <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
+        bl <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
+        br <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>driveTrain <span style='color:#808030; '>=</span> HolonomicDrive<span style='color:#808030; '>(</span>fl<span style='color:#808030; '>,</span> fr<span style='color:#808030; '>,</span> bl<span style='color:#808030; '>,</span> br<span style='color:#808030; '>,</span> <span style='color:#008c00; '>4156</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>setDriveMode<span style='color:#808030; '>(</span>DriveInterface<span style='color:#808030; '>.</span>DriveMode<span style='color:#808030; '>.</span>POSITION<span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>invertDrive<span style='color:#808030; '>(</span><span style='color:#074726; '>True</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>setWheelOffset<span style='color:#808030; '>(</span>math<span style='color:#808030; '>.</span>radians<span style='color:#808030; '>(</span><span style='color:#008000; '>22.5</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span> <span style='color:#696969; '># roller angle / 2</span>
+        
+    <span style='color:#800000; font-weight:bold; '>def</span> teleopPeriodic<span style='color:#808030; '>(</span>self<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
+        turn <span style='color:#808030; '>=</span> <span style='color:#44aadd; '>-</span>self<span style='color:#808030; '>.</span>gamepad<span style='color:#808030; '>.</span>getRX<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#44aadd; '>*</span> <span style='color:#400000; '>abs</span><span style='color:#808030; '>(</span>self<span style='color:#808030; '>.</span>gamepad<span style='color:#808030; '>.</span>getRX<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span> \
+            <span style='color:#44aadd; '>*</span> <span style='color:#808030; '>(</span>scale <span style='color:#44aadd; '>/</span> <span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
+        magnitude <span style='color:#808030; '>=</span> self<span style='color:#808030; '>.</span>gamepad<span style='color:#808030; '>.</span>getLMagnitude<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#44aadd; '>**</span><span style='color:#008c00; '>2</span> <span style='color:#44aadd; '>*</span> <span style='color:#008000; '>0.5</span>
+        direction <span style='color:#808030; '>=</span> self<span style='color:#808030; '>.</span>gamepad<span style='color:#808030; '>.</span>getLDirection<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span>
+        
+        self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>drive<span style='color:#808030; '>(</span>magnitude<span style='color:#808030; '>,</span> direction<span style='color:#808030; '>,</span> turn<span style='color:#808030; '>)</span>
+</pre>
         <p>
         For more specific information, look at the documentation for the individual drivetrain classes:
         </p>
