@@ -38,25 +38,53 @@ function draw() {
     textSize(20);
     for(var i = 0; i < repos.length; i++) {
         var repo = repos[i];
-        var boxWidth = textWidth(repo.name) + 16;
-        var boxHeight = textAscent() + textDescent() + 12;
+        var boxWidth = repo.width;
+        var boxHeight = repo.height;
         stroke(0);
         fill(255,255,255);
         rect(repo.x - boxWidth/2, repo.y - boxHeight/2, boxWidth, boxHeight);
         noStroke();
         fill(0);
         text(repo.name, repo.x, repo.y);
+        
+        stroke(0);
+        featureX = repo.x + boxWidth/2;
+        for(var j = 0; j < repo.features.length; j++) {
+            var featureColor = repo.features[j];
+            fill(featureColor);
+            rect(featureX, repo.y - boxHeight/2, 32, boxHeight);
+            featureX += 32;
+        }
     }
-    
     
 }
 
+function mouseClicked() {
+    for(var i = 0; i < repos.length; i++) {
+        var repo = repos[i];
+        if(mouseX > repo.x - repo.width/2 && mouseX < repo.x + repo.width/2
+         && mouseY > repo.y - repo.height/2 && mouseY < repo.y + repo.height/2){
+            repo.features.push(randomFeatureColor());
+        }
+    }
+}
+
+function randomFeatureColor() {
+    return color(randomColor(0, 255, 127, 0,
+                             127, 255, 255, 5,
+                             127, 255, 255, 5));
+}
+
+
 function addRepo(name, x, y) {
+    textSize(20);
     var repo = {
         "name": name,
         "x": x,
         "y": y,
-        "features": [ ]
+        "features": [ ],
+        "width": textWidth(name) + 16,
+        "height": textAscent() + textDescent() + 12
     };
     repos.push(repo);
     return repo;
