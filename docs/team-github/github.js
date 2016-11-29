@@ -1,6 +1,8 @@
 var repos;
 var arrows;
 
+var startClick;
+
 function setup() {
     pixelDensity(1);
     var canvas = createCanvas(768, 384);
@@ -10,9 +12,9 @@ function setup() {
     var seamonstersTemplate = addRepo("SeamonstersTemplate", 340, 20);
     var seamonstersDev = addRepo("SeamonstersDev", 600, 110);
     var competitionBot = addRepo("CompetitionBot2017", 370, 170);
-    var person1 = addRepo("Person1/CompetitionBot2017", 370 - 210, 270);
-    var person2 = addRepo("Person2/CompetitionBot2017", 370, 350);
-    var person3 = addRepo("Person3/CompetitionBot2017", 370 + 210, 270);
+    var person1 = addRepo("Person1/CompetitionBot2017", 360 - 210, 270);
+    var person2 = addRepo("Person2/CompetitionBot2017", 360, 350);
+    var person3 = addRepo("Person3/CompetitionBot2017", 360 + 210, 270);
     
     arrows = [ ]
     addArrow(seamonstersTemplate, seamonstersDev);
@@ -59,12 +61,32 @@ function draw() {
     
 }
 
-function mouseClicked() {
+function mousePressed() {
+    startClick = mouseCollision();
+}
+
+function mouseReleased() {
+    var endClick = mouseCollision();
+    if(startClick && endClick) {
+        if(startClick == endClick) {
+            endClick.features.push(randomFeatureColor());
+        } else {
+            console.log("merge!");
+            for(var i = 0; i < startClick.features.length; i++) {
+                var feature = startClick.features[i];
+                if(endClick.features.indexOf(feature) == -1)
+                    endClick.features.push(feature);
+            }
+        }
+    }
+}
+
+function mouseCollision() {
     for(var i = 0; i < repos.length; i++) {
         var repo = repos[i];
         if(mouseX > repo.x - repo.width/2 && mouseX < repo.x + repo.width/2
          && mouseY > repo.y - repo.height/2 && mouseY < repo.y + repo.height/2){
-            repo.features.push(randomFeatureColor());
+            return repo;
         }
     }
 }
