@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
   
     <head>
@@ -94,7 +94,7 @@
         There is often some sort of data that you need to constantly monitor while driving the robot. For example, you might need to be watching the speed of the flywheels before you shoot, or the position of a target in view of the camera. The easy way to do this is to print the value with every loop of <code>teleopPeriodic()</code>. But teleopPeriodic is called 50 times per second, which means your console will be filled up very quickly with logs. We would ideally also like to use the console for more important messages. Also, in a lot of cases the data is redundant&mdash;we don’t need to be constantly notified that the flywheels are spinning at 0%. The seamonsters library has utilities for logging which limit the number of times per second a value is logged, and block duplicate values from being logged.
         </p>
         <p>
-        The class <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/joystick.html"><code>seamonsters.logging.LogState</code></a> represents a value that you would like to update and display to the user. If you have <code>seamonsters.logging</code> imported, you can create it with <code>seamonsters.logging.LogState(“name”)</code>&mdash;the name will be displayed to the user along with the value.
+        The class <a href="https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/logging.html"><code>seamonsters.logging.LogState</code></a> represents a value that you would like to update and display to the user. If you have <code>seamonsters.logging</code> imported, you can create it with <code>seamonsters.logging.LogState(“name”)</code>&mdash;the name will be displayed to the user along with the value.
         </p>
         <p>
         Then, whenever the value you are monitoring changes, you call <code>yourLogState.update(value)</code>. The value can be anything&mdash;a number, a string, a boolean, or anything else.
