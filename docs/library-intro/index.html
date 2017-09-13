@@ -57,15 +57,16 @@
             Try this code. It’s a variation on the first tank drive code you wrote earlier. Instead of using 2 joysticks, it uses both joysticks on one gamepad.
         </p>
 <pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>import</span> wpilib
+<span style='color:#800000; font-weight:bold; '>import</span> ctre
 <span style='color:#800000; font-weight:bold; '>import</span> seamonsters<span style='color:#808030; '>.</span>gamepad
 
 <span style='color:#800000; font-weight:bold; '>class</span> TestRobot <span style='color:#808030; '>(</span>wpilib<span style='color:#808030; '>.</span>IterativeRobot<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
 
     <span style='color:#800000; font-weight:bold; '>def</span> robotInit<span style='color:#808030; '>(</span>self<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
-        self<span style='color:#808030; '>.</span>leftFront <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
-        self<span style='color:#808030; '>.</span>rightFront <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
-        self<span style='color:#808030; '>.</span>leftBack <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
-        self<span style='color:#808030; '>.</span>rightBack <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>leftFront <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>rightFront <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>leftBack <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
+        self<span style='color:#808030; '>.</span>rightBack <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span>
 
         <span style='color:#696969; '># Instead of 2 joysticks, you just need one Gamepad, which has 2</span>
         <span style='color:#696969; '># joysticks on it.</span>
@@ -200,6 +201,7 @@
         The built in drive trains make it much simpler to write basic robots. Here is a simple mecanum drive robot:
         </p>
 <pre style='color:#000000;background:#ffffff;'><span style='color:#800000; font-weight:bold; '>import</span> wpilib
+<span style='color:#800000; font-weight:bold; '>import</span> ctre
 <span style='color:#800000; font-weight:bold; '>import</span> math
 <span style='color:#800000; font-weight:bold; '>from</span> seamonsters<span style='color:#808030; '>.</span>gamepad <span style='color:#800000; font-weight:bold; '>import</span> Gamepad
 <span style='color:#800000; font-weight:bold; '>from</span> seamonsters<span style='color:#808030; '>.</span>drive <span style='color:#800000; font-weight:bold; '>import</span> DriveInterface
@@ -210,10 +212,10 @@
     <span style='color:#800000; font-weight:bold; '>def</span> robotInit<span style='color:#808030; '>(</span>self<span style='color:#808030; '>)</span><span style='color:#808030; '>:</span>
         self<span style='color:#808030; '>.</span>gamepad <span style='color:#808030; '>=</span> Gamepad<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
         
-        fl <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
-        fr <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
-        bl <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
-        br <span style='color:#808030; '>=</span> wpilib<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span>
+        fl <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>2</span><span style='color:#808030; '>)</span>
+        fr <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
+        bl <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span>
+        br <span style='color:#808030; '>=</span> ctre<span style='color:#808030; '>.</span>CANTalon<span style='color:#808030; '>(</span><span style='color:#008c00; '>3</span><span style='color:#808030; '>)</span>
         self<span style='color:#808030; '>.</span>driveTrain <span style='color:#808030; '>=</span> HolonomicDrive<span style='color:#808030; '>(</span>fl<span style='color:#808030; '>,</span> fr<span style='color:#808030; '>,</span> bl<span style='color:#808030; '>,</span> br<span style='color:#808030; '>,</span> <span style='color:#008c00; '>4156</span><span style='color:#808030; '>)</span>
         self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>setDriveMode<span style='color:#808030; '>(</span>DriveInterface<span style='color:#808030; '>.</span>DriveMode<span style='color:#808030; '>.</span>POSITION<span style='color:#808030; '>)</span>
         self<span style='color:#808030; '>.</span>driveTrain<span style='color:#808030; '>.</span>invertDrive<span style='color:#808030; '>(</span><span style='color:#074726; '>True</span><span style='color:#808030; '>)</span>
