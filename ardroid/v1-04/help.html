@@ -23,17 +23,20 @@
 
     <h3>The robot doesn't appear in the devices list</h3>
     <ul>
-        <li> Make sure that Bluetooth is turned on for your phone, and that your phone supports BLE (Bluetooth Low Energy)</li>
-        <li> Make sure the robot is on (the green LED on the motor shield should be on). It may be low on battery power.</li>
-        <li> Make sure that the Ardroid sketch (see the link above) is correctly loaded on the Arduino.</li>
+        <li> Make sure that Bluetooth is turned on for your phone, and that your phone supports BLE (Bluetooth Low Energy). Android 4.3 or above is required for BLE.</li>
+        <li> Make sure the robot is on (the green LED on the motor shield should be on).</li>
+        <li> Even if the light is on, the Arduino may be low on battery power.</li>
+        <li> Make sure that the latest version of the Ardroid sketch (from <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">this</a> page) is correctly loaded on the Arduino.</li>
+        <li> Make sure the Arduino has the correct firmware (see <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">these instructions</a> for details).</li>
         <li> Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. This should reset the Bluetooth connection.</li>
     </ul>
 
     <h3>The app gets stuck while connecting</h3>
     <ul>
+        <li> Wait about 15 seconds. Connecting could take some time especially if you have a lot of stepper motors. </li>
         <li> Press Cancel and try again.</li>
         <li> If there are a lot of Bluetooth devices nearby, make sure they all appear in the list before you choose one.</li>
-        <li> Try some of the other steps above.</li>
+        <li> Try some of the other steps listed above under "The robot doesn't appear in the devices list".</li>
     </ul>
 
     <h3>The robot doesn't move when you move the joystick</h3>
@@ -41,8 +44,12 @@
         <li> Check that the motor ports are set to the correct values in Bot Settings.</li>
         <li> Check the connections between the motor shield and the motors.</li>
         <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
-        <li> Make sure that the Ardroid sketch (see the link above) is correctly loaded on the Arduino.</li>
-        <li> Disconnect from the robot. Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. Then try reconnecting.</li>
+        <li> Try some of the other steps listed above under "The robot doesn't appear in the devices list".</li>
+    </ul>
+
+    <h3>The robot stops responding while you are driving it</h3>
+    <ul>
+        <li> The Arduino is probably running low on battery power. </li>
     </ul>
 </body>
 
