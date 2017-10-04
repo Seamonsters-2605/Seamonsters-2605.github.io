@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ARDROID Help v1.04</title>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <h1>ARDROID Help</h1>
+
+    <p>The ARDROID app is designed by Jeff Kerr and Jacob van't Hoog for the Seamonsters Robotics Team (FRC 2605).</p>
+    <p>The ARDROID app is designed to connect to an <strong>Arduino101</strong> board with the <strong>Adafruit Motor Shield V2</strong>. The Arduino needs a special sketch installed on it&mdash;see the ARDROID GitHub repository for how to install this sketch.</p>
+    <ul>
+        <li><a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md">Arduino Sketch on GitHub</a></li>
+        <li><a href="http://www.thingiverse.com/thing:1674749">Example Bot on Thingiverse</a></li>
+    </ul>
+    <p>On the main screen, tap "Bot Settings" to configure robot settings, like the driving speed and where the motors are plugged in. You must do this before connecting to the robot. The Adafruit v2 motor shield has 4 ports for DC motors, numbered 1 through 4. Stepper motors take up 2 ports&mdash;either DC ports 1 and 2 (Stepper port 1) or DC ports 3 and 4 (Stepper port 2). The Bot Settings screen has "What's this?" buttons to explain settings in more detail.</p>
+    <p>To connect to the robot, turn it on, make sure your phone has Bluetooth enabled, and press "Scan for Bots". Bluetooth devices will show up in a list below. Look for devices with ARDROID in the name. Tap to connect.</p>
+    <p>Connecting to the robot will open the control screen. The black dot is a joystick, and you can move it to drive the robot (you must have configured the driving motor ports first). You can also tap the "Tilt" box to allow you to drive the robot by tilting your phone&mdash;hold it level to stop moving, and tilt it in any direction to move the joystick in that direction. To stop all motors from moving, tap "All Off".</p>
+
+    <h2>Troubleshooting</h2>
+
+    <h3>The robot doesn't appear in the devices list</h3>
+    <ul>
+        <li> Make sure that Bluetooth is turned on for your phone, and that your phone supports BLE (Bluetooth Low Energy)</li>
+        <li> Make sure the robot is on (the green LED on the motor shield should be on). It may be low on battery power.</li>
+        <li> Make sure that the Ardroid sketch (see the link above) is correctly loaded on the Arduino.</li>
+        <li> Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. This should reset the Bluetooth connection.</li>
+    </ul>
+
+    <h3>The app gets stuck while connecting</h3>
+    <ul>
+        <li> Press Cancel and try again.</li>
+        <li> If there are a lot of Bluetooth devices nearby, make sure they all appear in the list before you choose one.</li>
+        <li> Try some of the other steps above.</li>
+    </ul>
+
+    <h3>The robot doesn't move when you move the joystick</h3>
+    <ul>
+        <li> Check that the motor ports are set to the correct values in Bot Settings.</li>
+        <li> Check the connections between the motor shield and the motors.</li>
+        <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
+        <li> Make sure that the Ardroid sketch (see the link above) is correctly loaded on the Arduino.</li>
+        <li> Disconnect from the robot. Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. Then try reconnecting.</li>
+    </ul>
+</body>
+
+</html>
