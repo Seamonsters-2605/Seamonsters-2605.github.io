@@ -26,35 +26,45 @@
 
     <h2>Troubleshooting</h2>
 
+    <h3>General Arduino troubleshooting</h3>
+    <ul>
+        <li> The Arduino must receive plenty of power for Bluetooth to function. Running motors or leaving the robot on for a while uses power quickly. The Arduino may be low on power, even if the light is on and even if the motors sometimes work. USB by itself is not enough to power motors.<br>If you are going through batteries quickly, consider using a power supply. <a href="https://playground.arduino.cc/Learning/WhatAdapter" target="_blank">This page</a> has information on what power adapters will work.</li>
+        <li> Make sure that the Arduino has the correct firmware and latest version of the Ardroid sketch. See <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">these</a> instructions for details.<br>If you used the robot with a previous version of the app, you may need to update the code on the Arduino.</li>
+        <li> Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. This should reset the Bluetooth connection.</li>
+    </ul>
+
     <h3>The robot doesn't appear in the devices list</h3>
     <ul>
         <li> Make sure that Bluetooth is turned on for your phone, and that your phone supports BLE (Bluetooth Low Energy). Android 4.3 or above is required for BLE.</li>
         <li> Make sure the robot is on (the green LED on the motor shield should be on).</li>
-        <li> Even if the light is on, the Arduino may be low on battery power.</li>
-        <li> Make sure that the latest version of the Ardroid sketch (from <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">this</a> page) is correctly loaded on the Arduino.</li>
-        <li> Make sure the Arduino has the correct firmware (see <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">these instructions</a> for details).</li>
-        <li> Turn the robot off (unplug the power), wait 5-10 seconds, and turn it on again. This should reset the Bluetooth connection.</li>
+        <li> See the "General Arduino troubleshooting" section above.</li>
     </ul>
 
     <h3>The app gets stuck while connecting</h3>
+    <p> Connecting should normally take about 5 seconds. </p>
     <ul>
-        <li> Wait about 15 seconds. Connecting could take some time especially if you have a lot of stepper motors. </li>
         <li> Press Cancel and try again.</li>
         <li> If there are a lot of Bluetooth devices nearby, make sure they all appear in the list before you choose one.</li>
-        <li> Try some of the other steps listed above under "The robot doesn't appear in the devices list".</li>
+        <li> Check that you are connecting to the correct bluetooth device&mdash;it should have ARDROID in the name.</li>
+        <li> See the "General Arduino troubleshooting" section above.</li>
+    </ul>
+
+    <h3>The Communication light won't turn green</h3>
+    <p> The Communication light is the light to the left of the All Off button - it is red when the app is sending data to the robot, and green when it isn't. If it get's stuck red, there's a problem. </p>
+    <ul>
+        <li> Long-press the All Off button for about a second until you see the message below read "Forcing bluetooth communication..."</li>
+        <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
+        <li> See the "General Arduino troubleshooting" section above.</li>
     </ul>
 
     <h3>The robot doesn't move when you move the joystick</h3>
     <ul>
+        <li> Check the Communication light next to the All Off button. This should normally be red when the app is sending data to the robot, and green when it isn't. If it is stuck red and won't turn green, try the steps above under "The Communication light won't turn green".</li>
         <li> Check that the motor ports are set to the correct values in Bot Settings.</li>
         <li> Check the connections between the motor shield and the motors.</li>
         <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
-        <li> If you used the robot with a previous version of the app, you may need to update the code on the Arduino (see <a href="https://github.com/Seamonsters-2605/Ardroid/blob/master/README.md" target="_blank">these instructions</a> for details). </li>
-        <li> Try some of the other steps listed above under "The robot doesn't appear in the devices list".</li>
+        <li> See the "General Arduino troubleshooting" section above.</li>
     </ul>
-
-    <h3>The robot stops responding while you are driving it</h3>
-    <p> The Arduino is probably running low on battery power. </p>
 
     <h3>Tilt control doesn't work ("no orientation sensor availible")</h3>
     <p> Some phones don't support tilt control. </p>
