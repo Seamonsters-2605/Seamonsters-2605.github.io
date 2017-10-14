@@ -18,11 +18,11 @@
 
     <h2> Controlling the robot</h2>
 
-    <p>On the main screen of the app, tap <code>Bot Settings</code> to configure robot settings, like the driving speed and where the motors are plugged in. You must do this before connecting to the robot. The Bot Settings screen has "What's this?" buttons to explain settings in more detail.</p>
+    <p>On the main screen of the app, tap <code>Bot Settings</code> to configure robot settings, like the driving speed and where the motors are plugged in. You must do this before connecting to the robot. The Bot Settings screen has <code>What's this?</code> buttons to explain settings in more detail.</p>
 
     <p><strong>Motor numbers:</strong> Each Adafruit v2 motor shield has 4 ports for DC motors, numbered 1 through 4. Stepper motors are numbered 1 and 2, and take up 2 ports each&mdash;stepper #1 uses DC ports 1 and 2, and stepper #2 uses DC ports 3 and 4. If you have multiple stacked motor shields, the second shield has DC motor numbers 5 - 8 and stepper motor numbers 3 - 4, and so on.</p>
-    <p>To connect to the robot, turn on Bluetooth on your phone and press "Scan for Bots". Bluetooth devices will show up in a list below. Look for devices with ARDROID in the name. Tap to connect.</p>
-    <p>Connecting to the robot will open the control screen. The black dot is a joystick, and you can move it to drive the robot (you must have configured the driving motor ports first). You can also tap the "Tilt" box to allow you to drive the robot by tilting your phone&mdash;hold it level to stop moving, and tilt it in any direction to move the joystick in that direction. To stop all motors from moving, tap "All Off".</p>
+    <p>To connect to the robot, turn on Bluetooth on your phone and press <code>Scan for Bots</code>. Bluetooth devices will show up in a list below. Look for devices with ARDROID in the name. Tap to connect.</p>
+    <p>Connecting to the robot will open the control screen. The black dot is a joystick, and you can move it to drive the robot (you must have configured the driving motor ports first). You can also tap the <code>Tilt</code> box to allow you to drive the robot by tilting your phone&mdash;hold it level to stop moving, and tilt it in any direction to move the joystick in that direction. To stop all motors from moving, tap <code>All Off</code>.</p>
 
     <h2>Troubleshooting</h2>
 
@@ -43,24 +43,24 @@
     <h3>The app gets stuck while connecting</h3>
     <p> Connecting should normally take about 5 seconds. </p>
     <ul>
-        <li> Press Cancel and try again.</li>
+        <li> Press <code>Cancel</code> and try again.</li>
         <li> If there are a lot of Bluetooth devices nearby, make sure they all appear in the list before you choose one.</li>
         <li> Check that you are connecting to the correct bluetooth device&mdash;it should have ARDROID in the name.</li>
         <li> See the "General Arduino troubleshooting" section above.</li>
     </ul>
 
     <h3>The Communication light won't turn green</h3>
-    <p> The Communication light is the light to the left of the All Off button - it is red when the app is sending data to the robot, and green when it isn't. If it get's stuck red, there's a problem. </p>
+    <p> The Communication light is the light to the left of the <code>All Off</code> button&mdash;it is red when the app is sending data to the robot, and green when it isn't. If it get's stuck red, there's a problem. </p>
     <ul>
-        <li> Long-press the All Off button for about a second until you see the message below read "Forcing bluetooth communication..."</li>
+        <li> Long-press the <code>All Off</code> button for about a second until you see the message below read "Forcing bluetooth communication..."</li>
         <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
         <li> See the "General Arduino troubleshooting" section above.</li>
     </ul>
 
     <h3>The robot doesn't move when you move the joystick</h3>
     <ul>
-        <li> Check the Communication light next to the All Off button. This should normally be red when the app is sending data to the robot, and green when it isn't. If it is stuck red and won't turn green, try the steps above under "The Communication light won't turn green".</li>
-        <li> Check that the motor ports are set to the correct values in Bot Settings.</li>
+        <li> Check the Communication light next to the <code>All Off</code> button. This should normally be red when the app is sending data to the robot, and green when it isn't. If it is stuck red and won't turn green, try the steps above under "The Communication light won't turn green".</li>
+        <li> Check that the motor ports are set to the correct values in <code>Bot Settings</code>.</li>
         <li> Check the connections between the motor shield and the motors.</li>
         <li> Make sure you connected to the robot and not some other bluetooth device. The device in the list should have "ARDROID" in its name.</li>
         <li> See the "General Arduino troubleshooting" section above.</li>
