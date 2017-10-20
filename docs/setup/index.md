@@ -9,7 +9,7 @@ All robot code is written in Python. See the end of this document for some Pytho
 - Go to [python.org/downloads](https://www.python.org/downloads/)
 - Download the latest version of Python 3 (NOT Python 2). The current version (as of October 2017) is 3.6.3.
 - On Windows, check the box in the installer to "**Add Python 3.6 to PATH.**" Restart your computer before you continue.
-- Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn’t work, try `py` instead. Verify that the version number listed is Python 3.6.2 and NOT Python 2.something.
+- Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead. Verify that the version number listed is Python 3.6.2 and NOT Python 2.something.
 
 ## Install pyfrc and robotpy-ctre
 
@@ -32,7 +32,7 @@ Driver Station only works on Windows. This installation will take some time.
 - Unzip the file you downloaded. Ask me for the password.
 - Run setup.exe in the unzipped folder. This will also take a while. The program will ask for a serial number. Ask me and I will send it to you.
 - Once Driver Station is installed, open it. When you first start it, you might receive a Windows Firewall warning. Make sure you check the box that allows communication on private networks. If you forget to do this, communications with the robot might not work, and you will have to fix it in Windows Firewall settings.
-- In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605.** Without a team number you won’t be able to connect to the robot.
+- In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605.** Without a team number you won't be able to connect to the robot.
 
 ## Install Git
 
@@ -47,5 +47,5 @@ Git is software for "version control," which allows us all to collaborate on the
 
 All of our robot code will be on GitHub, so anybody can view it, download it, and edit it.
 
-- If you don’t already have a GitHub account, create one here: [github.com/join](https://github.com/join)
+- If you don't already have a GitHub account, create one here: [github.com/join](https://github.com/join)
 - Post your username on the `#controlsystems` channel on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
