@@ -1,6 +1,6 @@
 # Best Practices for Using Git
 
-[codecademy.com](codecademy.com) has a good tutorial for how to use Git. These are some tips for how to get the most out of it, once you know how to use it.
+[codecademy.com](https://www.codecademy.com/) has a good tutorial for how to use Git. These are some tips for how to get the most out of it, once you know how to use it.
 
 - Always pull the latest version of the code before making changes, so that the code on your computer is up to date. (`git pull`) Otherwise you will have to deal with merging conflicting changes.
 - Create a separate branch (with a short, descriptive name) for all code changes. Never push code directly to the master branch.
@@ -11,4 +11,4 @@
 - Use descriptive commit messages that briefly but clearly explain what you changed. We have plenty of examples of what not to do from previous years: "Fixed Error," "everything better," and "Yeah!" are all commit messages written in 2016 by team members for the competition code. Good examples would be: "remapped motor controllers to match new board layout" or "updated PID values to fix wheel freakouts after stopping."
 - If you type just `git commit` instead of `git commit -m ...`, you will get an editor for your commit message. You can put the short title of your commit as the first line, then after a blank line you have much more room to describe in detail the changes you made, if needed.
 
-A more detailed style guide is here.
+A more detailed style guide is [here](https://github.com/agis/git-style-guide/blob/master/README.md).
