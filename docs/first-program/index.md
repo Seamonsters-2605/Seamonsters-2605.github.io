@@ -8,7 +8,7 @@ If the left panel with a list of files isn't shown, press Alt-1. Right click you
 
 We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code&mdash;you can leave out the comments. Please don't copy and paste!
 
-```
+```python
 # Libraries for controlling the robot.
 import wpilib
 import ctre
@@ -55,6 +55,8 @@ if __name__ == "__main__":
 ## Deploy the robot code
 To get your code onto the robot you must "deploy" it over WiFi. First check that the robot is on and nobody else is using it (only one person can be connected at a time). When the robot is ready there will be a WiFi network called "2605" (it can take a while to appear). Connect to this and open up Driver Station.
 
+![(screenshot of driver station)](driver-station.png)
+
 Look for this panel in driver station. Check for these things:
 
 - The Team # should be 2605. If it isn't, click the Gear tab on the left and change the team number.
@@ -96,8 +98,10 @@ The above code has the basic outline of robot code. The python file should alway
     - `def disabledInit(self)`: Called when robot is disabled.
     - `def disabledPeriodic(self)`: Called 50 times per second while the robot is disabled.
 - Declarations for all of your objects: things like Joysticks, Gamepads, CANTalons to control motors, etc. These should go in `robotInit` so they are created when the code starts.
-- ```if __name__ == "__main__":
-        wpilib.run(NameOfYourRobot)```
+- ```
+    if __name__ == "__main__":
+        wpilib.run(NameOfYourRobot)
+```
 
 ## WPILib reference
 
