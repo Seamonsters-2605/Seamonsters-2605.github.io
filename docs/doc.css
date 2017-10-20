@@ -1,54 +1,15 @@
-html {
-    background-color: CadetBlue;
-}
+/* allow HTML pages to look like GitHub markdown pages, combined with
+   github-markdown.css from https://github.com/sindresorhus/github-markdown-css
+   */
 
-body {
-    background-color: white;    
-    
-    max-width: 1024pt;
-    border-radius: 12pt;
-    
+.markdown-body {
+    box-sizing: border-box;
+    min-width: 200px;
+    max-width: 1012px;
     margin-right: auto;
     margin-left: auto;
-    margin-top: 10pt;
-    margin-bottom: 10pt;
-    
-    padding-left: 32pt;
-    padding-right: 32pt;
-    padding-top: 16pt;
-    padding-bottom: 16pt;
+    padding-right: 16px !important;
+    padding-left: 16px !important;
+    margin-top: 32px !important;
+    margin-bottom: 32px !important;
 }
-
-a:link {
-    color: #0044FF;
-}
-
-a:visited {
-    color: green;
-}
-
-a:hover {
-    color: DodgerBlue;
-}
-
-a:visited:hover {
-    color: DodgerBlue;
-}
-
-a:active {
-    color: OrangeRed;
-}
-
-a:visited:active {
-    color: OrangeRed;
-}
-
-h1 {
-    font-family: Arial, Helvetica, sans-serif;
-    text-align: center;
-}
-
-li {
-    margin: 3pt;
-}
-

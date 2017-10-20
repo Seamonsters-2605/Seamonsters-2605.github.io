@@ -5,6 +5,7 @@
     <title>How to Program a Mecanum</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta charset="UTF-8">
+    <link href="../github-markdown.css" rel="stylesheet" type="text/css" media="screen">
     <link href="../doc.css" rel="stylesheet" type="text/css" media="screen">
     
     <!--Favicon-->
@@ -19,6 +20,10 @@
   <body>
     
     <script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
+
+  <div class="markdown-body">
+
+    <h1><a href="https://seamonsters-2605.github.io/">Seamonsters-2605.github.io</a></h1>
     
     <p> Based on document written by Dawson Bowhay, with additions and design changes by Jacob van't Hoog.
     </p>
@@ -166,6 +171,7 @@
     The turn value for each wheel should be added to the lateral movement value for each wheel. It’s actually pretty simple. For example, now our inverted front-left wheel would be set to <em>&minus;sin(angle+1/4&pi;) * magnitude + turn</em>. If you simply add the turn value to the lateral movement value, each wheel will work fine. There’s only one problem: the maximum value a motor controller will take is 1 (or &minus;1, in the negative direction). Anything larger will just be scaled down to 1, creating distortion in our results. So, now that we’ve added up the lateral movement and turn for each wheel, if any are greater than 1, or less than &minus;1, they all need to be scaled by the same factor so that the largest one is one. This factor is easy to obtain: it is the absolute value of the largest (or least, if on the negative side) value. Now the value for each wheel just has to be divided by this factor, and the drive will work.
     </p>
     
+  </div>
   </body>
 
 </html>
