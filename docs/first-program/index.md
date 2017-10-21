@@ -4,7 +4,7 @@ Make sure you have followed all of the Setup Instructions to install Python 3, p
 
 Open PyCharm and create a new project. Give it a name with no spaces, and make sure the selected Python version is Python36, not some other number.
 
-If the left panel with a list of files isn't shown, press Alt-1. Right click your project and choose New > File and name it "robot.py". It's important that you use that name, with no capital letters.
+If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project and choose New > File and name it "robot.py". It's important that you use that name, with no capital letters.
 
 We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code&mdash;you can leave out the comments. Please don't copy and paste!
 
