@@ -1,6 +1,6 @@
 # Writing your first program for the robot
 
-Make sure you have followed all of the Setup Instructions to install Python 3, pyfrc, PyCharm, and Driver Station.
+Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, PyCharm, and Driver Station.
 
 Open PyCharm and create a new project. Give it a name with no spaces, and make sure the selected Python version is Python36, not some other number.
 
