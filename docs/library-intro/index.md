@@ -149,7 +149,7 @@ class DriveTest (wpilib.IterativeRobot):
         self.driveTrain = HolonomicDrive(fl, fr, bl, br, 4156)
         self.driveTrain.setDriveMode(DriveInterface.DriveMode.POSITION)
         self.driveTrain.invertDrive(True)
-        self.driveTrain.setWheelOffset(math.radians(22.5)) # roller angle / 2
+        self.driveTrain.setWheelOffset(math.radians(45.0))
 
     def teleopPeriodic(self):
         turn = -self.gamepad.getRX() * abs(self.gamepad.getRX()) \
