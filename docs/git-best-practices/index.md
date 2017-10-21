@@ -1,6 +1,6 @@
 # Best Practices for Using Git
 
-[codecademy.com](https://www.codecademy.com/) has a good tutorial for how to use Git. These are some tips for how to get the most out of it, once you know how to use it.
+See [this page](../learn-git) for tutorials on using Git. These are some tips for how to get the most out of it, once you know how to use it.
 
 - Always pull the latest version of the code before making changes, so that the code on your computer is up to date. (`git pull`) Otherwise you will have to deal with merging conflicting changes.
 - Create a separate branch (with a short, descriptive name) for all code changes. Never push code directly to the master branch.
