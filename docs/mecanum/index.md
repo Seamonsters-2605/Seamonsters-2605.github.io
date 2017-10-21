@@ -104,7 +104,7 @@ Most of the work has been done at this point, everything just needs to be put to
 
 The front-right and back-left wheel should be set to _sin(angle&minus;1/4&pi;) * magnitude_. The front-left and back-right wheel should be set to _sin(angle+1/4&pi;) * magnitude_.
 
-Now the robot has the ability to move laterally in any direction - *almost*. For most robots, in order to work right, the 2 wheels on one side of the robot need to be inverted because they face the opposite direction. This can be done in a number of ways. For example, if the front-left wheel needed to be inverted, it could instead be set to _&minus;sin(angle+1/4&pi;) * magnitude_.
+Now the robot has the ability to move laterally in any direction&mdash;*almost*. For most robots, in order to work right, the 2 wheels on one side of the robot need to be inverted because they face the opposite direction. This can be done in a number of ways. For example, if the front-left wheel needed to be inverted, it could instead be set to _&minus;sin(angle+1/4&pi;) * magnitude_.
 
 Finally, the robot can move laterally. But there’s one more step: turning. Fortunately, the robot can be easily programmed to turn, even at the same time as it’s driving. We will use a second joystick for this purpose, using horizontal movement to turn the robot (the x-axis). The range of turn values, hence the range of joystick x-axis feedback, should be between
 [&minus;1, 1]. In the code, the Talon motor controller for each wheel can simply be set to this turn value, no inverting required, and the robot can be turned. But you want to be able to strafe and turn simultaneously, so there’s a bit more work.
