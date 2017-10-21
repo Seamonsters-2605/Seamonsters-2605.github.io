@@ -36,7 +36,7 @@ Driver Station only works on Windows. This installation will take some time.
 
 ## Install Git
 
-Git is software for "version control," which allows us all to collaborate on the code and manage multiple versions and branches of it. You will need to learn how to use Git. Look at other tutorial pages on the Control Systems website.
+Git is software for "version control," which allows us all to collaborate on the code and manage multiple versions and branches of it. You will need to learn how to use Git&mdash;see [this page](../learn-git) for a tutorial.
 
 - Download and install Git here: [git-scm.com/downloads](https://git-scm.com/downloads). **Choose the default options for everything, except** on Windows choose to "**Use Git from Git Bash only.**"
 - Open Git Bash (which should have been installed), and type:
