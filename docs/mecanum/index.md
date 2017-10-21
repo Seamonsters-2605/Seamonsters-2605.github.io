@@ -1,6 +1,6 @@
-﻿<script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
+﻿# How a Mecanum Drive Works
 
-# How a Mecanum Drive Works
+<script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
 
 Based on document written by Dawson Bowhay, with additions and design changes by Jacob van't Hoog.
 
@@ -100,23 +100,13 @@ The table above shows the power needed to drive each wheel at the given angles. 
 
 ## Putting It Together and Adding Turn
 
-<p>
 Most of the work has been done at this point, everything just needs to be put together and a few tweaks need to be made. The code you write should use the joystick x and y to obtain an angle, and the length of the hypotenuse of the triangle that the x and y coordinates make (the magnitude).
-</p>
 
-<p>
 The front-right and back-left wheel should be set to <em>sin(angle&minus;1/4&pi;) * magnitude</em>. The front-left and back-right wheel should be set to <em>sin(angle+1/4&pi;) * magnitude</em>.
-</p>
 
-<p>
 Now the robot has the ability to move laterally in any direction - <em>almost</em>. For most robots, in order to work right, the 2 wheels on one side of the robot need to be inverted because they face the opposite direction. This can be done in a number of ways. For example, if the front-left wheel needed to be inverted, it could instead be set to <em>&minus;sin(angle+1/4&pi;) * magnitude</em>.
-</p>
 
-<p>
 Finally, the robot can move laterally. But there’s one more step: turning. Fortunately, the robot can be easily programmed to turn, even at the same time as it’s driving. We will use a second joystick for this purpose, using horizontal movement to turn the robot (the x-axis). The range of turn values, hence the range of joystick x-axis feedback, should be between
 [&minus;1, 1]. In the code, the Talon motor controller for each wheel can simply be set to this turn value, no inverting required, and the robot can be turned. But you want to be able to strafe and turn simultaneously, so there’s a bit more work.
-</p>
 
-<p>
 The turn value for each wheel should be added to the lateral movement value for each wheel. It’s actually pretty simple. For example, now our inverted front-left wheel would be set to <em>&minus;sin(angle+1/4&pi;) * magnitude + turn</em>. If you simply add the turn value to the lateral movement value, each wheel will work fine. There’s only one problem: the maximum value a motor controller will take is 1 (or &minus;1, in the negative direction). Anything larger will just be scaled down to 1, creating distortion in our results. So, now that we’ve added up the lateral movement and turn for each wheel, if any are greater than 1, or less than &minus;1, they all need to be scaled by the same factor so that the largest one is one. This factor is easy to obtain: it is the absolute value of the largest (or least, if on the negative side) value. Now the value for each wheel just has to be divided by this factor, and the drive will work.
-</p>
