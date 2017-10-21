@@ -1,4 +1,4 @@
-﻿# How a Mecanum Drive Works
+# How a Mecanum Drive Works
 
 <script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
 
