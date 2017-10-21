@@ -2,9 +2,9 @@
 
 <script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
 
-Based on document written by Dawson Bowhay, with additions and design changes by Jacob van't Hoog.
+*Based on document written by Dawson Bowhay, with additions and design changes by Jacob van't Hoog.*
 
-You'll need Javascript for this.
+*You'll need Javascript for this.*
 
 <img src="mecanum_wheel.png" alt="A mecanum wheel." style="float:right; width:231px; height:251px;">
 
