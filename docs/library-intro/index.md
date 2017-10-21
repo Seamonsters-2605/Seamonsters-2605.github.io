@@ -124,6 +124,7 @@ These classes allow you to control how the robot moves, without needing to contr
     - Voltage mode controls the voltages the motors receive&mdash;it can only guarantee the percentage of full power the motor receives, not exactly how fast it spins.
     - Speed mode uses encoders on the motors to constantly track the speed of the motor, and adjust the voltage until it is at the right speed.
     - Position mode moves the motors to incremental positions fast enough that they move smoothly&mdash;it is as accurate as speed mode and often smoother.
+
     You can set the drive mode of a drivetrain with `driveTrain.setDriveMode(mode)`. The drive modes are defined in [`seamonsters.drive.DriveInterface.DriveMode`](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/drive.html#seamonsters.drive.DriveInterface.DriveMode)&mdash;they are called VOLTAGE, SPEED, and POSITION.
 
 The built in drive trains make it much simpler to write basic robots. Here is a simple mecanum drive robot:
