@@ -4,7 +4,7 @@ You should have a laptop for writing robot code. Windows is recommended if you w
 
 ## Install Python
 
-All robot code is written in Python. See the end of this document for some Python tutorials.
+All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
 - Download the latest version of Python 3 (NOT Python 2). The current version (as of October 2017) is 3.6.3.
