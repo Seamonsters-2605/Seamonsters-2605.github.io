@@ -6,51 +6,110 @@ Open PyCharm and create a new project. Give it a name with no spaces, and make s
 
 If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project in the left panel, choose New > File, and name it "robot.py". It's important that you use that name, with no capital letters.
 
-We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code&mdash;you can leave out the comments. Please don't copy and paste!
+We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code. *Please don't copy and paste!*
 
 ```python
-# Libraries for controlling the robot.
 import wpilib
 import ctre
 
-# wpilib.IterativeRobot is the base for all robot code
 class TestRobot (wpilib.IterativeRobot):
 
-    # robotInit is run when the robot code starts.
     def robotInit(self):
-        # Declare the CANTalons:
-        # CANTalons control the motors. The numbers identify each
-        # CANTalon. The CANTalon objects are stored in "self"
-        # variables so they can be accessed from other functions.
         self.leftFront = ctre.CANTalon(2)
         self.rightFront = ctre.CANTalon(1)
         self.leftBack = ctre.CANTalon(0)
         self.rightBack = ctre.CANTalon(3)
 
-        # Declare the two joysticks for controlling the motors.
         self.leftJoystick = wpilib.Joystick(0)
         self.rightJoystick = wpilib.Joystick(1)
 
-    # teleopPeriodic runs 50 times per second while the robot is enabled
-    # in teleop (remote controlled) mode.
     def teleopPeriodic(self):
-        # Get the up/down movement of a joystick with getY() which gives a
-        # number between -1 (fully down) and 1 (fully up)
-        # The left side has a negative sign because the motors are
-        # facing opposite directions.
-        leftSpeed = -self.leftJoystick.getY()
+        leftSpeed = self.leftJoystick.getY()
         rightSpeed = self.rightJoystick.getY()
 
-        # Set the speed of the motor with set(value): -1 to 1
         self.leftFront.set(leftSpeed)
         self.leftBack.set(leftSpeed)
         self.rightFront.set(rightSpeed)
         self.rightBack.set(rightSpeed)
 
-# Put this at the bottom of all robot.py files to allow you to deploy.
 if __name__ == "__main__":
     wpilib.run(TestRobot)
 ```
+
+## Explanation
+
+```python
+import wpilib
+import ctre
+```
+This includes Python libraries for you to use in your program. "wpilib" is the library for programming FRC robots, and "ctre" allows you to drive the motors with the "Talon" motor controllers.
+
+```python
+class TestRobot (wpilib.IterativeRobot):
+```
+
+This line creates your robot *class*, which contains all the code for your robot. In parentheses is `wpilib.IterativeRobot`, which is the base that all robot code is built off of.
+
+```python
+def robotInit(self):
+```
+
+This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Certain functions are special&mdash;in this case, any code in `robotInit` will be called when the program first starts.
+
+```python
+self.leftFront = ctre.CANTalon(2)
+self.rightFront = ctre.CANTalon(1)
+self.leftBack = ctre.CANTalon(0)
+self.rightBack = ctre.CANTalon(3)
+```
+
+This creates `CANTalon` objects. Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network), to drive the motors. The numbers in parentheses are numbers that have been assigned to the Talons to identify them.
+
+The `CANTalon` objects are then stored in variables&mdash;prefixing the variable name with `self.` means we can access those variables in other functions, so we can use the CANTalons later.
+
+Notice the `ctre.`&mdash;this is because `CANTalon` is part of the `ctre` library which we imported earlier.
+
+```python
+self.leftJoystick = wpilib.Joystick(0)
+self.rightJoystick = wpilib.Joystick(1)
+```
+
+Here two joysticks are defined, and again stored in `self.` variables so we can access them later. The `wpilib.` means that `Joystick` is part of the `wpilib` library which we imported earlier.
+
+```python
+def teleopPeriodic(self):
+```
+
+This is another special function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can check the joystick input and update the motor output.
+
+```python
+leftSpeed = self.leftJoystick.getY()
+rightSpeed = self.rightJoystick.getY()
+```
+
+Here we read the **Y** position (the up/down movement) of each joystick. We use the left/right joystick objects we created earlier in `robotInit` and call the `getY()` function (because it's a function, it needs a set of parentheses) which gives the y position. Then that value is stored in a variable (`leftSpeed` and `rightSpeed`).
+
+Y positions are between -1 (fully down) and 1 (fully up).
+
+```python
+self.leftFront.set(leftSpeed)
+self.leftBack.set(leftSpeed)
+self.rightFront.set(rightSpeed)
+self.rightBack.set(rightSpeed)
+```
+
+Now we use the CANTalon objects we created earlier in `robotInit`, to drive each of the motors. The `set()` function lets you control the speed of each motor. It takes as input a number between -1 (full speed reverse) and 1 (full speed forward), which conveniently is the same range of values that the joystick `getY()` function gave us.
+
+Again, all this code is run 50 times per second. So, 50 times per second, the positions of the left and right joysticks are read, and the speeds of all 4 motors are updated accordingly.
+
+Finally there are these 2 lines:
+
+```python
+if __name__ == "__main__":
+    wpilib.run(TestRobot)
+```
+
+These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
 
 ## Deploy the robot code
 To get your code onto the robot you must "deploy" it over WiFi. First check that the robot is on and nobody else is using it (only one person can be connected at a time). When the robot is ready there will be a WiFi network called "2605" (it can take a while to appear). Connect to this and open up Driver Station.
