@@ -4,7 +4,7 @@ Make sure you have followed all of the [Setup Instructions](../setup) to install
 
 Open PyCharm and create a new project. Give it a name with no spaces, and make sure the selected Python version is Python36, not some other number.
 
-If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project and choose New > File and name it "robot.py". It's important that you use that name, with no capital letters.
+If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project in the left panel, choose New > File, and name it "robot.py". It's important that you use that name, with no capital letters.
 
 We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code&mdash;you can leave out the comments. Please don't copy and paste!
 
@@ -64,7 +64,7 @@ Look for this panel in driver station. Check for these things:
 - There was probably already robot code on the robot, so the Robot Code light will be green. Your own code isn't on the robot yet.
 - The Joysticks light will turn green once you plug in the two joysticks.
 
-Open the folder where you put your robot.py file. Hold shift and right click in an empty space in the window, and choose "Open command window here."
+Right click `robot.py` in the left panel and click "Show in explorer." This will open the folder that has your robot.py file. Hold shift and right click in an empty space in the window, and choose "Open command window here."
 
 Then type: `python robot.py deploy --builtin --nc`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
 
