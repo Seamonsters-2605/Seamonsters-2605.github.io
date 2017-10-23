@@ -30,7 +30,9 @@ Driver Station only works on Windows. This installation will take some time.
 - Download Driver Station at [ni.com/download/first-robotics-software-2015/5112/en/](http://www.ni.com/download/first-robotics-software-2015/5112/en/). You will need to create an account. Choose the "NI Recommended" installer.
 - The installer will ask you where you want to save the zip file. Put it wherever you want. The download will take a while.
 - Unzip the file you downloaded. Ask me for the password.
-- Run setup.exe in the unzipped folder. This will also take a while. The program will ask for a serial number. Ask me and I will send it to you.
+- Run setup.exe in the unzipped folder. This will also take a while.
+    - Uncheck **Search for important messages...**
+    - The program will ask for a serial number. Ask me and I will send it to you.
 - Once Driver Station is installed, open it. When you first start it, you might receive a Windows Firewall warning. Make sure you check the box that allows communication on private networks. If you forget to do this, communications with the robot might not work, and you will have to fix it in Windows Firewall settings.
 - In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605.** Without a team number you won't be able to connect to the robot.
 
