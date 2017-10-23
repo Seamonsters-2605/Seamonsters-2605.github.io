@@ -7,8 +7,8 @@ You should have a laptop for writing robot code. Windows is recommended if you w
 All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
-- Download the latest version of Python 3 (NOT Python 2). The current version (as of October 2017) is 3.6.3.
-- On Windows, check the box in the installer to "**Add Python 3.6 to PATH.**" Restart your computer before you continue.
+- Download the latest version of **Python 3** (NOT Python 2). The current version (as of October 2017) is 3.6.3.
+- On Windows, **check the box in the installer to "Add Python 3.6 to PATH.**" Restart your computer before you continue.
 - Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead. Verify that the version number listed is Python 3.x.x and NOT Python 2.x.x.
 
 ## Install pyfrc and robotpy-ctre
