@@ -35,7 +35,7 @@ Driver Station only works on Windows. This installation will take some time.
     - The program will ask for a serial number. Ask me and I will send it to you.
     - When the program has installed, **uncheck Run License Manager**
 - Once Driver Station is installed, open it. When you first start it, you might receive a Windows Firewall warning. Make sure you check the box that allows communication on private networks. If you forget to do this, communications with the robot might not work, and you will have to fix it in Windows Firewall settings.
-- In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605.** Without a team number you won't be able to connect to the robot.
+- In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605**, and change the dashboard type to LabVIEW. Without a team number you won't be able to connect to the robot.
 
 ## Install Git
 
