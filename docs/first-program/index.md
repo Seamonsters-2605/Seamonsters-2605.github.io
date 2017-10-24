@@ -63,18 +63,16 @@ self.leftBack = ctre.CANTalon(0)
 self.rightBack = ctre.CANTalon(3)
 ```
 
-This creates `CANTalon` objects. Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network), to drive the motors. The numbers in parentheses are numbers that have been assigned to the Talons to identify them.
+This creates `CANTalon` objects (`ctre.CANTalon`, because these are part of the `ctre` library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
 
-The `CANTalon` objects are then stored in variables&mdash;prefixing the variable name with `self.` means we can access those variables in other functions, so we can use the CANTalons later.
-
-Notice the `ctre.`&mdash;this is because `CANTalon` is part of the `ctre` library which we imported earlier.
+The CANTalon objects are then stored in variables&mdash;prefixing the variable name with `self.` means we can access those variables in other functions so we can use the CANTalons later.
 
 ```python
 self.leftJoystick = wpilib.Joystick(0)
 self.rightJoystick = wpilib.Joystick(1)
 ```
 
-Here two joysticks are defined, and again stored in `self.` variables so we can access them later. The `wpilib.` means that `Joystick` is part of the `wpilib` library which we imported earlier.
+Here two joysticks are defined, and again stored in `self.` variables so we can access them later. `wpilib.Joystick` means that `Joystick` is part of the `wpilib` library which we imported earlier.
 
 ```python
 def teleopPeriodic(self):
