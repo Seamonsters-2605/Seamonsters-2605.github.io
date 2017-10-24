@@ -146,7 +146,7 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 - Try doing something with the buttons on the joystick. In the `teleopPeriodic` function, you can have code like this:
 
     ```python
-    if self.leftJoystick.getRawButton(1):
+if self.leftJoystick.getRawButton(1):
         # do something...
     ```
 
