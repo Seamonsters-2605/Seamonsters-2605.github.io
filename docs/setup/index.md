@@ -51,4 +51,4 @@ Git is software for "version control," which allows us all to collaborate on the
 All of our robot code will be on GitHub, so anybody can view it, download it, and edit it.
 
 - If you don't already have a GitHub account, create one here: [github.com/join](https://github.com/join)
-- Post your username on the `#controlsystems` channel on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
+- Send me your username on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
