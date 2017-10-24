@@ -123,13 +123,13 @@ Look for this panel in driver station. Check for these things:
 - There was probably already robot code on the robot, so the Robot Code light will be green. Your own code isn't on the robot yet.
 - The Joysticks light will turn green once you plug in the two joysticks.
 
-Right click `robot.py` in the left panel and click "Show in explorer." This will open the folder that has your robot.py file. Hold shift and right click in an empty space in the window, and choose "Open command window here."
+Right click `robot.py` in the left panel and click "Show in explorer." This will open the project folder which has your robot.py file. Hold shift and right click in an empty space in the folder window, and choose "Open command window here."
 
 Then type: `python robot.py deploy --builtin --nc`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
 
 Once the code has finished deploying, the Robot Code light in Driver Station will turn red as the code starts, then green again. You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Space at any time for an emergency stop.
 
-With the robot enabled, you can use the joysticks to drive the robot. One controls the left motors and one controls the right. Push both forward to drive forward, both backward to drive backward, and move them in opposite directions to turn. This type of control is called Tank Drive.
+With the robot enabled, you can use the joysticks to drive the robot. One controls the left motors and one controls the right&mdash;push them forward and backward to drive. This type of control is called Tank Drive.
 
 ## If Driver Station can't connect...
 
@@ -139,36 +139,11 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 - Try disconnecting and reconnecting. You usually have to do this the first time you connect after turning on the robot.
 - Click the Gear tab on the left side of the window, and try changing the team number to "10.26.5.22". If this works for you, you'll probably have to do that every time you start Driver Station. This is a problem that seems to affect certain laptops in combination with the new WiFi routers.
 
-## Robot code structure
-
-The above code has the basic outline of robot code. The python file should always be named "robot.py" and it should have:
-
-- `import wpilib`
-- `import ctre`
-- A robot class that extends from `wpilib.IterativeRobot`.
-
-    Write: `class NameOfYourRobot (wpilib.IterativeRobot):`
-- Some of the special robot methods defined in that class, like:
-    - `def robotInit(self)`: Called once when the robot code starts.
-    - `def autonomousInit(self)`: Called when autonomous mode starts. During each match of the competition, there are 2 stages of play: "Autonomous," where the drive team is not in control of the robot and the robot performs pre-programmed actions; and "Teleop," where the drive team can control the robot.
-    - `def autonomousPeriodic(self)`: Called 50 times per second while in autonomous mode.
-    - `def teleopInit(self)`: Called when teleop mode (remote control) starts.
-    - `def teleopPeriodic(self)`: Called 50 times per second while in teleop mode.
-    - `def disabledInit(self)`: Called when robot is disabled.
-    - `def disabledPeriodic(self)`: Called 50 times per second while the robot is disabled.
-- Declarations for all of your objects: things like Joysticks, Gamepads, CANTalons to control motors, etc. These should go in `robotInit` so they are created when the code starts.
-- ```
-    if __name__ == "__main__":
-        wpilib.run(NameOfYourRobot)
-```
-
-## WPILib reference
-
-This code used a few wpilib classes and functions, like IterativeRobot, Joystick and CANTalon. A full reference for all these classes is at [robotpy.readthedocs.io/projects/wpilib/en/latest/api.html](http://robotpy.readthedocs.io/projects/wpilib/en/latest/api.html).
-
 ## Next Steps
 
 - Notice that when you push both joysticks forward, the wheels move in opposite directions. How would you fix this?
 - Tank Drive is easy to program but hard to drive. Try rewriting your code so it only needs a single joystick&mdash;move it up and down to drive forwards and backwards, and left and right to turn.
 - You can read buttons on the joystick with the code `self.leftJoystick.getRawButton(1)` (button 1 is the trigger, you can change this number for any other button on the joystick). Have a button on the joystick activate a *slow mode*, or shake the robot, or something else interesting.
 - Other ideas?
+
+This code used a few wpilib classes and functions, like IterativeRobot, Joystick and CANTalon. A full reference for all these classes is at [robotpy.readthedocs.io/projects/wpilib/en/latest/api.html](http://robotpy.readthedocs.io/projects/wpilib/en/latest/api.html).
