@@ -54,7 +54,7 @@ This line creates your robot *class*, which contains all the code for your robot
 def robotInit(self):
 ```
 
-This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions in Python group together code that can be *called* later. Certain functions are special in wpilib&mdash;in this case, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
+This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions in Python group together code that can be called later. Certain functions are special in wpilib&mdash;in this case, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
 
 The `self` in parentheses is an *argument* to a function. Any function inside a class needs "self" as an argument.
 
