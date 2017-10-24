@@ -4,7 +4,7 @@ Make sure you have followed all of the [Setup Instructions](../setup) to install
 
 Open PyCharm and create a new project. Give it a name with no spaces, and make sure the selected Python version is Python36, not some other number.
 
-If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project in the left panel, choose New > File, and name it "robot.py". It's important that you use that name, with no capital letters.
+If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project folder in the left panel, choose New > File, and name it "robot.py". It's important that you use that name, with no capital letters.
 
 We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code. *Please don't copy and paste!*
 
@@ -54,9 +54,9 @@ This line creates your robot *class*, which contains all the code for your robot
 def robotInit(self):
 ```
 
-This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions in Python group together code that can be called later. Certain functions are special in wpilib&mdash;in this case, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
+This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions in Python group together code that can be used ("called") later. Certain functions are special in wpilib&mdash;in this case, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
 
-The `self` in parentheses is an *argument* to a function. Any function inside a class needs "self" as an argument.
+The `self` in parentheses is an *argument* to a function. Any function inside a class at least needs "self" as an argument.
 
 ```python
 self.leftFront = ctre.CANTalon(2)
@@ -65,9 +65,9 @@ self.leftBack = ctre.CANTalon(0)
 self.rightBack = ctre.CANTalon(3)
 ```
 
-This creates `CANTalon` objects (`ctre.CANTalon`, because these are part of the `ctre` library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
+This creates `CANTalon` objects for each of the 4 wheels on the robot (they're called `ctre.CANTalon` because CANTalon is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
 
-The CANTalon objects are then stored in variables&mdash;prefixing the variable name with `self.` means we can access those variables in other functions so we can use the CANTalons later.
+The CANTalon objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means we can access those variables in other functions so we can use the CANTalons later.
 
 ```python
 self.leftJoystick = wpilib.Joystick(0)
@@ -80,7 +80,7 @@ Here two joysticks are defined, and again stored in `self.` variables so we can 
 def teleopPeriodic(self):
 ```
 
-This is another special function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can check the joystick input and update the motor output.
+This is another special function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can do things like check the joystick input and update the motor output.
 
 ```python
 leftSpeed = self.leftJoystick.getY()
