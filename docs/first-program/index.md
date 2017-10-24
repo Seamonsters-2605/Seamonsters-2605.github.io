@@ -147,7 +147,7 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 
     ```python
 if self.leftJoystick.getRawButton(1):
-        # do something...
+    # do something...
     ```
 
     This allows you to respond to a button being pressed (button 1 is the trigger, you can change this number for any other button on the joystick). Maybe have a button on the joystick activate a *slow mode*, or shake the robot, or something else interesting. Remember that the code inside the if statement will still run 50 times per second while the button is held.
