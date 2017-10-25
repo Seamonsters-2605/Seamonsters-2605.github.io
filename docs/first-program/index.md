@@ -114,6 +114,8 @@ These lines are required at the bottom of a `robot.py` file and they allow you t
 ## Deploy the robot code
 To get your code onto the robot you must "deploy" it over WiFi. First check that the robot is on and nobody else is using it (only one person can be connected at a time). When the robot is ready there will be a WiFi network called "2605" (it can take a while to appear). Connect to this and open up Driver Station.
 
+*(if somebody else is using the robot, you may want to try the [robot simulator](../robot-sim) which lets you test your code without a robot.)*
+
 ![(screenshot of driver station)](driver-station.png)
 
 Look for this panel in driver station. Check for these things:
