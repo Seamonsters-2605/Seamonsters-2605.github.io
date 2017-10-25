@@ -3,6 +3,7 @@
 - [Basic Robot Template](#basic-robot-template)
 - [Motors](#motors)
 - [Joysticks](#joysticks)
+- [Gamepad Right Joystick](#gamepad-right-joystick)
 - [Joystick Buttons](#joystick-buttons)
 
 ## Basic Robot Template
@@ -70,6 +71,17 @@ joystickY = self.joystick.getY()
 ```
 
 For the X values, -1 is left and 1 is right. For the Y values, -1 is down and 1 is up.
+
+## Gamepad Right Joystick
+
+You can use a gamepad instead of a normal joystick. A gamepad is treated as a single joystick, even though it has 2 joysticks on it. The normal functions `getX()` and `getY()` give you the X and Y position of the *left* joystick.
+
+If you want to read the *right* joystick, use this:
+
+```python
+rightJoystickX = self.getRawAxis(4)
+rightJoystickY = self.getRawAxis(5)
+```
 
 ## Joystick Buttons
 
