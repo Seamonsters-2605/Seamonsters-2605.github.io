@@ -12,7 +12,7 @@ We will be writing code for last year's robot ("Leviathan"). This example is an 
 import wpilib
 import ctre
 
-class TestRobot (wpilib.IterativeRobot):
+class MyRobot (wpilib.IterativeRobot):
 
     def robotInit(self):
         self.leftFront = ctre.CANTalon(2)
@@ -33,7 +33,7 @@ class TestRobot (wpilib.IterativeRobot):
         self.rightBack.set(rightSpeed)
 
 if __name__ == "__main__":
-    wpilib.run(TestRobot)
+    wpilib.run(MyRobot)
 ```
 
 ## Explanation
@@ -45,7 +45,7 @@ import ctre
 This includes Python libraries for you to use in your program. `wpilib` is the library for programming FRC robots, and `ctre` allows you to control the motors using the "Talon" motor controllers (more details on that later).
 
 ```python
-class TestRobot (wpilib.IterativeRobot):
+class MyRobot (wpilib.IterativeRobot):
 ```
 
 This line creates your robot *class*, which contains all the code for your robot. In parentheses is `wpilib.IterativeRobot`, which is the base that all robot code is built off of.
@@ -106,7 +106,7 @@ Finally there are these 2 lines:
 
 ```python
 if __name__ == "__main__":
-    wpilib.run(TestRobot)
+    wpilib.run(MyRobot)
 ```
 
 These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
