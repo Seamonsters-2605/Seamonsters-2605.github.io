@@ -145,14 +145,7 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 
 - Notice that when you push both joysticks forward, the wheels move in opposite directions. How would you fix this?
 - Tank Drive is easy to program but hard to drive. Try rewriting your code so it only needs a single joystick&mdash;move it up and down to drive forwards and backwards, and left and right to turn.
-- Try doing something with the buttons on the joystick. In the `teleopPeriodic` function, you can have code like this:
-
-    ```python
-if self.leftJoystick.getRawButton(1):
-    # do something...
-    ```
-
-    This allows you to respond to a button being pressed (button 1 is the trigger, you can change this number for any other button on the joystick). Maybe have a button on the joystick activate a *slow mode*, or shake the robot, or something else interesting. Remember that the code inside the if statement will still run 50 times per second while the button is held.
+- Look at the [Code Examples](../examples) page for other things you can do with the robot. Maybe you could respond to buttons on the joystick&mdash;activate a *slow mode* or shake the robot.
 - Other ideas?
 
 This code used a few wpilib classes and functions, like IterativeRobot, Joystick and CANTalon. A full reference for all these classes is at [robotpy.readthedocs.io/projects/wpilib/en/latest/api.html](http://robotpy.readthedocs.io/projects/wpilib/en/latest/api.html).
