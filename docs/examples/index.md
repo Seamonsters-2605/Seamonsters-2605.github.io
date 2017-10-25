@@ -79,8 +79,8 @@ You can get input from a gamepad the same way you use a regular joystick. A game
 If you want to read the *right* joystick, use this:
 
 ```python
-rightJoystickX = self.getRawAxis(4)
-rightJoystickY = self.getRawAxis(5)
+rightJoystickX = self.joystick.getRawAxis(4)
+rightJoystickY = self.joystick.getRawAxis(5)
 ```
 
 ## Joystick Buttons
