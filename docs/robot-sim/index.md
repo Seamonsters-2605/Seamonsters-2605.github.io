@@ -20,4 +20,6 @@ if __name__ == '__main__':
     wpilib.run(MyRobot, physics_enabled=True)
     ```
 
+- Before starting the simulator, plug in 2 joysticks.
 - In the folder with robot.py and the 2 new files, hold shift and right click in an empty space in the window, and choose "Open command window here." Then type `python robot.py sim`.
+- You have a robot simulator! The joystick movement should show feedback in the window. Click the "Teleoperated" option to enable your robot and drive it around.
