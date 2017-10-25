@@ -4,7 +4,8 @@ Pyfrc has a built in robot simulator&mdash;it lets you drive a virtual robot wit
 
 ## Installation instructions
 - Open Command Prompt, type `python -m pip install pygame`.
-- Download [this](simulator.zip) file I created and unzip it. Put both the `physics.py` file and the `sim` folder in the same folder as your `robot.py`.
+- Download [this](simulator.zip) file I created and unzip it.
+- In PyCharm, Right click `robot.py` in the left panel and click "Show in explorer." This will open the project folder which has your robot.py file. Put both the `physics.py` file and the `sim` folder from the zipped file, in the same folder as your `robot.py`.
 - At the bottom of your `robot.py`, you should already have these 2 lines:
 
     ```
@@ -19,4 +20,4 @@ if __name__ == '__main__':
     wpilib.run(MyRobot, physics_enabled=True)
     ```
 
-- Open the folder with `robot.py` and the 2 other things you added. Hold shift and right click, and choose Open Command Prompt here. Then type `python robot.py sim`.
+- In the folder with robot.py and the 2 new files, hold shift and right click in an empty space in the window, and choose "Open command window here." Then type `python robot.py sim`.
