@@ -31,7 +31,7 @@ You can change `MyRobot` to whatever name you want.
 In `robotInit`:
 
 ```python
-self.motor = wpilib.CANTalon(0)
+self.motor = ctre.CANTalon(0)
 ```
 
 The 0 is the number of the Talon. Each motor has a number. On the 2017 "Leviathan" robot, these are:
