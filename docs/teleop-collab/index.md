@@ -20,7 +20,6 @@ There is a robot.py file in here which we will all be editing. This has all the 
 - [Shooting](#shooting)
 - [Ball feeder](#ball-feeder)
 - [Gear light](#gear-light)
-- [Shake button](#shake-button)
 
 When you finish, skip to [Upload your changes](#upload-your-changes).
 
@@ -56,5 +55,10 @@ Once everybody is ready, I will merge all the changes together into a single fil
 
 Now that we have a teleop that can use all of the robot's functionality, we can add some extra features.
 
+Choose an assignment related to a *different* system than the one you worked on! You will need to read and understand someone else's code (you can ask them for help).
+
+- [Strafing]()
 - [Slow mode and fast mode buttons]()
-- more things will go here
+- [Climb down along with up]()
+- [An "Auto Shoot"]()
+- [Shake button](#shake-button)
