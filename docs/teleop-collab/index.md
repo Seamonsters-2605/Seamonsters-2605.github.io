@@ -15,15 +15,15 @@ Type `cd practice-teleop` to go to the new repository you just cloned. Then type
 > This created a new "branch." While everybody is working on their own changes to the code, this means you can make your changes without them interfering with other people's changes.
 
 There is a robot.py file in here which we will all be editing. This has all the motors and joysticks you will need already defined in `robotInit`. Each person/group will be assigned one (or more) of these tasks. Click the link to see more information.
-- Driving
-    - Move the joystick up and down to drive forward and backward, and left and right to turn.
-- Climbing
+- **Driving**
+    - Move the joystick up and down to drive forward and backward, and left and right to turn. This should be at about 30% speed.
+- **Climbing**
     - Press Button 2 to spin the climber forwards.
-- Shooting
+- **Shooting**
     - Pull the trigger (button 1) to spin the flywheel at full speed.
-- Ball feeder
+- **Ball feeder**
     - Press Button 3 to spin the ball feeder at full speed.
-- Gear light
+- **Gear light**
     - There are 2 lights on the front of the robot. We used these during competitions to signal to team members that they should drop a gear in the robot. Pressing Button 4 should make these lights blink.
 
         The lights are stored in the variables `self.gearLight1` and `self.gearLight2`. You can turn one of them on or off with `self.gearLight1.set(True)` or `self.gearLight1.set(False)`.
@@ -48,8 +48,13 @@ With Git Bash open and navigated to the repository, type `git pull` to get every
 
 Choose an assignment related to a *different* system than the one you worked on! You will need to read and understand someone else's code (you can ask them for help).
 
-- [Strafing]()
-- [Slow mode and fast mode buttons]()
-- [Climb backwards]()
-- ["Auto Shoot" button]()
-- [Shake button](#shake-button)
+- **Strafing**
+    - Add buttons to make the robot move sideways
+- **Slow mode and fast mode buttons**
+    - Add a Slow Mode button which slows down driving, and a Fast Mode button.
+- **Climb backwards**
+    - Climbing down the rope is almost as important as climbing up.
+- **"Auto Shoot" button**
+    - When you hold this button, the flywheels spin up for a second, then the feeder starts spinning automatically.
+- **Shake button**
+    - Hold the button to make the robot shake rapidly. This was useful to fix balls that were stuck.
