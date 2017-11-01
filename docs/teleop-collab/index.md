@@ -29,15 +29,25 @@ specific instructions to each assignment will go here.
 
 ### Driving
 
+Move the joystick up and down to drive forward and backward, and left and right to turn.
+
 ### Climbing
+
+Press Button 2 to spin the climber forwards.
 
 ### Shooting
 
+Pull the trigger (button 1) to spin the flywheel at full speed.
+
 ### Ball Feeder
+
+Press Button 3 to spin the ball feeder at full speed.
 
 ### Gear Light
 
-### Shake Button
+There are 2 lights on the front of the robot. We used these during competitions to signal to team members that they should drop a gear in the robot. Pressing Button 4 should make these lights blink.
+
+The lights are stored in the variables `self.gearLight1` and `self.gearLight2`. You can turn one of them on or off with `self.gearLight1.set(True)` or `self.gearLight1.set(False)`.
 
 ## Upload your changes
 
@@ -54,6 +64,8 @@ Once everybody is ready, I will merge all the changes together into a single fil
 ## Round 2
 
 Now that we have a teleop that can use all of the robot's functionality, we can add some extra features.
+
+With Git Bash open and navigated to the repository, type `git pull` to get everybody's changes.
 
 Choose an assignment related to a *different* system than the one you worked on! You will need to read and understand someone else's code (you can ask them for help).
 
