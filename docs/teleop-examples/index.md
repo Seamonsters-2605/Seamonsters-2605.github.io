@@ -1,5 +1,7 @@
 # Teleop Code Examples
 
+These are basic examples for writing robot code. You don't need to memorize these things&mdash;you can use and copy from this reference.
+
 - [Basic Robot Template](#basic-robot-template)
 - [Motors](#motors)
 - [Joysticks](#joysticks)
