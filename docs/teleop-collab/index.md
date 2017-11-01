@@ -59,6 +59,6 @@ Choose an assignment related to a *different* system than the one you worked on!
 
 - [Strafing]()
 - [Slow mode and fast mode buttons]()
-- [Climb down along with up]()
-- [An "Auto Shoot"]()
+- [Climb backwards]()
+- ["Auto Shoot" button]()
 - [Shake button](#shake-button)
