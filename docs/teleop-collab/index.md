@@ -25,8 +25,6 @@ When you finish, skip to [Upload your changes](#upload-your-changes).
 
 ## Specific instructions
 
-specific instructions to each assignment will go here.
-
 ### Driving
 
 Move the joystick up and down to drive forward and backward, and left and right to turn.
