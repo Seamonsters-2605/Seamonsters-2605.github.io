@@ -4,7 +4,7 @@ float mouseStartGrab, mouseStartRotation;
 
 void setup() {
   size(500,500);
-  wheel = loadImage("record.png");
+  wheel = loadImage("record-2.png");
 }
 
 void draw() {
@@ -39,7 +39,12 @@ void mouseDragged() {
 void drawWheel() {
   imageMode(CENTER);
   //println((mouseX - width/2) + ", " + (mouseY - height/2) + ";;");
-  image(wheel, 4, -1, 400, 400);
+  image(wheel, 0, 0, 400, 400);
+  /*stroke(255,0,0);
+  strokeWeight(5);
+  noFill();
+  ellipse(0, 0, 400, 400);
+  point(0,0);*/
 }
 
 float getMouseAngle() {
