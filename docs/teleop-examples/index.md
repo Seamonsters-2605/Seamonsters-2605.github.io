@@ -7,6 +7,7 @@ These are basic examples for writing robot code. You don't need to memorize thes
 - [Joysticks](#joysticks)
 - [Gamepad Right Joystick](#gamepad-right-joystick)
 - [Joystick Buttons](#joystick-buttons)
+- [Timer](#timer)
 
 ## Basic Robot Template
 
@@ -97,3 +98,24 @@ if self.leftJoystick.getRawButton(1):
 The indented code will be run when the button is held. Button 1 is the trigger ("A" button on gamepads), but you can change this number for any other button on the joystick.
 
 Remember that the code inside the if statement will still run 50 times per second while the button is held.
+
+## Timer
+
+In `teleopInit`:
+
+```python
+self.timer = 0
+```
+
+In `teleopPeriodic`:
+
+```python
+if self.timer < 100:
+    # do something for the first 2 seconds
+elif 100 <= self.timer < 200:
+    # do something for 2 seconds after that
+else:
+    # do something forever after that
+
+self.timer = self.timer + 1
+```
