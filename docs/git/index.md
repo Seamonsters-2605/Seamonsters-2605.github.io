@@ -50,9 +50,9 @@ Now try adding another file! It can be written text, a Python file, or anything 
 
 ## Branches
 
-Branches are a powerful feature of Git. If you have a feature that is experimental, not fully tested or could potentially cause problems, you'll want it on a separate **branch**. You can make commits to this branch without them affecting the main "master" branch. And commits to the "master" branch will not affect your branch, so you don't have to worry about your code suddenly breaking.
+Branches are a powerful feature of Git. If you're working on changes to the code that are experimental, not fully tested or could potentially cause problems, you'll want it on a separate **branch**. You can make commits to this branch without them affecting the main "master" branch. And commits to the "master" branch will not affect your branch, so you don't have to worry about your code suddenly breaking.
 
-You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. (You actually don't have to imagine this, GitHub will graph it for you. [Here's](https://github.com/Seamonsters-2605/CompetitionBot2017/network) an example from last year's competition code).
+You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. (You actually don't have to imagine this, GitHub will graph it for you. [Here's](https://github.com/Seamonsters-2605/CompetitionBot2017/network) an example from last year's competition code. Click and drag to scroll through it, and hover over the dots to see the commits.).
 
 When you are confident enough in your changes that you want them on the master branch, you can **merge** the branches together. The extra commits you made on the separate branch will be added to the master branch. Even if the master branch has been changed since you branched from it, Git will try to find a way to merge the changes together (and if it can't, it will ask you to do it yourself).
 
