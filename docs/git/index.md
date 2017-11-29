@@ -72,4 +72,12 @@ Now we'll merge the changes back to the master branch:
 
 ## Collaborating on a repository
 
-add this later...
+The most important feature of git is its ability to allow multiple people to collaborate on a single repository.
+
+I've created a repository that we can practice collaborating on: [https://github.com/Seamonsters-2605/git-practice](https://github.com/Seamonsters-2605/git-practice). Clone this repository to your computer and practice committing to it.
+
+If multiple people try to commit at once, you'll run into a problem. GitHub won't let you push unless you have all of the existing commits from the repository. You'll see an error message like `Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref.` You can remedy this with the command `git pull`, which brings all the changes that other people have to the GitHub repository back to your computer.
+
+At this point Git will need to merge the changes other people made with the changes you made. It might put you in "vi" (which is a text editor) and ask you to enter a commit message. The most important thing to know about vi is that you type `:q` and press enter to quit it. This will allow git to finish pulling changes from the repository. After this, you should be able to push.
+
+Since this is a complicated process, especially when there are many people working at once, it's much easier to work on your changes on a separate branch.
