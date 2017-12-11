@@ -80,4 +80,10 @@ If multiple people try to commit at once, you'll run into a problem. GitHub won'
 
 At this point Git will need to merge the changes other people made with the changes you made. It might put you in "vi" (which is a text editor) and ask you to enter a commit message. The most important thing to know about vi is that you type `:q` and press enter to quit it. This will allow git to finish pulling changes from the repository. After this, you should be able to push.
 
-Since this is a complicated process, especially when there are many people working at once, it's much easier to work on your changes on a separate branch.
+For now, we're embracing the chaos. Edit the text file in master and push your changes. If you get errors, pull and sort out the merge conflict and then recommit/push.
+
+But since this is a complicated process, especially when there are many people working at once, it's much easier to work on your changes on a separate branch.
+
+When merging your branch back onto the master, you might get conflicts if the master has been changed since you pulled.
+
+
