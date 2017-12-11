@@ -6,9 +6,11 @@ One difficulty with building a robot program is timing. The program has to synch
 
 *...except you actually can!*
 
-We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes the function to temporarily pause. For our purposes, this will be used to wait for the 1/50th second cycle.
+We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes the function to temporarily pause. (this is built in to Python)
 
-The "seamonsters" Python library includes features that allows us to use Generators for our robots. (include more information here about how to use the library, assuming we actually decide to use generators)
+The "seamonsters" Python library includes features that allows us to use Generators for our robots. Instead of defining, for example, `teleopInit` and `teleopPeriodic` function, you define a `teleop` *generator*, which is iterated 50 times per second. So using the `yield` command effectively waits for the 1/50th second cycle.
+
+(include more information here about how to use the library, assuming we actually decide to use generators)
 
 We can use the obstacle course challenge we had as an example. Here was the first general way we solved it (based on Warren's solution).
 
