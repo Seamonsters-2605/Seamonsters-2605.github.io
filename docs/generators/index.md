@@ -69,22 +69,22 @@ The `seamonsters` library actually includes a function to make these two lines s
 
 *Any function that has the `yield` command is a Generator*.
 
-Since generators are "pausable," they aren't called like a normal function. They don't have a single return value, and they stay "active" over a period of time. The simplest way to call them is to use a for loop.
+Since generators are "pausable," they aren't called like a normal function. They don't have a single return value, and they stay "active" over a period of time. The simplest way to call them is to use a `for` loop.
 
 For loops are usually used to repeat a block of code for all items in a sequence. So: `for i in range(10):` repeats the following code for all numbers 0 through 9. And `for color in ['red', 'yellow', green']:` repeats the following code with `color` as "red," then again as "yellow," then again as "green."
 
-Generators produce a sequence just like a list or a range. And you can iterate over this sequence. If you have a generator called `generator()`, you can write `for x in generator():` to have code run every time the generator pauses with `yield`. This is essentially what `GeneratorBot` in the seamonsters library is doing, except it has the added feature of synchronizing calls to your generators with the 50 Hz cycle.
+Generators produce a sequence just like a list or a range. And you can iterate over this sequence. If you have a generator called `generator()`, you can write `for x in generator():` to have code run every time the generator pauses with `yield`. This is essentially what `GeneratorBot` in the seamonsters library is doing, except it has the added feature of synchronizing iterations of your generators with the 50 Hz cycle.
 
 ## Combining Generators
 
 Generators especially make autonomous programming simple. You can write simple generators for basic steps of an autonomous sequence, then combine them sequentially or have them run in parallel.
 
-For example, here's a simple generator function that turns a specified motor for a specified amount of time:
+For example, here's a simple generator function that turns a specified motor for a specified number of iterations:
 
 ```python
-def spinMotor(motor, speed, time):
+def spinMotor(motor, speed, count):
     motor.set(speed)
-    for i in range(time):
+    for i in range(count):
         yield
     motor.set(0)
 ```
@@ -97,7 +97,7 @@ def autonomous(self):
         yield
 ```
 
-So every time `spinMotor` yields, `autonomous` will yield also, causing the 1/50 second delay. Remember that this delay only happens automatically for the special `teleop` and `autonomous` functions of `GeneratorBot`.
+So every time `spinMotor` yields, `autonomous` will yield also, causing the 1/50 second delay. Remember that this delay only happens automatically for the special `teleop` and `autonomous` functions of `GeneratorBot`. With a given `count` argument of 100, `spinMotor` will yield 100 times, and so will `autonomous`, so the motor will spin for 2 seconds.
 
 Python has a shortcut for this, called `yield from`. This code does the same thing:
 
@@ -113,3 +113,5 @@ def autonomous(self):
     yield from spinMotor(self.motor, 1, 100)
     yield from spinMotor(self.motor, -1, 100)
 ```
+
+## Seamonsters features
