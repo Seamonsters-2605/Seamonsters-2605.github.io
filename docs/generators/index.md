@@ -6,7 +6,7 @@ One difficulty with building a robot program is timing. The program has to synch
 
 *...except you actually can!*
 
-We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes the function to temporarily pause. (this is built in to Python)
+We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes execution to temporarily leave the function, to return later. (this is built in to Python)
 
 The "seamonsters" Python library includes features that allows us to use Generators for our robots. Instead of defining, for example, `teleopInit` and `teleopPeriodic` function, you define a `teleop` *generator*, which is iterated 50 times per second. So using the `yield` command effectively waits for the 1/50th second cycle.
 
@@ -16,7 +16,7 @@ We can use the obstacle course challenge we had as an example. Here was the firs
 
 ```python
 def robotInit(self):
-    # [create CANTalons, etc.]
+    [create CANTalons, etc.]
 
 def teleopInit(self):
     self.count = 0
@@ -24,13 +24,13 @@ def teleopInit(self):
 def teleopPeriodic(self):
     self.count = self.count + 1
     if self.count <= 100:
-        # [drive forward]
+        [drive forward code]
     else if 100 < self.count <= 130:
-        # [turn right]
+        [turn right code]
     else if 130 < self.count <= 255:
-        # [drive forward]
+        [drive forward code]
     else if 255 < self.count <= 285:
-        # [turn left]
+        [turn left code]
     # etc...
 ```
 
@@ -43,16 +43,16 @@ def robotInit(self):
     # create CANTalons, etc.
 
 def teleop(self):
-    # [drive forward]
+    [drive forward code]
     for i in range(100):
         yield
-    # [turn right]
+    [turn right code]
     for i in range(30):
         yield
-    # [drive forward]
+    [drive forward code]
     for i in range(125):
         yield
-    # [turn left]
+    [turn left code]
     # etc...
 ```
 
@@ -61,12 +61,18 @@ The first thing to notice is that we no longer need `self.count`. There is also 
 for i in range(100):
     yield
 ```
-means "yield 100 times" or "wait 2 seconds." The `seamonsters` library actually includes a function to make this shorter: `yield from sea.wait(100)`.
+means "yield 100 times" or "wait 2 seconds." During those two seconds, *only* those two lines in the function are running until 100 iterations are complete. This is unlike the previous model when the entire `teleopPeriodic` function was called repeatedly.
+
+The `seamonsters` library actually includes a function to make these two lines shorter: `yield from sea.wait(100)`. `sea.wait` is also a generator, which runs for a certain number of iterations before stopping. `yield from` is Python code which means: run the generator repeatedly, and yield each time, until it's complete.
 
 ## Creating Generators
 
 *Any function that has the `yield` command is a Generator*.
 
-Since generators are "pausable," they aren't called by normal functions. The simplest way to call them is to use a for loop.
+Since generators are "pausable," they aren't called like a normal function. They don't have a single return value, and they stay "active" over a period of time. The simplest way to call them is to use a for loop.
+
+For loops are usually used to repeat a block of code for all items in a sequence. So: `for i in range(10):` repeats the following code for all numbers 0 through 9. And `for color in ['red', 'yellow', green']:` repeats the following code with `color` as "red," then again as "yellow," then again as "green."
+
+Generators produce a sequence just like a list or a range. And you can iterate over this sequence.
 
 continue this...
