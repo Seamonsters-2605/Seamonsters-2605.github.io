@@ -8,9 +8,9 @@ One difficulty with building a robot program is timing. The program has to synch
 
 We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes execution to temporarily leave the function, to return later. (this is built in to Python)
 
-The "seamonsters" Python library includes features that allows us to use Generators for our robots. Instead of defining, for example, `teleopInit` and `teleopPeriodic` function, you define a `teleop` *generator*, which is iterated 50 times per second. So using the `yield` command effectively waits for the 1/50th second cycle.
+The "seamonsters" Python library includes a feature called `GeneratorBot` that allows us to use Generators for our robots. Instead of defining, for example, `teleopInit` and `teleopPeriodic` function, you define a `teleop` *generator*, which is iterated 50 times per second. So using the `yield` command effectively waits for the 1/50th second cycle.
 
-(include more information here about how to use the library, assuming we actually decide to use generators)
+You can get the seamonsters library using Git. It's at `https://github.com/seamonsters-2605/SeamonstersTemplate`. If you make a robot file in this cloned Git repository, you can import all the functionality of the seamonsters library with `import seamonsters as sea`.
 
 We can use the obstacle course challenge we had as an example. Here was the first general way we solved it (based on Warren's solution).
 
@@ -57,7 +57,7 @@ def teleop(self):
 ```
 
 The first thing to notice is that we no longer need `self.count`. There is also no longer `teleopInit` and `teleopPeriodic`, just `teleop`. *The `teleop` function stays "running" throughout the time the robot is enabled.* It just pauses occasionally to create timing and to synchronize with driver station. Remember that `yield` in this case means "wait 1/50th second". The code:
-```
+```python
 for i in range(100):
     yield
 ```
@@ -65,7 +65,7 @@ means "yield 100 times" or "wait 2 seconds." During those two seconds, *only* th
 
 The `seamonsters` library actually includes a function to make these two lines shorter: `yield from sea.wait(100)`. `sea.wait` is also a generator, which runs for a certain number of iterations before stopping. `yield from` is Python code which means: run the generator repeatedly, and yield each time, until it's complete.
 
-## Creating Generators
+## Creating and Using Generators
 
 *Any function that has the `yield` command is a Generator*.
 
@@ -73,6 +73,43 @@ Since generators are "pausable," they aren't called like a normal function. They
 
 For loops are usually used to repeat a block of code for all items in a sequence. So: `for i in range(10):` repeats the following code for all numbers 0 through 9. And `for color in ['red', 'yellow', green']:` repeats the following code with `color` as "red," then again as "yellow," then again as "green."
 
-Generators produce a sequence just like a list or a range. And you can iterate over this sequence.
+Generators produce a sequence just like a list or a range. And you can iterate over this sequence. If you have a generator called `generator()`, you can write `for x in generator():` to have code run every time the generator pauses with `yield`. This is essentially what `GeneratorBot` in the seamonsters library is doing, except it has the added feature of synchronizing calls to your generators with the 50 Hz cycle.
 
-continue this...
+## Combining Generators
+
+Generators especially make autonomous programming simple. You can write simple generators for basic steps of an autonomous sequence, then combine them sequentially or have them run in parallel.
+
+For example, here's a simple generator function that turns a specified motor for a specified amount of time:
+
+```python
+def spinMotor(motor, speed, time):
+    motor.set(speed)
+    for i in range(time):
+        yield
+    motor.set(0)
+```
+
+You can include this in your autonomous generator function like this:
+
+```python
+def autonomous(self):
+    for x in spinMotor(self.motor, 1, 100):
+        yield
+```
+
+So every time `spinMotor` yields, `autonomous` will yield also, causing the 1/50 second delay. Remember that this delay only happens automatically for the special `teleop` and `autonomous` functions of `GeneratorBot`.
+
+Python has a shortcut for this, called `yield from`. This code does the same thing:
+
+```python
+def autonomous(self):
+    yield from spinMotor(self.motor, 1, 100)
+```
+
+If you want to spin the motor backwards immediately after spinning it forwards, you can just add it to the sequence:
+
+```python
+def autonomous(self):
+    yield from spinMotor(self.motor, 1, 100)
+    yield from spinMotor(self.motor, -1, 100)
+```
