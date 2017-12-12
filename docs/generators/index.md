@@ -115,3 +115,33 @@ def autonomous(self):
 ```
 
 ## Seamonsters features
+
+The seamonsters library has some nice features for making sequences of generators. Here are some of them:
+
+- `sea.parallel`: Run multiple generator functions simultaneously, until all of them are finished. Example:
+    ```python
+    yield from sea.parallel(spinMotor(self.leftMotor, 1, 100), spinMotor(self.rightMotor, 1, 100))
+    ```
+- `sea.watch`: Like `parallel`, except all generators will be stopped when the last one that you specified ends. So you can have the end of one action depend on an unrelated event. For example, drive forward until the camera sees a target.
+- `sea.wait(count)`: Yield a certain number of iterations. You can use this to wait for a certain amount of time. `yield from sea.wait(50)` will wait 1 second.
+- `sea.timeLimit(generator, count)`: Run a generator with a time limit. After a number of iterations it will be stopped.
+- `sea.untilTrue(generator)`: Generators can give a value when they yield (so you can write `yield 5` or `yield "hello"`). This function will run a generator until it yields True, then continue. 
+- `sea.ensureTrue(generator, requiredCount)`: This is simmilar to `untilTrue`, but it will only end when the generator has returned True for a certain number of *consecutive* iterations. We used a similar feature last year to make sure the robot had aligned to a target with vision. Often the robot would briefly be in alignment but then move past that point. This function could be used to make sure the robot stays in alignment over a period of time.
+
+## Stop Conditions
+
+A few of the above utilities will "stop" a generator at a certain point. If you have code that needed to be called when the generator ends, this might be skipped, which could cause problems. For example, `spinMotor` stops the motor when it's done, but if it was stopped early this might not happen.
+
+The solution is to use a "try/finally" block.
+
+```python
+def spinMotor(motor, speed, count):
+    motor.set(speed)
+    try:
+        for i in range(count):
+            yield
+    finally:
+        motor.set(0)
+```
+
+The code under `finally` will *always* run after the code under `try`, even if the code under `try` is interrupted early, or even if it stops unexpectedly due to an error.
