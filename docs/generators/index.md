@@ -15,23 +15,24 @@ You can get the seamonsters library using Git. It's at `https://github.com/seamo
 We can use the obstacle course challenge we had as an example. Here was the first general way we solved it (based on Warren's solution).
 
 ```python
-def robotInit(self):
-    [create CANTalons, etc.]
+class Robot(wpilib.IterativeRobot):
+    def robotInit(self):
+        [create CANTalons, etc.]
 
-def teleopInit(self):
-    self.count = 0
+    def teleopInit(self):
+        self.count = 0
 
-def teleopPeriodic(self):
-    self.count = self.count + 1
-    if self.count <= 100:
-        [drive forward code]
-    else if 100 < self.count <= 130:
-        [turn right code]
-    else if 130 < self.count <= 255:
-        [drive forward code]
-    else if 255 < self.count <= 285:
-        [turn left code]
-    # etc...
+    def teleopPeriodic(self):
+        self.count = self.count + 1
+        if self.count <= 100:
+            [drive forward code]
+        else if 100 < self.count <= 130:
+            [turn right code]
+        else if 130 < self.count <= 255:
+            [drive forward code]
+        else if 255 < self.count <= 285:
+            [turn left code]
+        # etc...
 ```
 
 Notice how we use the `self.count` variable as "state" to keep track of where we are in the sequence. This is necessary because the `teleopPeriodic` function constantly starts over 50 times per second.
@@ -39,21 +40,22 @@ Notice how we use the `self.count` variable as "state" to keep track of where we
 Here's how you could solve the obstacle course using Generators:
 
 ```python
-def robotInit(self):
-    # create CANTalons, etc.
+class Robot(sea.GeneratorBot):
+    def robotInit(self):
+        # create CANTalons, etc.
 
-def teleop(self):
-    [drive forward code]
-    for i in range(100):
-        yield
-    [turn right code]
-    for i in range(30):
-        yield
-    [drive forward code]
-    for i in range(125):
-        yield
-    [turn left code]
-    # etc...
+    def teleop(self):
+        [drive forward code]
+        for i in range(100):
+            yield
+        [turn right code]
+        for i in range(30):
+            yield
+        [drive forward code]
+        for i in range(125):
+            yield
+        [turn left code]
+        # etc...
 ```
 
 The first thing to notice is that we no longer need `self.count`. There is also no longer `teleopInit` and `teleopPeriodic`, just `teleop`. *The `teleop` function stays "running" throughout the time the robot is enabled.* It just pauses occasionally to create timing and to synchronize with driver station. Remember that `yield` in this case means "wait 1/50th second". The code:
