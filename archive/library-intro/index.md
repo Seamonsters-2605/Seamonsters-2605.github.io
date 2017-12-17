@@ -1,65 +1,6 @@
 # Using the Seamonsters Library
 
-The Seamonsters Python library is a collection of useful code for programming robots, based on what we wrote last year. This includes utilities for getting input from joysticks and gamepads, driving with different types of drivetrains, and simulating the robot on your computer without an actual robot, as well as tools to help organize robot code.
-
-Currently the library is kept in the SeamonstersTemplate repository. The code is [here](https://github.com/Seamonsters-2605/SeamonstersTemplate), and the documentation is [here](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/index.html).
-
-In order to use it, you will fork the SeamonstersTemplate repository. This lets you have your own copy of the repository on your own account, where you can make whatever changes you want, and still be able to get updates to the library. Go to the [library on GitHub](https://github.com/Seamonsters-2605/SeamonstersTemplate) and click "Fork" in the top-right corner.
-
-Now you can clone your own fork of the repository to your computer. Open Git Bash (or a Terminal on Mac/Linux) and type:
-
-```
-cd Documents
-git clone https://github.com/YourGitHubUserName/SeamonstersTemplate.git
-```
-
-You will now have a folder in your Documents folder called "SeamonstersTemplate." This has the Seamonsters code library in the "seamonsters" folder. To use this library, you just need to have your robot file in the SeamonstersTemplate folder.
-
-The following parts describe how to use various features of the library. You can read them in any order.
-
-## Deploying
-
-To deploy you can still use `py robot.py deploy --builtin --nc` as usual, but the seamonsters library comes with custom deploy script that is easier to remember and type, and allows you to deploy robots that aren't named "robot.py". So instead, put your robot file in the SeamonstersTemplate folder, open a command prompt and navigate to the folder (`cd`) and type: `deploy.bat nameOfYourRobot.py`.
-
-## Gamepads
-
-One useful thing that the Seamonsters library adds is support for gamepads. We normally use two Logitech gamepads for driving the robot in competitions. Wpilib treats gamepads as a single "joystick" with a single x and y axis, but they actually have 2 joysticks on them, which makes them more confusing to work with. To make things easier, the Seamonsters library has a [Gamepad](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html) class which adds extra features to the `wpilib.Joystick` class, such as distinguishing between the left and right joystick.
-
-Try this code. It’s a variation on the first tank drive code you wrote earlier. Instead of using 2 joysticks, it uses both joysticks on one gamepad.
-
-```python
-import wpilib
-import ctre
-import seamonsters.gamepad
-
-class TestRobot (wpilib.IterativeRobot):
-
-    def robotInit(self):
-        self.leftFront = ctre.CANTalon(2)
-        self.rightFront = ctre.CANTalon(1)
-        self.leftBack = ctre.CANTalon(0)
-        self.rightBack = ctre.CANTalon(3)
-
-        # Instead of 2 joysticks, you just need one Gamepad, which has 2
-        # joysticks on it.
-        self.gamepad = seamonsters.gamepad.Gamepad(0)
-
-    def teleopPeriodic(self):
-        # Get the y position for the left and right joysticks on the
-        # Gamepad
-        leftSpeed = -self.gamepad.getLY()
-        rightSpeed = self.gamepad.getRY()
-
-        self.leftFront.set(leftSpeed)
-        self.leftBack.set(leftSpeed)
-        self.rightFront.set(rightSpeed)
-        self.rightBack.set(rightSpeed)
-
-if __name__ == "__main__":
-    wpilib.run(TestRobot)
-```
-
-Full documentation for the Gamepad class is [here](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/gamepad.html).
+This page is old. I've removed the parts that are no longer relevant or duplicated on other pages, but there are still some useful things here.
 
 ## Logging
 
@@ -68,38 +9,6 @@ There is often some sort of data that you need to constantly monitor while drivi
 The class [`seamonsters.logging.LogState`](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/logging.html) represents a value that you would like to update and display to the user. If you have `seamonsters.logging` imported, you can create it with `seamonsters.logging.LogState("name")`&mdash;the name will be displayed to the user along with the value.
 
 Then, whenever the value you are monitoring changes, you call `yourLogState.update(value)`. The value can be anything&mdash;a number, a string, a boolean, or anything else.
-
-## Modular Robots
-
-"Modular" robots allow you to split up your robot into separate robot classes which you can test individually. For example, maybe your robot can drive around, shoot balls, and use an arm to lift things. You might have make one robot file for driving, one for shooting, and one for the arm. Each of these files is an IterativeRobot, so you can deploy them to the robot and test each capability individually. This makes it easier to collaborate, and also to work on a subsystem when you don't have full access to the robot. For example, maybe you’ve already bagged/tagged the robot, but you still need to test the arm&mdash;you can just deploy and test that file without the rest of the code.
-
-When you eventually want to make a single robot program that can do all of those things, the Seamonsters library allows you to combine the different "modules" together to build a final robot that combines the capabilities of each module. You can enable or disable these modules individually.
-
-Adding this capability to your robot is simple. You can make a Python script for each component of your robot, and have a simple `IterativeRobot` class in each to perform a small subset of your robot’s full capabilities. For example, you might have these files:
-
-- `drive.py` with the `RobotDrivetrain` class
-- `arm.py` with the `ArmControl` class
-- `shooter.py` with the `ShooterControl` class
-
-When you want to combine those files together into a single robot that can do all those things, you would write a `robot.py` file like this:
-
-```python
-from seamonsters.modularRobot import Module
-from drive import RobotDrivetrain
-from arm import ArmControl
-from shooter import ShooterControl
-
-class MyRobot(Module):
-
-    def __init__(self):
-        super().__init__()
-        self.addModule(RobotDrivetrain())
-        self.addModule(ArmControl())
-        self.addModule(ShooterControl())
-
-if __name__ == "__main__":
-    wpilib.run(MyRobot)
-```
 
 ## Drive Interfaces
 
@@ -164,9 +73,3 @@ For more specific information, look at the documentation for the individual driv
 
 - [HolonomicDrive](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/holonomicDrive.html)
 - [SwerveDrive](https://rawgit.com/Seamonsters-2605/SeamonstersTemplate/master/seamonsters/docs/_build/html/swerveDrive.html)
-
-## Robot Drivetrain Simulation
-
-You can simulate the physics of the drivetrain on your robot, without having access to an actual robot. First [install tkinter](http://tkinter.unpythonic.net/wiki/How_to_install_Tkinter). Then run `py -m pip install pygame`.
-
-Put a robot file in the SeamonstersTemplate folder. Open a command prompt window, navigate to the SeamonstersTemplate folder, and type `py yourRobotFile.py sim`. When the window opens, under Robot choose "Teleoperated." If everything worked, you should be able to use a gamepad to drive around your simulated robot.
