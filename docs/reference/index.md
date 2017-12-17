@@ -14,7 +14,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [`ctre.CANTalon`](#ctrecantalon) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
-- [`robotpy_ext.common_drivers.navx.AHRS`](#robotpy_extcommon_driversnavxahrs): The NavX, to detect rotation and motion of the robot
+- [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
 
 ## `wpilib.IterativeRobot`
@@ -106,13 +106,15 @@ Create a Joystick: `joystick = wpilib.Joystick(0)`. The number identifies the jo
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
 
-## `robotpy_ext.common_drivers.navx.AHRS`
+## `AHRS`
 
 The NavX is a device which detects movement and rotation of the robot. An "AHRS" object represents a reference to the NavX.
 
 The NavX *will* work in the simulator!
 
-Create an AHRS: `ahrs = robotpy_ext.common_drivers.navx.AHRS.create_spi()`
+You will need to import AHRS: `from robotpy_ext.common_drivers.navx import AHRS`
+
+Create an AHRS: `ahrs = AHRS.create_spi()`
 
 - `ahrs.getYaw()`: Returns the Yaw (rotation) of the robot in degrees, from -180 to 180. Positive is clockwise.
 - `ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. The difference between this and `getYaw` is that as the robot spins, the Angle will continue to count upward forever, whereas the Yaw will always stay between -180 and 180.
@@ -127,7 +129,7 @@ Vision will *not* work in the simulator.
 
 We communicate with the Limelight using NetworkTables, which allow values to be shared over the network, organized into Tables.
 
-You will need to import NetworkTables like this: `from networktables import NetworkTables`
+You will need to import NetworkTables: `from networktables import NetworkTables`
 
 Get the limelight table: `vision = NetworkTables.getTable('limelight')`
 
