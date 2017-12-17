@@ -10,12 +10,19 @@ import seamonsters as sea
 
 If you want to use the seamonsters library or the robot simulator, you will need to clone with Git or download [SeamonstersTemplate](https://github.com/seamonsters-2605/SeamonstersTemplate), and make your `robot.py` file in this folder. [Here](../robot-sim) is a tutorial on using the robot simulator.
 
+- [Deploying Code](#deploying-code)
 - [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [`ctre.CANTalon`](#ctrecantalon) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
+
+## Deploying Code
+
+To deploy your robot: shift + right click in the folder with robot.py, "Open Command Prompt Here," and type: `python robot.py deploy --builtin --nc`. If that doesn't work, try `py` instead of `python`.
+
+SeamonstersTemplate has a script which makes this simpler: `.\deploy.bat robot.py`
 
 ## `wpilib.IterativeRobot`
 
