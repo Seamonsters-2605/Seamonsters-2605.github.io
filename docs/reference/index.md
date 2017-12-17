@@ -1,12 +1,23 @@
 # Robot Programming Reference
 
-- [`wpilib.IterativeRobot`](#wpilibiterativerobot)
-- [`ctre.CANTalon`](#ctrecantalon)
-- [`wpilib.Joystick`](#wpilibjoystick)
-- [`robotpy_ext.common_drivers.navx.AHRS`](#robotpy_extcommon_driversnavxahrs)
+You will need to import various libraries before you can use them.
+
+```
+import wpilib
+import ctre
+import seamonsters as sea
+```
+
+- [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
+- [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
+- [`ctre.CANTalon`](#ctrecantalon) to drive motors
+- [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
+- [`robotpy_ext.common_drivers.navx.AHRS`](#robotpy_extcommon_driversnavxahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
 
 ## `wpilib.IterativeRobot`
+
+This is where all of your robot code will go.
 
 Define an IterativeRobot:
 
@@ -31,15 +42,44 @@ You can include special functions which are called at different points in your I
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/IterativeRobot.html)
 
+## `sea.GeneratorBot`
+
+An alternative to IterativeRobot, for more complex sequences.
+
+Define a GeneratorBot:
+
+```python
+import wpilib
+import seamonsters as sea
+
+class MyRobot (sea.GeneratorBot):
+
+    # put robot functions here
+
+if __name__ == "__main__":
+    wpilib.run(MyRobot, physics_enabled=True)
+```
+
+GeneratorBot supports a different set of robot functions. Read [this](../generators) for more information on Generators.
+
+- `def robotInit(self)`: Called when the robot turns on.
+- `def teleop(self)`: The teleop Generator. Use `yield` to wait for 1/50th of a second.
+- `def autonomous(self)`: The autonomous Generator. Use `yield` to wait for 1/50th of a second.
+
 ## `ctre.CANTalon`
 
 *NOTE: This will be renamed this year to `ctre.TalonSRX`*
+
+Talons are motor controllers. You can send messages to them to drive the motors.
 
 Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
 
 - `talon.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
 
 ### Using Encoders
+
+Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Talon can try to approach a target position or speed using encoders.
+
 - `talon.setFeedbackDevice(ctre.CANTalon.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
 - `talon.getPosition()`: Get the position of the encoder.
 - `talon.getSpeed()`: Get the speed of the encoder, in ticks per 100ms.
@@ -63,5 +103,14 @@ Create a Joystick: `joystick = wpilib.Joystick(0)`. The number identifies the jo
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
 
 ## `robotpy_ext.common_drivers.navx.AHRS`
+
+The NavX is a device which detects movement and rotation of the robot. An "AHRS" object represents a reference to the NavX.
+
+Create an AHRS: `ahrs = robotpy_ext.common_drivers.navx.AHRS.create_spi()`
+
+- `ahrs.getYaw()`: Returns the Yaw (rotation) of the robot in degrees, from -180 to 180. Positive in clockwise.
+- `ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. The difference between this and `getYaw` is that as the robot spins, the Angle will continue to count upward forever, whereas the Yaw will always stay between -180 and 180.
+
+[Complete reference](robotpy.readthedocs.io/projects/utilities/en/latest/robotpy_ext.common_drivers.navx.html#robotpy_ext.common_drivers.navx.ahrs.AHRS)
 
 ## Vision
