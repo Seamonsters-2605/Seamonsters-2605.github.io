@@ -80,6 +80,8 @@ Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
 
 Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Talon can try to approach a target position or speed using encoders.
 
+Encoders will *not* work in the simulator.
+
 - `talon.setFeedbackDevice(ctre.CANTalon.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
 - `talon.getPosition()`: Get the position of the encoder.
 - `talon.getSpeed()`: Get the speed of the encoder, in ticks per 100ms.
@@ -106,6 +108,8 @@ Create a Joystick: `joystick = wpilib.Joystick(0)`. The number identifies the jo
 
 The NavX is a device which detects movement and rotation of the robot. An "AHRS" object represents a reference to the NavX.
 
+The NavX *will* work in the simulator!
+
 Create an AHRS: `ahrs = robotpy_ext.common_drivers.navx.AHRS.create_spi()`
 
 - `ahrs.getYaw()`: Returns the Yaw (rotation) of the robot in degrees, from -180 to 180. Positive in clockwise.
@@ -116,6 +120,8 @@ Create an AHRS: `ahrs = robotpy_ext.common_drivers.navx.AHRS.create_spi()`
 ## Vision
 
 We will use a device called the "Limelight" this year for vision. It has a bright green light which shines at retroreflective tape, and a camera to detect the reflections. It does all the vision processing for us, and produces information about the position of a target in the camera view.
+
+Vision will *not* work in the simulator.
 
 We communicate with the Limelight using NetworkTables, which allow values to be shared over the network, organized into Tables.
 
