@@ -114,3 +114,18 @@ Create an AHRS: `ahrs = robotpy_ext.common_drivers.navx.AHRS.create_spi()`
 [Complete reference](robotpy.readthedocs.io/projects/utilities/en/latest/robotpy_ext.common_drivers.navx.html#robotpy_ext.common_drivers.navx.ahrs.AHRS)
 
 ## Vision
+
+We will use a device called the "Limelight" this year for vision. It has a bright green light which shines at retroreflective tape, and a camera to detect the reflections. It does all the vision processing for us, and produces information about the position of a target in the camera view.
+
+We communicate with the Limelight using NetworkTables, which allow values to be shared over the network, organized into Tables.
+
+You will need to import NetworkTables like this: `from networktables import NetworkTables`
+
+Get the limelight table: `vision = NetworkTables.getTable('limelight')`
+
+- `vision.getNumber('tx')`: Returns the horizontal offset of the target in degrees. 0 is centered.
+- `vision.getNumber('ty')`: Returns the vertical offset of the target in degrees. 0 is centered.
+- `vision.getNumber('ta')`: Returns the area of the target as a percentage of the total area of the camera image (0 to 100).
+- `vision.getNumber('ts')`: Returns the rotation or "skew" of the target. This isn't very well documented.
+
+[Complete reference](http://docs.limelightvision.io/en/latest/getting_started.html#basic-programming)
