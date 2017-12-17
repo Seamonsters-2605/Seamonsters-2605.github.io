@@ -8,6 +8,8 @@ import ctre
 import seamonsters as sea
 ```
 
+If you want to use the seamonsters library or the robot simulator, you will need to clone SeamonstersTemplate(https://github.com/seamonsters-2605/SeamonstersTemplate) using Git, and make your `robot.py` file in this folder.
+
 - [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [`ctre.CANTalon`](#ctrecantalon) to drive motors
