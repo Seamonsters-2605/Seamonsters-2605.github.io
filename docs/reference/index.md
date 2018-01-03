@@ -13,6 +13,8 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [Deploying Code](#deploying-code)
 - [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
+- [Making a Generator](#making-a-generator)
+- [Combining Robot Modules](#combining robot modules)
 - [`ctre.CANTalon`](#ctrecantalon) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
@@ -69,11 +71,52 @@ if __name__ == "__main__":
     wpilib.run(MyRobot, physics_enabled=True)
 ```
 
-GeneratorBot supports a different set of robot functions. Read [this](../generators) for more information on Generators.
+GeneratorBot supports a different set of robot functions. See the next section for how to make a generator.
 
 - `def robotInit(self)`: Called when the robot turns on.
 - `def teleop(self)`: The teleop Generator. Use `yield` to wait for 1/50th of a second.
 - `def autonomous(self)`: The autonomous Generator. Use `yield` to wait for 1/50th of a second.
+
+## Making a Generator
+
+[This page](../generators) has more detailed information on what Generators are and how they work.
+
+Any function with the `yield` command is a generator. You can define a function, outside of a class, like this:
+
+```
+def myGeneratorFunction(arguments...):
+    # code goes here
+```
+
+Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like CANTalons and Joysticks).
+
+## Combining Robot Modules
+
+A common technique is splitting the functionality of your robot into small pieces and later combining them together. This section will go over ways of accomplishing this.
+
+At the lowest level are [Generator Functions](#making-a-generator) or [Iterative Robots](#wpilibiterativerobot). You can use either to build the basic pieces of your robot. Generators may be more convenient for autonomous sequences, but use whichever makes the most sense to you.
+
+### Sequential
+
+You can combine generators *sequentially*, so they run one after the other, like this:
+
+```
+def generatorSequence():
+    yield from generator1()
+    yield from generator2()
+    yield from generator3()
+```
+
+### Parallel
+
+You can combine generators in *parallel*, so they all run at the same time, by using a feature of the Seamonsters library:
+
+```
+def generatorsInParallel():
+    yield from sea.parallel(generator1(), generator2(), generator3())
+```
+
+You can find more Generator tricks [here](../generators/#seamonsters-features)
 
 ## `ctre.CANTalon`
 
