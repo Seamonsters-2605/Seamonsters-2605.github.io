@@ -131,7 +131,7 @@ Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
 - 2: Front left
 - 3: Back right
 
-- `talon.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
+`talon.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
 
 ### Using Encoders
 
