@@ -171,7 +171,7 @@ You will need to import AHRS: `from robotpy_ext.common_drivers.navx import AHRS`
 
 Create an AHRS: `ahrs = AHRS.create_spi()`
 
-- `ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. The difference between this and `getYaw` is that as the robot spins, the Angle will continue to count upward forever, whereas the Yaw will always stay between -180 and 180.
+- `ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. If the robot rotates for 2 full rotations, this will be 720.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/utilities/en/latest/robotpy_ext.common_drivers.navx.html#robotpy_ext.common_drivers.navx.ahrs.AHRS)
 
