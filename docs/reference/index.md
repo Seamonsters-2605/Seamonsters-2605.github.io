@@ -120,11 +120,16 @@ You can find more Generator tricks [here](../generators/#seamonsters-features)
 
 ## `ctre.CANTalon`
 
-*NOTE: This will be renamed this year to `ctre.TalonSRX`*
+*NOTE: This will be renamed this year to `ctre.WPI_TalonSRX`. You can read about more fun changes [here](https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md).*
 
 Talons are motor controllers. You can send messages to them to drive the motors.
 
 Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
+
+- 0: Back left
+- 1: Front right
+- 2: Front left
+- 3: Back right
 
 - `talon.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
 
