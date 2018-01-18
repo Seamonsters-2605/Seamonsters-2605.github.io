@@ -14,7 +14,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [Making a Generator](#making-a-generator)
-- [Combining Robot Modules](#combining robot modules)
+- [Combining Robot Modules](#combining-robot-modules)
 - [`ctre.CANTalon`](#ctrecantalon) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
