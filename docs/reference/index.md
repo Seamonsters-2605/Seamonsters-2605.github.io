@@ -15,7 +15,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [Making a Generator](#making-a-generator)
 - [Combining Robot Modules](#combining-robot-modules)
-- [`ctre.WPI_TalonSRX``](#ctrewpi_talonsrx) to drive motors
+- [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
@@ -118,7 +118,7 @@ def generatorsInParallel():
 
 You can find more Generator tricks [here](../generators/#seamonsters-features)
 
-## `ctre.WPI_TalonSRX``
+## `ctre.WPI_TalonSRX`
 
 *NOTE: This is the new `ctre.CANTalon`. You can read about more fun changes [here](https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md).*
 
