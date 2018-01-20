@@ -124,7 +124,7 @@ You can find more Generator tricks [here](../generators/#seamonsters-features)
 
 Talons are motor controllers. You can send messages to them to drive the motors.
 
-Create a Talon: `talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
+Create a Talon in `robotInit`: `self.talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
 
 - 0: Back left
 - 1: Front right
@@ -154,13 +154,13 @@ The `talon.set` function has an optional first argument that allows different co
 
 ## `wpilib.Joystick`
 
-Create a Joystick: `joystick = wpilib.Joystick(0)`. The number identifies the joystick.
+Create a Joystick in `robotInit`: `self.joystick = wpilib.Joystick(0)`. The number identifies the joystick.
 
-- `joystick.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
-- `joystick.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
-- `joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
-- `joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
-- `joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
+- `self.joystick.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
+- `self.joystick.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
+- `self.joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
+- `self.joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
+- `self.joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
 
@@ -172,9 +172,9 @@ The NavX *will* work in the simulator!
 
 You will need to import AHRS: `from robotpy_ext.common_drivers.navx import AHRS`
 
-Create an AHRS: `ahrs = AHRS.create_spi()`
+Create an AHRS in `robotInit`: `self.ahrs = AHRS.create_spi()`
 
-- `ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. If the robot rotates clockwise for 2 full rotations, this will be 720.
+- `self.ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. If the robot rotates clockwise for 2 full rotations, this will be 720.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/utilities/en/latest/robotpy_ext.common_drivers.navx.html#robotpy_ext.common_drivers.navx.ahrs.AHRS)
 
