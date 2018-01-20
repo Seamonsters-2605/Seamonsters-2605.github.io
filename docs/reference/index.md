@@ -15,7 +15,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [Making a Generator](#making-a-generator)
 - [Combining Robot Modules](#combining-robot-modules)
-- [`ctre.CANTalon`](#ctrecantalon) to drive motors
+- [`ctre.WPI_TalonSRX``](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
@@ -88,7 +88,7 @@ def myGeneratorFunction(arguments...):
     # code goes here
 ```
 
-Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like CANTalons and Joysticks).
+Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like Talons and Joysticks).
 
 ## Combining Robot Modules
 
@@ -118,13 +118,13 @@ def generatorsInParallel():
 
 You can find more Generator tricks [here](../generators/#seamonsters-features)
 
-## `ctre.CANTalon`
+## `ctre.WPI_TalonSRX``
 
-*NOTE: This will be renamed this year to `ctre.WPI_TalonSRX`. You can read about more fun changes [here](https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md).*
+*NOTE: This is the new `ctre.CANTalon`. You can read about more fun changes [here](https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md).*
 
 Talons are motor controllers. You can send messages to them to drive the motors.
 
-Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
+Create a Talon: `talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
 
 - 0: Back left
 - 1: Front right
@@ -135,17 +135,20 @@ Create a CANTalon: `talon = ctre.CANTalon(0)`. The number identifies the Talon.
 
 ### Using Encoders
 
-Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Talon can try to approach a target position or speed using encoders.
+Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Talon can try to approach a target position or velocity using encoders.
 
 Encoders will *not* work in the simulator.
 
-- `talon.setFeedbackDevice(ctre.CANTalon.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
-- `talon.getPosition()`: Get the position of the encoder.
-- `talon.getSpeed()`: Get the speed of the encoder, in ticks per 100ms.
-- `talon.changeControlMode(ctre.CANTalon.ControlMode.Position)`: Switch to position control. Now you can use `talon.set(position)` to move to an encoder position.
-- `talon.changeControlMode(ctre.CANTalon.ControlMode.Speed)`: Switch to speed control. Now you can use `talon.set(speed)` to move at a target speed, in encoder ticks per 100ms.
-- `talon.changeControlMode(ctre.CANTalon.ControlMode.PercentVbus)`: Switch back to voltage control (the default). `talon.set(speed)` will take values from -1 to 1 again. 
-- `talon.setPID(p, i, d)`: The PID values control how the talon tries to approach a position or speed. These take experimentation to figure out. Try an I value of 0 and a D value between 3 and 6, and adjust the P value to control how strongly the talon tries to approach a position (in our competition robot we used P values anywhere from 0.15 to 30).
+- `talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
+- `talon.getSelectedSensorPosition(0)`: Get the position of the encoder.
+- `talon.getSelectedSensorVelocity(0)`: Get the velocity of the encoder, in ticks per 100ms.
+
+The `talon.set` function has an optional first argument that allows different control modes:
+
+- `talon.set(ctre.ControlMode.PercentOutput, speed)`: The default. Drive in voltage mode. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
+- `talon.set(ctre.ControlMode.Position, position)`: move to an encoder position.
+- `talon.set(ctre.ControlMode.Velocity, speed)`:  move at a target speed, in encoder ticks per 100ms.
+- `talon.config_kP/I/D/F(0, value, 0)`: The PID values control how the talon tries to approach a position or speed. These take experimentation to figure out. Try an I value of 0 and a D value between 3 and 6, and adjust the P value to control how strongly the talon tries to approach a position (in our competition robot we used P values anywhere from 0.15 to 30).
 
 [Complete reference](http://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
 
