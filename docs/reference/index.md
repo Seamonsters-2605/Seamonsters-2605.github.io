@@ -195,4 +195,13 @@ Get the limelight table: `vision = NetworkTables.getTable('limelight')`
 - `vision.getNumber('ta')`: Returns the area of the target as a percentage of the total area of the camera image (0 to 100).
 - `vision.getNumber('ts')`: Returns the rotation or "skew" of the target. This isn't very well documented.
 
+These `getNumber` functions could fail if no data is availible. So you should always surround them in a **try/except** block. Example:
+
+```
+try:
+    xOffset = vision.getNumber('tx')
+except:
+    print("No vision data yet!")
+```
+
 [Complete reference](http://docs.limelightvision.io/en/latest/getting_started.html#basic-programming)
