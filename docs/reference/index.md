@@ -161,6 +161,7 @@ Create a Joystick in `robotInit`: `self.joystick = wpilib.Joystick(0)`. The numb
 - `self.joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
 - `self.joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
 - `self.joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
+- `self.joystick.getRawAxis(number)`: Get an axis of the joystick, from -1 to 1. Axes include X/Y movement, twist, throttles, and anything else on the joystick that isn't just on or off. The axes are numbered, and you can figure out which is which using Driver Station.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
 
