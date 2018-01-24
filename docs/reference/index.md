@@ -190,18 +190,11 @@ You will need to import NetworkTables: `from networktables import NetworkTables`
 
 Get the limelight table, in `robotInit`: `self.vision = NetworkTables.getTable('limelight')`
 
-- `self.vision.getNumber('tx')`: Returns the horizontal offset of the target in degrees. -27 to 27 degrees, 0 is centered.
-- `self.vision.getNumber('ty')`: Returns the vertical offset of the target in degrees. -20.5 to 20.5 degrees, 0 is centered.
-- `self.vision.getNumber('ta')`: Returns the area of the target as a percentage of the total area of the camera image (0 to 100).
-- `self.vision.getNumber('ts')`: Returns the rotation or "skew" of the target. -90 degrees to 0 degrees.
+- `self.vision.getNumber('tx', None)`: Returns the horizontal offset of the target in degrees. -27 to 27 degrees, 0 is centered.
+- `self.vision.getNumber('ty', None)`: Returns the vertical offset of the target in degrees. -20.5 to 20.5 degrees, 0 is centered.
+- `self.vision.getNumber('ta', None)`: Returns the area of the target as a percentage of the total area of the camera image (0 to 100).
+- `self.vision.getNumber('ts', None)`: Returns the rotation or "skew" of the target. -90 degrees to 0 degrees.
 
-These `getNumber` functions could fail if no data is availible. So you should always surround them in a **try/except** block. Example:
-
-```
-try:
-    xOffset = self.vision.getNumber('tx')
-except:
-    print("No vision data yet!")
-```
+The second argument for all these functions is the default value if no data is availible. For these examples it's `None`, but it could be whatever's useful for you.
 
 [Complete reference](http://docs.limelightvision.io/en/latest/getting_started.html#basic-programming)
