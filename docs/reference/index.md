@@ -183,6 +183,8 @@ Create an AHRS in `robotInit`: `self.ahrs = AHRS.create_spi()`
 
 We will use a device called the "Limelight" this year for vision. It has a bright green light which shines at retroreflective tape, and a camera to detect the reflections. It does all the vision processing for us, and produces information about the position of a target in the camera view.
 
+A web interface for the limelight is availible at `10.26.5.6:5801`. Here you can view the camera feed and adjust parameters.
+
 Vision will *not* work in the simulator.
 
 We communicate with the Limelight using NetworkTables, which allow values to be shared over the network, organized into Tables.
