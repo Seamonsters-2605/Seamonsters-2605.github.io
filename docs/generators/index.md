@@ -128,7 +128,7 @@ The seamonsters library has some nice features for making sequences of generator
 - `sea.wait(count)`: Yield a certain number of iterations. You can use this to wait for a certain amount of time. `yield from sea.wait(50)` will wait 1 second.
 - `sea.timeLimit(generator, count)`: Run a generator with a time limit. After a number of iterations it will be stopped.
 - `sea.untilTrue(generator)`: Generators can give a value when they yield (so you can write `yield 5` or `yield "hello"`). This function will run a generator until it yields True, then continue. 
-- `sea.ensureTrue(generator, requiredCount)`: This is simmilar to `untilTrue`, but it will only end when the generator has returned True for a certain number of *consecutive* iterations. We used a similar feature last year to make sure the robot had aligned to a target with vision. Often the robot would briefly be in alignment but then move past that point. This function could be used to make sure the robot stays in alignment over a period of time.
+- `sea.ensureTrue(generator, requiredCount)`: This is similar to `untilTrue`, but it will only end when the generator has returned True for a certain number of *consecutive* iterations. We used a similar feature last year to make sure the robot had aligned to a target with vision. Often the robot would briefly be in alignment but then move past that point. This function could be used to make sure the robot stays in alignment over a period of time.
 
 ## Stop Conditions
 

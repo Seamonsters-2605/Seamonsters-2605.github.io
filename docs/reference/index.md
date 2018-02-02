@@ -14,7 +14,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
 - [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
 - [Making a Generator](#making-a-generator)
-- [Combining Robot Modules](#combining-robot-modules)
+- [Building an Autonomous Sequence](#building-an-autonomous-sequence)
 - [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
@@ -90,11 +90,19 @@ def myGeneratorFunction(arguments...):
 
 Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like Talons and Joysticks).
 
-## Combining Robot Modules
+## Building an Autonomous Sequence
 
-A common technique is splitting the functionality of your robot into small pieces and later combining them together. This section will go over ways of accomplishing this.
+You can build an autonomous sequence by combining simple parts, in the form of Generators and other functions, into a larger generator function.
 
-At the lowest level are [Generator Functions](#making-a-generator) or [Iterative Robots](#wpilibiterativerobot). You can use either to build the basic pieces of your robot. Generators may be more convenient for autonomous sequences, but use whichever makes the most sense to you.
+For these examples we'll use a hypothetical generators called `shoot()`, `drive()`, and `alignToTarget()`.
+
+- `yield from shoot()`: Run the generator until it's complete, then continue to the next step.
+- `yield from sea.parallel(shoot(), drive())`: Run multiple generators simultaneously (in parallel). Once all of the generators have completed, move on to the next step.
+- `yield from sea.watch(shoot(), drive())`: This is similar to `sea.parallel`, but once the first generator in the list is done, all of the rest will be stopped and it will continue to the next step. In this example, when `shoot` completes `drive` will stop.
+- `yield from sea.wait(count)`: Wait for a certain time, in 50ths of a second. `yield from sea.wait(50)` will wait one second.
+- `yield from sea.timeLimit(shoot(), time)`: Run the generator. If it's still running after a certain amount of time (in 50ths of a second) stop it and continue.
+- `yield from sea.untilTrue(alignToTarget())`: Generators can produce a value when they yield (for example, `yield True` or `yield False`). This will run a generator until it yields True, then continue.
+- `yield from sea.ensureTrue(alignToTarget(), time)`: This is similar to `untilTrue`, but it will only end when the generator has returned True for a certain number of *consecutive* iterations. We used a similar feature last year to make sure the robot had aligned to a target with vision. Often the robot would briefly be in alignment but then move past that point. This function could be used to make sure the robot stays in alignment over a period of time.
 
 ### Sequential
 
