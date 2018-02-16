@@ -2,7 +2,7 @@
 
 <script language="javascript" type="text/javascript" src="../../sketches/p5.min.js"></script>
 
-*Based on document written by Dawson Bowhay, with additions and design changes by Jacob van't Hoog.*
+*Based on document written by Dawson Bowhay.*
 
 *You'll need Javascript for this.*
 
