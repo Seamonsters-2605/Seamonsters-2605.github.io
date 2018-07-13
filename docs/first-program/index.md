@@ -1,12 +1,12 @@
 # Writing your first program for the robot
 
-Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, PyCharm, and Driver Station.
+Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, and Driver Station.
 
-Open PyCharm and create a new project. Give it a name with no spaces, and make sure the selected Python version is Python36, not some other number.
+Open Visual Studio Code. Choose "Open folder", and create a new folder inside Documents to contain your robot code. Now that you have the folder open, create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
 
-If the left panel with a list of files isn't shown, press <kbd>Alt</kbd>-<kbd>1</kbd>. Right click your project folder in the left panel, choose New > File, and name it "robot.py". It's important that you use that name, with no capital letters.
+We will be writing code for last year's robot. This is an example of a simple "Tank Drive." A Tank Drive is driven with two joysticks, one each to drive the left and right sides of the robot.
 
-We will be writing code for last year's robot ("Leviathan"). This example is an overview of some basic robot code for "Tank Drive," which involves using a separate joystick for the left and right sides of the robot. Type in your own version of the following code. *Please don't copy and paste!*
+Type in your own version of the following code. *Please don't copy and paste!*
 
 ```python
 import wpilib
@@ -125,9 +125,7 @@ Look for this panel in driver station. Check for these things:
 - There was probably already robot code on the robot, so the Robot Code light will be green. Your own code isn't on the robot yet.
 - The Joysticks light will turn green once you plug in the two joysticks.
 
-Right click `robot.py` in the left panel and click "Show in explorer." This will open the project folder which has your robot.py file. Hold shift and right click in an empty space in the folder window, and choose "Open command window here."
-
-Then type: `python robot.py deploy --builtin --nc`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
+In Visual Studio Code, choose View > Integrated Terminal. In the terminal window, type: `python robot.py deploy --builtin --nc`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
 
 Once the code has finished deploying, the Robot Code light in Driver Station will turn red as the code starts, then green again. You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Space at any time for an emergency stop.
 

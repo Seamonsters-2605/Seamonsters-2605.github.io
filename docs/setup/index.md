@@ -25,7 +25,11 @@ These are Python packages which give you the necessary libraries to write robot 
 
 ## Install Visual Studio Code
 
-Visual Studio Code is our recommended program for writing Python code. (It is different than plain Visual Studio). Download it here: [code.visualstudio.com](https://code.visualstudio.com/) and run the installer.
+Visual Studio Code is our recommended program for writing Python code. (It is different than plain Visual Studio).
+
+- Download it here: [code.visualstudio.com](https://code.visualstudio.com/) and run the installer.
+- Start Visual Studio Code. On the right side under the *Customize* header there should be a link to install Python support. Click the link to install it in the background&mdash;the window will refresh when it is finished.
+
 
 ## Install Driver Station
 
