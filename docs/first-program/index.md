@@ -118,16 +118,20 @@ To get your code onto the robot you must "deploy" it over WiFi. First check that
 
 ![(screenshot of driver station)](driver-station.png)
 
-Look for this panel in driver station. Check for these things:
+Look for this panel in Driver Station. Check for these things:
 
 - The Team # should be 2605. If it isn't, click the Gear tab on the left and change the team number.
 - The Communications light should be green, to show that you are connected to the robot over WiFi. It could take a while. If it doesn't connect, there's a problem&mdash;see the section below.
-- There was probably already robot code on the robot, so the Robot Code light will be green. Your own code isn't on the robot yet.
+- There was probably already robot code on the robot, so the Robot Code light will be green. Once you deploy code, it stays on the robot until it's replaced. Your own code isn't on the robot yet.
 - The Joysticks light will turn green once you plug in the two joysticks.
 
-In Visual Studio Code, choose View > Integrated Terminal. In the terminal window, type: `python robot.py deploy --builtin --nc`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
+To the right of this panel there is a small gear icon. Click this and choose View Console. Resize the window so it is fully visible while you are deploying code. This is where error messages will appear if something is wrong or if you made a mistake (you will make lots of mistakes while programming).
 
-Once the code has finished deploying, the Robot Code light in Driver Station will turn red as the code starts, then green again. You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Space at any time for an emergency stop.
+In Visual Studio Code, choose View > Integrated Terminal. In the terminal window, type: `python robot.py deploy --builtin`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
+
+Watch the Driver Station message console window for any error messages. Once the code has finished deploying successfully, the Robot Code light in Driver Station will turn red as the code starts, then green again.
+
+You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Enter at any time to stop the robot. Make sure to keep watching the Message Console window&mdash;if something isn't working correctly, there's probably an error message to tell you what's wrong.
 
 With the robot enabled, you can use the joysticks to drive the robot. One controls the left motors and one controls the right&mdash;push them forward and backward to drive. This type of control is called Tank Drive.
 
