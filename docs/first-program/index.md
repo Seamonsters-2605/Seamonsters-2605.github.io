@@ -131,7 +131,7 @@ In Visual Studio Code, choose View > Integrated Terminal. In the terminal window
 
 Watch the Driver Station message console window for any error messages. Once the code has finished deploying successfully, the Robot Code light in Driver Station will turn red as the code starts, then green again.
 
-You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Enter at any time to stop the robot. Make sure to keep watching the Message Console window&mdash;if something isn't working correctly, there's probably an error message to tell you what's wrong.
+You are now ready to enable the robot. Let everybody in the room know you are about to enable, just in case something goes wrong. Be ready to press Enter at any time to stop the robot. Make sure to keep watching the Message Console window&mdash;if something isn't working correctly, there's probably an error message to tell you what's wrong. Often this error is a [Stack Trace](../programming-best-practices/#how-to-read-a-stack-trace).
 
 With the robot enabled, you can use the joysticks to drive the robot. One controls the left motors and one controls the right&mdash;push them forward and backward to drive. This type of control is called Tank Drive.
 
