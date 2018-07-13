@@ -15,10 +15,10 @@ import ctre
 class MyRobot (wpilib.IterativeRobot):
 
     def robotInit(self):
-        self.leftFront = ctre.CANTalon(2)
-        self.rightFront = ctre.CANTalon(1)
-        self.leftBack = ctre.CANTalon(0)
-        self.rightBack = ctre.CANTalon(3)
+        self.leftFront = ctre.WPI_TalonSRX(2)
+        self.rightFront = ctre.WPI_TalonSRX(1)
+        self.leftBack = ctre.WPI_TalonSRX(0)
+        self.rightBack = ctre.WPI_TalonSRX(3)
 
         self.leftJoystick = wpilib.Joystick(0)
         self.rightJoystick = wpilib.Joystick(1)
@@ -59,15 +59,15 @@ This line defines a *function* inside the robot class (it is indented to show th
 The `self` in parentheses is an *argument* to a function. Any function inside a class at least needs "self" as an argument.
 
 ```python
-self.leftFront = ctre.CANTalon(2)
-self.rightFront = ctre.CANTalon(1)
-self.leftBack = ctre.CANTalon(0)
-self.rightBack = ctre.CANTalon(3)
+self.leftFront = ctre.WPI_TalonSRX(2)
+self.rightFront = ctre.WPI_TalonSRX(1)
+self.leftBack = ctre.WPI_TalonSRX(0)
+self.rightBack = ctre.WPI_TalonSRX(3)
 ```
 
-This creates `CANTalon` objects for each of the 4 wheels on the robot (they're called `ctre.CANTalon` because CANTalon is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the "CAN" network) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
+This creates `WPI_TalonSRX` objects for each of the 4 wheels on the robot (they're called `ctre.WPI_TalonSRX` because WPI_TalonSRX is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the *CAN network*) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
 
-The CANTalon objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means we can access those variables in other functions so we can use the CANTalons later.
+The WPI_TalonSRX objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means we can access those variables in other functions so we can use the Talons later.
 
 ```python
 self.leftJoystick = wpilib.Joystick(0)
@@ -98,7 +98,7 @@ self.rightFront.set(rightSpeed)
 self.rightBack.set(rightSpeed)
 ```
 
-Now we use the CANTalon objects we created earlier in `robotInit`, to drive each of the motors. The `set()` function lets you control the speed of each motor. It takes as input a number between -1 (full speed reverse) and 1 (full speed forward), which conveniently is the same range of values that the joystick `getY()` function gave us.
+Now we use the WPI_TalonSRX objects we created earlier in `robotInit`, to drive each of the motors. The `set()` function lets you control the speed of each motor. It takes as input a number between -1 (full speed reverse) and 1 (full speed forward), which conveniently is the same range of values that the joystick `getY()` function gave us.
 
 Again, all this code is run 50 times per second. So, 50 times per second, the positions of the left and right joysticks are read, and the speeds of all 4 motors are updated accordingly.
 
@@ -146,4 +146,4 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 - Look at the [Robot Programming Reference](../reference) page for other things you can do with the robot. Maybe you could respond to buttons on the joystick&mdash;activate a *slow mode* or shake the robot.
 - Other ideas?
 
-This code used a few wpilib classes and functions, like IterativeRobot, Joystick and CANTalon. A full reference for all these classes is at [robotpy.readthedocs.io/projects/wpilib/en/latest/api.html](http://robotpy.readthedocs.io/projects/wpilib/en/latest/api.html).
+This code used a few wpilib classes and functions, like IterativeRobot, Joystick and WPI_TalonSRX. A full reference for all these classes is at [robotpy.readthedocs.io/projects/wpilib/en/latest/api.html](http://robotpy.readthedocs.io/projects/wpilib/en/latest/api.html).
