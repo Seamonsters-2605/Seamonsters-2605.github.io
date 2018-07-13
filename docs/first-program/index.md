@@ -42,21 +42,21 @@ if __name__ == "__main__":
 import wpilib
 import ctre
 ```
-This includes Python libraries for you to use in your program. `wpilib` is the library for programming FRC robots, and `ctre` allows you to control the motors using the "Talon" motor controllers (more details on that later).
+This includes Python libraries for you to use in your program. `wpilib` is the library for programming FRC robots, and `ctre` allows you to control the motors using the "Talon" motor controllers.
 
 ```python
 class MyRobot (wpilib.IterativeRobot):
 ```
 
-This line creates your robot *class*, which contains all the code for your robot. In parentheses is `wpilib.IterativeRobot`, which is the base that all robot code is built off of.
+This line creates your robot *class*, which contains all the code for your robot. In parentheses is `wpilib.IterativeRobot`, which is the base class that all robot code is built off of.
 
 ```python
 def robotInit(self):
 ```
 
-This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions in Python group together code that can be used ("called") later. Certain functions are special in wpilib&mdash;in this case, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
+This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions group together code that can be used/"called" later. Certain functions are special for an IterativeRobot&mdash;for example, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
 
-The `self` in parentheses is an *argument* to a function. Any function inside a class at least needs "self" as an argument.
+The `self` in parentheses is an *argument* to a function. Any function inside a class at least needs "self" as an argument. `self` is a reference to the robot *object* which has all of the functions and variables of the robot.
 
 ```python
 self.leftFront = ctre.WPI_TalonSRX(2)
@@ -65,9 +65,9 @@ self.leftBack = ctre.WPI_TalonSRX(0)
 self.rightBack = ctre.WPI_TalonSRX(3)
 ```
 
-This creates `WPI_TalonSRX` objects for each of the 4 wheels on the robot (they're called `ctre.WPI_TalonSRX` because WPI_TalonSRX is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the *CAN network*) to drive the motors. The numbers in parentheses are unique to each Talon, to identify them.
+This creates `WPI_TalonSRX` objects for each of the 4 wheels on the robot (we use `ctre.WPI_TalonSRX` because WPI_TalonSRX is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the *CAN network*) to drive the motors. The numbers in parentheses are unique identifier numbers for each Talon.
 
-The WPI_TalonSRX objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means we can access those variables in other functions so we can use the Talons later.
+The WPI_TalonSRX objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means that the variable belons to the robot object, not the function. This means we can access those variables in other functions, so we can use the Talons later.
 
 ```python
 self.leftJoystick = wpilib.Joystick(0)
@@ -80,7 +80,7 @@ Here two joysticks are defined, and again stored in `self.` variables so we can 
 def teleopPeriodic(self):
 ```
 
-This is another special function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can do things like check the joystick input and update the motor output.
+This is another special IterativeRobot function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can do things like check the joystick input and update the motor output.
 
 ```python
 leftSpeed = self.leftJoystick.getY()
