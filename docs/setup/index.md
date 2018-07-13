@@ -36,7 +36,7 @@ Driver Station is used to control the robot from your computer using a joystick 
 Driver Station only works on Windows. This installation will take some time.
 
 - Download Driver Station [here](http://www.ni.com/download/first-robotics-software-2017/7183/en/). You will need to create an account.
-- Unzip the file you downloaded. The password for 2018 is `pLaY&4%R3aL!`
+- Unzip the file you downloaded.
 - Run setup.exe in the unzipped folder. It will take a *long* time to install.
     - **Uncheck Search for important messages...**
     - The program will ask for a serial number. Ask me and I will give it to you.
