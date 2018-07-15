@@ -1,12 +1,12 @@
 # Learning Git
 
-We will be practicing Git today. Git lets you share code with team members and synchronize changes.
+We will be practicing Git today. Git is "version control" software&mdash;it remembers the history of all of your code files, and it lets you synchronize changes to code with multiple team members working at once.
 
-A Git **repository** holds all the files for your project. GitHub is a website that hosts Git repositories online, so anyone can view and contribute changes from anywhere.
+A Git **repository** holds all the files for your project. GitHub is a website that hosts Git repositories online, so anyone can download the files and contribute changes from anywhere.
 
 To practice Git you will start by making your own personal repository on GitHub.
 
-- Go to github.com
+- Log in to github.com
 - Click the `+` in the top right corner and choose `New repository`
 - Type a name and optional description. Make it Public, choose to add a README, and don't add a .gitignore or license.
 - Choose Create repository
@@ -29,18 +29,19 @@ Unpacking objects: 100% (3/3), done.
 ```
 
 - Open your Documents folder. There is now a new folder with the name of your repository, which has the single `README.md` file in your repository.
-- Edit this README file. Add some information about yourself, or how incredible and revolutionary your project is going to be. Save it.
+- Open the README file, write something nice, and save it.
 - Go back to Git Bash. (If you closed the window earlier you will need to type `cd Documents` again). Type `cd your-repository-name` and press enter to navigate to your repository.
 - Type `git status`.
 
 Notice that `README.md` is highlighted in red. This means that the file has been modified with changes that haven't been saved in the repository yet.
 
-Git keeps track of every change you make to a repository in the form of **commits**, which are discrete changes to the files in your repository. The entire history of your repository is kept as a series of commits. Since you have modified README, you need to *commit* your changes to make them a permanent part of your repository.
+Git keeps track of the history of the repository in the form of **commits**, which are discrete changes to the files in your repository. Since you have modified README, you need to *commit* your changes to make them a permanent part of your repository.
 
 - Type `git add README.md`. This adds the file to the list of changes you will commit. The commit has not been made yet.
+- Type `git status` again. README is now highlighted in green and listed under "Changes to be committed".
 - Type `git commit -m "Your message goes here"`. In the quotes, write a short sentence about the changes you made. As you look through the history of your repository, you will see this message next to each commit, which can help you identify when important changes were made. So the message should be specific but concise.
 
-Type `git status` again. You will see a different message. README is no longer in red, because all changes to it have been committed. But now it says: `Your branch is ahead of 'origin/master' by 1 commit.`.
+Type `git status` again. You will see a different message. README is no longer highlighted, because all changes to it have been committed. But now it says: `Your branch is ahead of 'origin/master' by 1 commit.`.
 
 This means that although you have made the commit on your computer, it isn't online on GitHub yet. Nobody else can see the changes you made, and if your computer breaks they will be lost forever. You can fix this by typing `git push`. (you'll need your GitHub username and password).
 
@@ -50,9 +51,9 @@ Now try adding another file! It can be written text, a Python file, or anything 
 
 ## Branches
 
-Branches are a powerful feature of Git. If you're working on changes to the code that are experimental, not fully tested or could potentially cause problems, you'll want it on a separate **branch**. You can make commits to this branch without them affecting the main "master" branch. And commits to the "master" branch will not affect your branch, so you don't have to worry about your code suddenly breaking.
+Branches are a powerful feature of Git. If you're working on changes to the code that are experimental, not fully tested, or could potentially cause conflicts with other people's work, you'll want them on a separate **branch**. You can make commits to this branch without them affecting the main "master" branch. And commits to the "master" branch will not affect your branch, so you don't have to worry about your code suddenly breaking.
 
-You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. (You actually don't have to imagine this, GitHub will graph it for you. [Here's](https://github.com/Seamonsters-2605/CompetitionBot2017/network) an example from last year's competition code. Click and drag to scroll through it, and hover over the dots to see the commits.).
+You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. You actually don't have to imagine this, GitHub will graph it for you. [Here's](https://github.com/Seamonsters-2605/CompetitionBot2018/network) an example from last year's competition code. Click and drag to scroll through it, and hover over the dots to see the commits.
 
 When you are confident enough in your changes that you want them on the master branch, you can **merge** the branches together. The extra commits you made on the separate branch will be added to the master branch. Even if the master branch has been changed since you branched from it, Git will try to find a way to merge the changes together (and if it can't, it will ask you to do it yourself).
 
@@ -85,5 +86,3 @@ For now, we're embracing the chaos. Edit the text file in master and push your c
 But since this is a complicated process, especially when there are many people working at once, it's much easier to work on your changes on a separate branch.
 
 When merging your branch back onto the master, you might get conflicts if the master has been changed since you pulled.
-
-
