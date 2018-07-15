@@ -3,6 +3,7 @@
 Pyfrc has a built in robot simulator&mdash;it lets you drive a virtual robot with real joysticks. This is useful if you want to test your code, and don't have access to a robot.
 
 ## Installation instructions
+- Make sure you installed all of the libraries in the [Setup Instructions](../setup)
 - Open Command Prompt, type `python -m pip install pygame`.
 - Clone with Git or download [SeamonstersTemplate](https://github.com/seamonsters-2605/SeamonstersTemplate)
 - Open SeamonstersTemplate in Visual Studio Code and create your `robot.py` file inside. Write some robot code.

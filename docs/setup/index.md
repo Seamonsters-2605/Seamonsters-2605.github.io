@@ -15,13 +15,14 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 - Verify that the version number listed is Python 3.x.x and NOT Python 2.x.x. Then type `exit()` and press Enter to exit Python.
 
-## Install pyfrc and robotpy-ctre
+## Install Python libraries
 
-These are Python packages which give you the necessary libraries to write robot code. `pyfrc` is the Python version of `wpilib`, which is a library for controlling FRC robots. `robotpy-ctre` is the library for controlling Talons, which are motor controllers.
+- In Command Prompt, type: `python -m pip install pyfrc robotpy-ctre pygame`
 
-- In Command Prompt, type: `python -m pip install pyfrc robotpy-ctre`
-
-> `pip` is a tool for installing and upgrading packages for Python, to add extra functionality.
+> `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. This command installs 3 packages which give you the necessary libraries for writing and testing robot code. The packages we are using here are:
+> - `pyfrc`: A Python port of `wpilib`, a library for controlling FRC robots
+> - `robotpy-ctre`: For sending commands to the Talon motor controllers
+> - `pygame`: A set of libraries for building games with Python. This is used by the robot simulator for joystick input.
 
 ## Install Visual Studio Code
 
