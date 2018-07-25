@@ -36,9 +36,7 @@ Visual Studio Code is our recommended program for writing Python code. (It is di
 
 *The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections below.*
 
-Driver Station is used to control the robot from your computer using a joystick or gamepad.
-
-Driver Station only works on Windows. This installation will take some time.
+Driver Station is used to control the robot from your computer using a joystick or gamepad. It only works on Windows.
 
 - Download Driver Station [here](http://www.ni.com/download/first-robotics-software-2017/7183/en/). You will need to create an account.
 - Unzip the file you downloaded.
