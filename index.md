@@ -25,13 +25,13 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [Git Tutorial](docs/git)
 - [Best Practices for Git](docs/git-best-practices)
 
-### Challenges
+## Challenges
 
 - [Obstacle Course](https://github.com/Seamonsters-2605/practice-teleop)
 - [How to Program a Mecanum Drive](docs/mecanum) (interactive!)
     - [Drivetrain Simulator](sketches/mecanum)
 
-### Documentation
+## Documentation
 
 - **[Robot Programming Reference](docs/reference)**
 - [RobotPy documentation](http://robotpy.readthedocs.io/en/latest/)
