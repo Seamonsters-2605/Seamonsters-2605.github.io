@@ -16,8 +16,8 @@ You have a public repository now! It's availible for anyone to view at `github.c
 Now you are going to **clone** the repository to your computer. This not only downloads all the files, but links them with Git to the repository on GitHub, so any changes you make can be "pushed" online and "pulled" back to your computer.
 
 - Click the green "Clone or download" button to the right of the repository page. You will see a link that starts with `https://github.com/....`. Click the clipboard button to the right of this to copy the link. (there have been problems in the past with manually selecting this text and copying it).
-- Open Git Bash (not Git GUI). Type `cd Documents` and press enter. This will navigate to your Documents folder.
-- Type `git clone ` followed by a space, then paste the link you copied by right clicking and choosing Paste (Ctrl-V doesn't work). Press enter.
+- Open Command Prompt. Type `cd Documents` and press enter. This will navigate to your Documents folder.
+- Type `git clone ` followed by a space, then paste the link you copied and press enter.
 
 If it worked you should see something like this:
 
@@ -28,12 +28,11 @@ remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 Unpacking objects: 100% (3/3), done.
 ```
 
-- Open your Documents folder. There is now a new folder with the name of your repository, which has the single `README.md` file in your repository.
-- Open the README file, write something nice, and save it.
-- Go back to Git Bash. (If you closed the window earlier you will need to type `cd Documents` again). Type `cd your-repository-name` and press enter to navigate to your repository.
-- Type `git status`.
+- Now start Visual Studio Code, and choose *Open folder*. In your Documents you should find a new folder with the name of your repository. Open this folder in Code, and you will see the single `README.md` file.
+- Write something nice in the README and save it.
+- Open the Integrated Terminal in VS Code (View menu). Type `git status`.
 
-Notice that `README.md` is highlighted in red. This means that the file has been modified with changes that haven't been saved in the repository yet.
+Notice that `README.md` is highlighted in red and listed under "Untracked files". This means that the file has been modified with changes that haven't been saved in the repository yet.
 
 Git keeps track of the history of the repository in the form of **commits**, which are discrete changes to the files in your repository. Since you have modified README, you need to *commit* your changes to make them a permanent part of your repository.
 
@@ -41,7 +40,7 @@ Git keeps track of the history of the repository in the form of **commits**, whi
 - Type `git status` again. README is now highlighted in green and listed under "Changes to be committed".
 - Type `git commit -m "Your message goes here"`. In the quotes, write a short sentence about the changes you made. As you look through the history of your repository, you will see this message next to each commit, which can help you identify when important changes were made. So the message should be specific but concise.
 
-Type `git status` again. You will see a different message. README is no longer highlighted, because all changes to it have been committed. But now it says: `Your branch is ahead of 'origin/master' by 1 commit.`.
+Type `git status` again. You will see a different message. README is no longer listed, because all changes to it have been committed. But now it says: `Your branch is ahead of 'origin/master' by 1 commit.`.
 
 This means that although you have made the commit on your computer, it isn't online on GitHub yet. Nobody else can see the changes you made, and if your computer breaks they will be lost forever. You can fix this by typing `git push`. (you'll need your GitHub username and password).
 
@@ -53,14 +52,14 @@ Now try adding another file! It can be written text, a Python file, or anything 
 
 Branches are a powerful feature of Git. If you're working on changes to the code that are experimental, not fully tested, or could potentially cause conflicts with other people's work, you'll want them on a separate **branch**. You can make commits to this branch without them affecting the main "master" branch. And commits to the "master" branch will not affect your branch, so you don't have to worry about your code suddenly breaking.
 
-You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. You actually don't have to imagine this, GitHub will graph it for you. [Here's](https://github.com/Seamonsters-2605/CompetitionBot2018/network) an example from last year's competition code. Click and drag to scroll through it, and hover over the dots to see the commits.
+You can imagine the series of commits you've made over the course of a project as points on a timeline, and branches as separate lines that branch off the main one. You actually don't have to imagine this: GitHub will graph it for you! [Here's](https://github.com/Seamonsters-2605/CompetitionBot2018/network) an example from last year's competition code. Click and drag to scroll through it, and hover over the dots to see the commits.
 
 When you are confident enough in your changes that you want them on the master branch, you can **merge** the branches together. The extra commits you made on the separate branch will be added to the master branch. Even if the master branch has been changed since you branched from it, Git will try to find a way to merge the changes together (and if it can't, it will ask you to do it yourself).
 
 Let's practice branches:
 
-- In Git Bash with your repository open, type `git branch name-of-your-branch`. Name it whatever you want (it should be descriptive of its purpose. In general, use `-` to separate words).
-- Now type `git checkout name-of-your-branch`. You are now on the branch you created. You can see that the blue text in parentheses has changed from `(master)` to your branch's name.
+- In VS Code Terminal with your repository open, type `git branch name-of-your-branch`. Name it whatever you want (it should be descriptive of its purpose. In general, use `-` to separate words and no capitals).
+- Now type `git checkout name-of-your-branch`. You are now on the branch you created. You can check what branch you're on at any time by typing `git status`.
 - Make some changes, add them, and commit them. When you push them, use the command `git push -u origin name-of-your-branch`. The extra pieces of this command will create the branch on GitHub as well, and link the branch on your computer to GitHub. In the future you can just use `git push`.
 
 In your web browser, refresh the page for your repository. You will still see the files from your master branch, without the new changes you made. But you can click the "Branch" dropdown to view a different branch. If you check your new branch you can see that the changes you made are there.
@@ -75,11 +74,11 @@ Now we'll merge the changes back to the master branch:
 
 The most important feature of git is its ability to allow multiple people to collaborate on a single repository.
 
-I've created a repository that we can practice collaborating on: [https://github.com/Seamonsters-2605/git-practice](https://github.com/Seamonsters-2605/git-practice). Clone this repository to your computer and practice committing to it.
+I've created a repository that we can practice collaborating with: [https://github.com/Seamonsters-2605/git-practice](https://github.com/Seamonsters-2605/git-practice). Clone this repository to your computer and practice committing to it.
 
-If multiple people try to commit at once, you'll run into a problem. GitHub won't let you push unless you have all of the existing commits from the repository. You'll see an error message like `Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref.` You can remedy this with the command `git pull`, which brings all the changes that other people have to the GitHub repository back to your computer.
+If multiple people try to commit at once, you'll run into a problem. GitHub won't let you push unless you have all of the existing commits from the repository. You'll see an error message like `Updates were rejected because the remote contains work that you do not have locally. This is usually caused by another repository pushing to the same ref.` You can remedy this with the command `git pull`, which brings all the changes that others have made back to your local copy of the repository.
 
-At this point Git will need to merge the changes other people made with the changes you made. It might put you in "vi" (which is a text editor) and ask you to enter a commit message. The most important thing to know about vi is that you type `:q` and press enter to quit it. This will allow git to finish pulling changes from the repository. After this, you should be able to push.
+At this point Git will need to merge the changes other people made with the changes you made. It might open up a file in VS Code and ask you to enter a commit message. You can just close this file to keep the default message it generates. This will allow Git to finish pulling changes from the repository. After this, you should be able to push.
 
 For now, we're embracing the chaos. Edit the text file in master and push your changes. If you get errors, pull and sort out the merge conflict and then recommit/push.
 
