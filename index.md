@@ -1,23 +1,29 @@
-# Seamonsters Control Systems Resources
+# Seamonsters Programming Resources
 
-This is not the [official Seamonsters team site](http://www.seamonsters2605.org/).
+This is a collection of tutorials and resources for learning robot programming, from FRC team 2605 (the Seamonsters!). This is not the [official Seamonsters team site](http://www.seamonsters2605.org/).
 
-The Control Systems department is for robot electronics and programming. We use [Python](https://www.python.org/) with [pyfrc](http://pyfrc.readthedocs.io/en/latest/) for writing robot code, and [GitHub](https://github.com/Seamonsters-2605) for collaboration on code.
+The Seamonsters programming department uses [Python](https://www.python.org/) with the [pyfrc](http://pyfrc.readthedocs.io/en/latest/) library for writing robot code, and [GitHub](https://github.com/Seamonsters-2605) for collaboration on code.
 
 [Competition robot code for 2018](https://github.com/seamonsters-2605/CompetitionBot2018).
 
-## Programming
+## General Programming
 
 - [Learn Python](docs/learn-python): Links to resources for leaning Python
 - [Best Practices for Programming](docs/programming-best-practices)
 
-### Robot Programming
+## Robot Programming
 
 - [Micro:Bits](docs/microbit): Intro to robotics programming
 - [Setup Instructions](docs/setup): Tools you should have for robot programming
 - [First Program](docs/first-program): Writing your first robot program in Python
 - [Robot Simulator](docs/robot-sim): How to set up and use the simulator to test your robot code
 - [Using Generators](docs/generators)
+
+
+## Git
+
+- [Git Tutorial](docs/git)
+- [Best Practices for Git](docs/git-best-practices)
 
 ### Challenges
 
@@ -33,16 +39,6 @@ The Control Systems department is for robot electronics and programming. We use 
 - [RobotPy utilities documentation](http://robotpy-wpilib-utilities.readthedocs.io/en/latest/)
 - [Seamonsters library documentation](https://seamonsters-2605.github.io/SeamonstersTemplate/seamonsters/docs/_build/html/index.html)
 - [Limelight documentation](http://docs.limelightvision.io/en/latest/)
-
-## Git
-
-- [Git Tutorial](docs/git)
-- [Best Practices for Git](docs/git-best-practices)
-
-## Electronics
-
-- [Electronics Reference](docs/electronics.pdf)
-- [Battery Policy](docs/battery-policy)
 
 ## Other links
 
