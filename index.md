@@ -15,7 +15,7 @@ The Control Systems department is for robot electronics and programming. We use 
 
 - [Micro:Bits](docs/microbit): Intro to robotics programming
 - [Setup Instructions](docs/setup): Tools you should have for robot programming
-- [First Program](docs/first-program): Writing Your First Robot Program in Python
+- [First Program](docs/first-program): Writing your first robot program in Python
 - [Robot Simulator](docs/robot-sim): How to set up and use the simulator to test your robot code
 - [Using Generators](docs/generators)
 
@@ -36,7 +36,7 @@ The Control Systems department is for robot electronics and programming. We use 
 
 ## Git
 
-- [Git tutorial](docs/git)
+- [Git Tutorial](docs/git)
 - [Best Practices for Git](docs/git-best-practices)
 
 ## Electronics
@@ -47,4 +47,4 @@ The Control Systems department is for robot electronics and programming. We use 
 ## Other links
 
 - [Control Systems tutorials on ScreenStepsLive](https://wpilib.screenstepslive.com/s/4485/m/13503#)
-- [Chief Delphi Programming Forum](https://www.chiefdelphi.com/forums/forumdisplay.php?f=51)
+- [Chief Delphi programming forum](https://www.chiefdelphi.com/forums/forumdisplay.php?f=51)
