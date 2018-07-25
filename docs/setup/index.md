@@ -53,10 +53,11 @@ Driver Station only works on Windows. This installation will take some time.
 
 Git is software for "version control," which allows us all to collaborate on the code and manage multiple versions and branches of it.
 
-- Download and install Git here: [git-scm.com/downloads](https://git-scm.com/downloads). **Choose the default options for everything, except** on Windows choose to "**Use Git from Git Bash only.**"
-- Open Git Bash (which should have been installed), and type:
+- Download and install Git here: [git-scm.com/downloads](https://git-scm.com/downloads). **Choose the default options for everything, except** on Windows choose to **"Use Visual Studio Code as Git's default editor"**.
+- Open Command Prompt and type:
     - `git config --global user.email "your email goes here"`
     - `git config --global user.name "Your Name"`
+    - `git config --global core.editor "code --wait"`
 
 You will need to learn how to use Git&mdash;see [this page](../git) for a tutorial.
 
