@@ -26,11 +26,11 @@ class Robot(wpilib.IterativeRobot):
         self.count = self.count + 1
         if self.count <= 100:
             [drive forward code]
-        else if 100 < self.count <= 130:
+        else if self.count <= 130:
             [turn right code]
-        else if 130 < self.count <= 255:
+        else if self.count <= 255:
             [drive forward code]
-        else if 255 < self.count <= 285:
+        else if self.count <= 285:
             [turn left code]
         # etc...
 ```
