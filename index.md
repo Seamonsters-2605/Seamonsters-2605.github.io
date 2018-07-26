@@ -10,6 +10,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 
 - [Learn Python](docs/learn-python): Links to resources for leaning Python
 - [Best Practices for Programming](docs/programming-best-practices)
+- [Python Namespaces](https://bytebaker.com/2008/07/30/python-namespaces/)
 
 ## Robot Programming
 
