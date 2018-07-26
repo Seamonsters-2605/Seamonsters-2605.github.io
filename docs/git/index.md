@@ -74,12 +74,18 @@ Now we'll merge the changes back to the master branch:
 
 Version control software like Git can do much more than just remember changes to your files. It can allow multiple people to collaborate on a single repository, by synchronizing those changes between people and resolving conflicts between the different versions.
 
-I've created a repository that we can practice collaborating with: [https://github.com/Seamonsters-2605/git-practice](https://github.com/Seamonsters-2605/git-practice). Clone it to your computer (remember how to do that? check back in the document.) and practice committing to it.
+I've created a repository that we can practice collaborating with: [https://github.com/Seamonsters-2605/git-practice](https://github.com/Seamonsters-2605/git-practice). Clone it to your computer (remember how to do that? check back in the document.) Practice adding/modifying files, committing, and pushing.
 
-With multiple people committing to this repository at once, we're going to quickly run into problems. GitHub won't let you push unless you have all of the existing commits from the repo. So if someone else made a change after you cloned the repo, when you try to push you'll see an error message like `Updates were rejected because the remote contains work that you do not have locally.` You can remedy this with the command `git pull`, which brings all the changes that others have made back to your local copy of the repository.
+### Pulling and resolving merge conflicts
 
-At this point Git will need to merge the changes that others made with the changes that you made. Git attempts to do this automatically, and is often successful. When Git merges two different versions of a file, it creates a new commit to unite the separate branches of history. It might open up a file in VS Code and ask you to enter a commit message. You can just close this file to keep the default message it generates.
+With multiple people committing to this repository at once, we're going to quickly run into problems. GitHub won't let you push unless you have all of the existing commits from the repo. So if someone else made a change after you cloned the repo, when you try to push you'll see an error message like `Updates were rejected because the remote contains work that you do not have locally.`
 
-If the merge was successful, you now should be able to push.
+You can remedy this with the command `git pull`, which brings all the changes that others have made back to your local copy of the repository.
 
-To avoid conflicts like this, it's best practice to create new branches for your changes. But for now, we're going to embrace the chaos. Edit the text file in master and push your changes. If you get errors, `git pull`, sort out the merge conflict, and recommit/push.
+At this point Git will need to merge the changes that others made with the changes that you made. Git attempts to do this automatically, and is often successful (but not always). When Git merges two different versions of a file, it creates a new commit to unite the separate branches of history. It might open up a file in VS Code and ask you to enter a commit message. You can just close this file to keep the default message it generates.
+
+If the merge was successful, you now should be able to `git push`.
+
+### Branches
+
+To avoid conflicts like this, it's best practice to create new branches for your changes. Look at the Branches section earlier in the document and try making some commits on different branches instead. Then try to merge your changes back to master.
