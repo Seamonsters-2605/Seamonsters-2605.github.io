@@ -22,7 +22,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 
 ## Deploying Code
 
-To deploy your robot: shift + right click in the folder with robot.py, "Open Command Prompt Here," and type: `python robot.py deploy --builtin --nc`. If that doesn't work, try `py` instead of `python`.
+To deploy your robot, open the VS Code Terminal and type: `python robot.py deploy --builtin`. If that doesn't work, try `py` instead of `python`.
 
 SeamonstersTemplate has a script which makes this simpler: `.\deploy.bat robot.py`
 
@@ -128,8 +128,6 @@ You can find more Generator tricks [here](../generators/#seamonsters-features)
 
 ## `ctre.WPI_TalonSRX`
 
-*NOTE: This is the new `ctre.CANTalon`. You can read about more fun changes [here](https://github.com/CrossTheRoadElec/Phoenix-Documentation/blob/master/Migration%20Guide.md).*
-
 Talons are motor controllers. You can send messages to them to drive the motors.
 
 Create a Talon in `robotInit`: `self.talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
@@ -193,7 +191,7 @@ We will use a device called the "Limelight" this year for vision. It has a brigh
 
 A web interface for the limelight is availible at `10.26.5.6:5801`. Here you can view the camera feed and adjust parameters.
 
-Vision will *not* work in the simulator.
+Vision can work in the simulator with some additional configuration.
 
 We communicate with the Limelight using NetworkTables, which allow values to be shared over the network, organized into Tables.
 
