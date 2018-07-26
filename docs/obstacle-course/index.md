@@ -2,7 +2,7 @@
 
 **Challenge:** Make a robot to navigate a virtual obstacle course.
 
-Clone the Obstacle Course repository with Command Prompt by typing:
+Open Command Prompt and clone the Obstacle Course repository by typing:
 
 ```
 cd Documents

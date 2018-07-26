@@ -1,32 +1,26 @@
 # Collaborating on robot code
 
-We will be working together to make robot teleop code with most of the features from last year's competition robot.
+Now that you know how to use Git to collaborate on code (read [this](../git) if you don't), we are going to practice working together as a group to create a robot program. We'll be reimplementing most of the features from last year's competition robot.
 
 ## Instructions
 
-Open `Git Bash`. See [Setup Instructions](../setup#install-git) if you haven't installed Git yet.
+Open Command Prompt and clone the practice repository by typing:
 
-Type `cd Documents` and press Enter. Then type `git clone https://github.com/seamonsters-2605/practice-teleop`
+```
+cd Documents
+git clone https://github.com/Seamonsters-2605/practice-collaboration
+```
 
-> You have just "cloned" a "repository" from GitHub. A repository holds code that multiple people can collaborate on. You now have a new folder in your Documents folder called "practice-teleop" which contains this code. You will be able to add your own code and upload it so that everybody else can get your changes (sort of like collaborating on a document with Google Docs).
+There's now a folder in your Documents called `practice-collaboration`. Open this folder in Visual Studio Code. In the VS Code Terminal, use Git to make a new branch ([instructions if you forgot how](../git#branches)). Name it with your own name. Make sure there's no spaces or capital letters, and use `-` to separate words.
 
-Type `cd practice-teleop` to go to the new repository you just cloned. Then type `git checkout -b your-name`. Use your own name instead of `your-name`. Make sure there are no spaces or capital letters. Use `-` to separate words.
+There is a robot.py file in here which we will all be editing. This has all the motors and joysticks you will need already defined in `robotInit`. Each person/group will be assigned one (or more) of these tasks.
 
-> This created a new "branch." While everybody is working on their own changes to the code, this means you can make your changes without them interfering with other people's changes.
-
-There is a robot.py file in here which we will all be editing. This has all the motors and joysticks you will need already defined in `robotInit`. Each person/group will be assigned one (or more) of these tasks. Click the link to see more information.
 - **Driving**
     - Move the joystick up and down to drive forward and backward, and left and right to turn. This should be at about 30% speed.
-- **Climbing**
-    - Press Button 2 to spin the climber forwards.
-- **Shooting**
-    - Pull the trigger (button 1) to spin the flywheel at full speed.
-- **Ball feeder**
-    - Press Button 3 to spin the ball feeder at full speed.
-- **Gear light**
-    - There are 2 lights on the front of the robot. We used these during competitions to signal to team members that they should drop a gear in the robot. Pressing Button 4 should make these lights blink.
-
-        The lights are stored in the variables `self.gearLight1` and `self.gearLight2`. You can turn one of them on or off with `self.gearLight1.set(True)` or `self.gearLight1.set(False)`.
+- **Conveyor**
+    - Pull the trigger (button 1) to run the conveyor and intake wheels forward at full speed. Press button 2 to run them backwards.
+- **Wings**
+    - Press button 4 to run the left wing motor, and button 5 to run the right wing motor.
 
 ## Upload your changes
 
@@ -52,9 +46,3 @@ Choose an assignment related to a *different* system than the one you worked on!
     - Add buttons to make the robot move sideways
 - **Slow mode and fast mode buttons**
     - Add a Slow Mode button which slows down driving, and a Fast Mode button.
-- **Climb backwards**
-    - Climbing down the rope is almost as important as climbing up.
-- **"Auto Shoot" button**
-    - When you hold this button, the flywheels spin up for a second, then the feeder starts spinning automatically.
-- **Shake button**
-    - Hold the button to make the robot shake rapidly. This was useful to fix balls that were stuck.

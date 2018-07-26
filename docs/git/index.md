@@ -86,6 +86,6 @@ At this point Git will need to merge the changes that others made with the chang
 
 If the merge was successful, you now should be able to `git push`.
 
-### Branches
+### More branches
 
 To avoid conflicts like this, it's best practice to create new branches for your changes. Look at the Branches section earlier in the document and try making some commits on different branches instead. Then try to merge your changes back to master.
