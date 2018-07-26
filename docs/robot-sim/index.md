@@ -15,5 +15,5 @@ if __name__ == '__main__':
     ```
 
 - Before starting the simulator, plug in 2 joysticks.
-- Open the Visual Studio integrated terminal, and type `python robot.py sim`.
+- Open the Terminal in VS Code, and type `python robot.py sim`.
 - You have a robot simulator! The joystick movement should show feedback in the window. Click the "Teleoperated" option to enable your robot and drive it around. If you don't have joysticks, click in the X/Y axis boxes below Stick 0 and Stick 1.
