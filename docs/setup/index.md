@@ -8,7 +8,7 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
 - Download the latest version of **Python 3** (NOT Python 2). The current version (as of July 2018) is 3.7.0.
-- Run the installer. On Windows, **check the box to "Add Python 3.7 to PATH.**" Restart your computer before you continue.
+- Run the installer. On Windows, **check the box to "Add Python 3.7 to PATH.**" And if you are using a school laptop, **uncheck All Users.**
 - Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead.
 
 > This is Python's interactive mode. You can type Python code in and press Enter to run it immediately.
@@ -51,7 +51,7 @@ Driver Station is used to control the robot from your computer using a joystick 
 
 Git is software for "version control," which allows us all to collaborate on the code and manage multiple versions and branches of it.
 
-- Download and install Git here: [git-scm.com/downloads](https://git-scm.com/downloads). **Choose the default options for everything, except** on Windows choose to **"Use Visual Studio Code as Git's default editor"**.
+- Download and install Git here: [git-scm.com/downloads](https://git-scm.com/downloads). **Choose the default options for everything, except** on Windows choose to **"Use Visual Studio Code as Git's default editor"**. If this doesn't work (the Next button is disabled), choose **Nano** instead.
 - Open Command Prompt and type:
     - `git config --global user.email "your email goes here"`
     - `git config --global user.name "Your Name"`
