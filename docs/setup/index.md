@@ -8,7 +8,7 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
 - Download the latest version of **Python 3** (NOT Python 2). The current version (as of July 2018) is 3.7.0.
-- Run the installer. On Windows, **check the box to "Add Python 3.7 to PATH.**" And if you are using a school laptop, **uncheck All Users.**
+- Run the installer. On Windows, **check the box to "Add Python 3.7 to PATH".** And if you are using a school laptop, **uncheck "Install launcher for all users".**
 - Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead.
 
 > This is Python's interactive mode. You can type Python code in and press Enter to run it immediately.
