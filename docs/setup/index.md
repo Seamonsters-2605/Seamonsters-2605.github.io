@@ -8,7 +8,9 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
 - Download the latest version of **Python 3** (NOT Python 2). The current version (as of July 2018) is 3.7.0.
-- Run the installer. On Windows, **check the box to "Add Python 3.7 to PATH".** And if you are using a school laptop, **uncheck "Install launcher for all users".**
+- Run the installer, and change the following options:
+    - On Windows, check the box to "Add Python 3.7 to PATH"
+    - If you are using a school laptop, uncheck "Install launcher for all users"
 - Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead.
 
 > This is Python's interactive mode. You can type Python code in and press Enter to run it immediately.
@@ -17,24 +19,31 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 ## Install Python libraries
 
-- In Command Prompt, type: `python -m pip install pyfrc robotpy-ctre pygame`
+- In Command Prompt, type:
 
-> `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. This command installs 3 packages which give you the necessary libraries for writing and testing robot code. The packages we are using here are:
+```
+python -m pip install --upgrade pip
+python -m pip install pylint pyfrc robotpy-ctre pygame remi
+```
+
+> `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. The first command updates pip to the latest version. The second command installs 5 packages which give you the necessary libraries for writing and testing robot code.
+> - `pylint`: A tool for modifying Python code&mdash;it will give VS Code the ability to, for example, change the name of a variable by analyzing its usage in a file.
 > - `pyfrc`: A Python port of `wpilib`, a library for controlling FRC robots
 > - `robotpy-ctre`: For sending commands to the Talon motor controllers
 > - `pygame`: A set of libraries for building games with Python. This is used by the robot simulator for joystick input.
+> - `remi`: For building interfaces that run in a web browser&mdash;we will use this to build a "dashboard" web interface for the robot
 
 ## Install Visual Studio Code
 
 Visual Studio Code is our recommended program for writing Python code. (It is different than plain Visual Studio).
 
-- Download it here: [code.visualstudio.com](https://code.visualstudio.com/) and run the installer.
-- Start Visual Studio Code. On the right side under the *Customize* header there should be a link to install Python support. Click the link to install it in the background&mdash;the window will refresh when it is finished.
-
+- Download it here: [code.visualstudio.com](https://code.visualstudio.com/) and run the installer. The default options are fine.
+- Start Visual Studio Code
+- On the right side under the *Customize* header there should be a link to install Python support. Click the link to install it in the background&mdash;the window will refresh when it is finished.
 
 ## Install Driver Station
 
-*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections below.*
+*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.*
 
 Driver Station is used to control the robot from your computer using a joystick or gamepad. It only works on Windows.
 
