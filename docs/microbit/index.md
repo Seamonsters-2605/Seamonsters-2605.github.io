@@ -19,4 +19,4 @@
 
 ## Try Python!
 
-You can also use Mu to write Python code without a Micro:Bit. Click the **Mode** button and switch to Python 3 mode. Now click the **REPL** button, and in the REPL panel type `2 * 3` and press Enter.
+You can also use Mu to run Python code on your computer, without a Micro:Bit. Go to the [Learning Python](../learn-python) page.
