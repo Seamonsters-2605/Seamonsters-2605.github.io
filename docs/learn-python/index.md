@@ -1,6 +1,6 @@
 # Learning Python
 
-To start Python, open Command Prompt (search "cmd"), type `python` and press Enter. If that doesn't work try `py`.
+To start writing in Python, open Mu, click the **Mode** button to switch to **Python 3** mode, then click the **REPL** button to open the REPL panel.
 
 This is Python's "Interactive mode." You can type single commands and see their result. For example, type `2 * 3` and press Enter.
 
