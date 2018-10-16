@@ -12,7 +12,7 @@ git clone https://github.com/seamonsters-2605/SeamonstersTemplate
 > This will navigate to your Documents folder and download a repository hosted on GitHub called [SeamonstersTemplate](https://github.com/seamonsters-2605/SeamonstersTemplate). This is a template that we use for robot development, including some Python libraries we have developed over the years.
 - Open SeamonstersTemplate in Visual Studio Code and create your `robot.py` file inside. Write some robot code.
 - At the bottom of your `robot.py`, modify the last two lines:
-```
+```python
 if __name__ == '__main__':
     wpilib.run(MyRobot, physics_enabled=True)
 ```
