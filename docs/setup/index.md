@@ -66,8 +66,6 @@ Git is software for "version control," which allows us all to collaborate on the
     - `git config --global user.name "Your Name"`
     - `git config --global core.editor "code --wait"`
 
-You will need to learn how to use Git&mdash;see [this page](../git) for a tutorial.
-
 ## Create a GitHub account
 
 All of our robot code will be on GitHub, so anybody can view it, download it, and edit it.
