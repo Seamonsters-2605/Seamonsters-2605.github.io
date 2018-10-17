@@ -20,7 +20,7 @@ if __name__ == '__main__':
 - Open the Terminal in VS Code, and type `python robot.py sim`.
 - You have a robot simulator! The joystick movement should show feedback in the window. Click the "Teleoperated" option to enable your robot and drive it around. If you don't have joysticks, click in the X/Y axis boxes below Stick 0 and Stick 1.
 
-##Debugging the simulator in VS Code
+## Debugging the simulator in VS Code
 
 Being able to pause the program mid-run (called 'breaking into a debugger') is one of the most important skills to develop when diving into programming. Doing so allows you to step through code line-by-line, stop at any break-point, and inspect the state of your program to test and verify the code behaves as you'd expect it to. We've created a sim configuration for VS Code to allow you to have the editor start the simulation and attach to it for you. 
 - With your robot.py file open, click on the Debugger icon on the left panel of VS Code (It's the no-bug icon)
