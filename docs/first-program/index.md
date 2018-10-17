@@ -112,9 +112,13 @@ if __name__ == "__main__":
 These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
 
 ## Deploy the robot code
-To get your code onto the robot you must "deploy" it over WiFi. First check that the robot is on and nobody else is using it (only one person can be connected at a time). When the robot is ready there will be a WiFi network called "2605" (it can take a while to appear). Connect to this and open up Driver Station.
-
 *(if somebody else is using the robot, you may want to try the [robot simulator](../robot-sim) which lets you test your code without a robot.)*
+
+To get your code onto the robot you must "deploy" it over WiFi. First check that the robot is on and nobody else is using it (only one person can be connected at a time). When the robot is ready there will be a WiFi network called "2605" (it can take a while to appear). Connect to this network. Don't wait for the connection to finish.
+
+### Driver Station
+
+Open Driver Station. If you don't have Driver Station, skip this step.
 
 ![(screenshot of driver station)](driver-station.png)
 
@@ -126,6 +130,8 @@ Look for this panel in Driver Station. Check for these things:
 - The Joysticks light will turn green once you plug in the two joysticks.
 
 To the right of this panel there is a small gear icon. Click this and choose View Console. Resize the window so it is fully visible while you are deploying code. This is where error messages will appear if something is wrong or if you made a mistake (you will make lots of mistakes while programming).
+
+### Deploy
 
 In Visual Studio Code, choose View > Integrated Terminal. In the terminal window, type: `python robot.py deploy --builtin`. If that doesn't work replace `python` with `py`. The first time you deploy it will ask for the robot hostname. Type: `roborio-2605-frc.local`. If it asks you to "store key in cache," choose Yes.
 
