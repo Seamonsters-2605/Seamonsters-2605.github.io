@@ -12,3 +12,5 @@ Here are some ideas for changes to make. Look at the [Robot Programming Referenc
 - Add a button to the joystick which reverses the driving direction.
 - Add a shake button. Hold the button to shake the robot.
 - Add strafing (sideways movement). The mecanum wheels on the robot allow it to move sideways&mdash;try [this simulator](../../sketches/mecanum) to see how it works.
+
+([solutions](solutions))
