@@ -12,18 +12,18 @@ The "seamonsters" Python library includes a feature called `GeneratorBot` that a
 
 You can get the seamonsters library using Git. It's at `https://github.com/seamonsters-2605/SeamonstersTemplate`. If you make a robot file in this cloned Git repository, you can import all the functionality of the seamonsters library with `import seamonsters as sea`.
 
-We can use the obstacle course challenge we had as an example. Here was the first general way we solved it (based on Warren's solution).
+We can use the obstacle course challenge we had as an example. Here was the first general way we solved it.
 
 ```python
 class Robot(wpilib.IterativeRobot):
     def robotInit(self):
-        [create CANTalons, etc.]
+        # create talons...
 
-    def teleopInit(self):
+    def autonomousInit(self):
         self.count = 0
 
-    def teleopPeriodic(self):
-        self.count = self.count + 1
+    def autonomousPeriodic(self):
+        self.count += 1
         if self.count <= 100:
             [drive forward code]
         else if self.count <= 130:
@@ -35,7 +35,7 @@ class Robot(wpilib.IterativeRobot):
         # etc...
 ```
 
-Notice how we use the `self.count` variable as "state" to keep track of where we are in the sequence. This is necessary because the `teleopPeriodic` function constantly starts over 50 times per second.
+Notice how we use the `self.count` variable as "state" to keep track of where we are in the sequence. This is necessary because the `autonomousPeriodic` function constantly starts over 50 times per second.
 
 Here's how you could solve the obstacle course using Generators:
 
@@ -44,7 +44,7 @@ class Robot(sea.GeneratorBot):
     def robotInit(self):
         # create CANTalons, etc.
 
-    def teleop(self):
+    def autonomous(self):
         [drive forward code]
         for i in range(100):
             yield
@@ -58,12 +58,12 @@ class Robot(sea.GeneratorBot):
         # etc...
 ```
 
-The first thing to notice is that we no longer need `self.count`. There is also no longer `teleopInit` and `teleopPeriodic`, just `teleop`. *The `teleop` function stays "running" throughout the time the robot is enabled.* It just pauses occasionally to create timing and to synchronize with driver station. Remember that `yield` in this case means "wait 1/50th second". The code:
+The first thing to notice is that we no longer need `self.count`. There is also no longer `autonomousInit` and `autonomousPeriodic`, just `autonomous`. *The `autonomous` function stays "running" throughout the time the robot is enabled.* It just pauses occasionally to create timing and to synchronize with driver station. Remember that `yield` in this case means "wait 1/50th second". The code:
 ```python
 for i in range(100):
     yield
 ```
-means "yield 100 times" or "wait 2 seconds." During those two seconds, *only* those two lines in the function are running until 100 iterations are complete. This is unlike the previous model when the entire `teleopPeriodic` function was called repeatedly.
+means "yield 100 times" or "wait 2 seconds." During those two seconds, *only* those two lines in the function are running until 100 iterations are complete. This is unlike the previous model when the entire `autonomousPeriodic` function was called repeatedly.
 
 The `seamonsters` library actually includes a function to make these two lines shorter: `yield from sea.wait(100)`. `sea.wait` is also a generator, which runs for a certain number of iterations before stopping. `yield from` is Python code which means: run the generator repeatedly, and yield each time, until it's complete.
 
