@@ -17,14 +17,13 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [Building an Autonomous Sequence](#building-an-autonomous-sequence)
 - [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
+- [RoboRIO I/O](#roborio-io)
 - [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
 
 ## Deploying Code
 
-To deploy your robot, open the VS Code Terminal and type: `python robot.py deploy --builtin`. If that doesn't work, try `py` instead of `python`.
-
-SeamonstersTemplate has a script which makes this simpler: `.\deploy.bat robot.py`
+Run this command in VS Code terminal: `.\deploy.bat robot.py`. Replace `robot.py` with the name of your file.
 
 ## `wpilib.IterativeRobot`
 
@@ -130,7 +129,7 @@ You can find more Generator tricks [here](../generators/#seamonsters-features)
 
 Talons are motor controllers. You can send messages to them to drive the motors.
 
-Create a Talon in `robotInit`: `self.talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
+To use talons you will need to `import ctre` at the top of your code. Create a Talon in `robotInit`: `self.talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
 
 - 0: Back left
 - 1: Front right
@@ -162,14 +161,23 @@ The `talon.set` function has an optional first argument that allows different co
 
 Create a Joystick in `robotInit`: `self.joystick = wpilib.Joystick(0)`. The number identifies the joystick.
 
-- `self.joystick.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
-- `self.joystick.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
-- `self.joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
-- `self.joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
-- `self.joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
-- `self.joystick.getRawAxis(number)`: Get an axis of the joystick, from -1 to 1. Axes include X/Y movement, twist, throttles, and anything else on the joystick that isn't just on or off. The axes are numbered, and you can figure out which is which using Driver Station.
+- `joystick.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
+- `joystick.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
+- `joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
+- `joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
+- `joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
+- `joystick.getRawAxis(number)`: Get an axis of the joystick, from -1 to 1. Axes include X/Y movement, twist, throttles, and anything else on the joystick that isn't just on or off. The axes are numbered, and you can figure out which is which using Driver Station.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
+
+## RoboRIO I/O
+
+- [`wpilib.DigitalInput(channel)`](https://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/DigitalInput.html#wpilib.digitalinput.DigitalInput)
+    - `.get()`: Returns True or False
+- [`DigitalOutput(channel)`](https://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/DigitalOutput.html#wpilib.digitaloutput.DigitalOutput)
+    - `.set(value)`: Value is True or False
+- [`AnalogInput(channel)`](https://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/AnalogInput.html#wpilib.analoginput.AnalogInput)
+    - `.getVoltage()`: Returns volts as a Float
 
 ## `AHRS`
 
