@@ -23,7 +23,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 
 ## Deploying Code
 
-Run this command in VS Code terminal: `.\deploy.bat robot.py`. Replace `robot.py` with the name of your file.
+Open your code in VS Code, switch to the Debug tab on the left, select the "Deploy" configuration, and click the green play button.
 
 ## `wpilib.IterativeRobot`
 
