@@ -2,7 +2,7 @@
 
 ## Sensors on the robot
 
-### Encoders
+### Encoder
 
 ![AMT-103 Encoder](https://media.digikey.com/photos/CUI%20Photos/AMT103-V.jpg)
 
@@ -32,7 +32,7 @@
 - [Reference](../reference/#vision)
 - Works in simulator, with some configuration.
 
-### Proximity
+### Proximity Sensor
 
 ![Proximity Sensor](https://upload.wikimedia.org/wikipedia/commons/2/27/Sharp_GP2Y0A21YK_IR_proximity_sensor_cropped.jpg)
 
