@@ -4,7 +4,7 @@
 
 ### Encoder
 
-![AMT-103 Encoder](https://media.digikey.com/photos/CUI%20Photos/AMT103-V.jpg)
+<img src="https://media.digikey.com/photos/CUI%20Photos/AMT103-V.jpg" alt="AMT-103 Encoder" height="300">
 
 - Measures rotation of motor shaft.
 - Connects to Talon, which tracks cumulative position and velocity.
@@ -14,7 +14,7 @@
 
 ### NavX
 
-![NavX](http://www.kauailabs.com/store/image/data/navx_mxp_boardphoto_top_annotated.jpg)
+<img src="http://www.kauailabs.com/store/image/data/navx_mxp_boardphoto_top_annotated.jpg" alt="NavX" height="300">
 
 - Measures acceleration and rotation of robot (6 axes).
 - Connects to RoboRIO via pin header.
@@ -23,7 +23,7 @@
 
 ### Limelight
 
-![Limelight](https://cdn.shopify.com/s/files/1/2478/0822/files/Front_720x.jpg?v=1512551879)
+<img src="https://cdn.shopify.com/s/files/1/2478/0822/files/Front_720x.jpg?v=1512551879" alt="Limelight" height="300">
 
 - Tracks retroreflective vision targets.
 - Includes an LED array for illuminating target and a camera.
@@ -34,7 +34,7 @@
 
 ### Proximity Sensor
 
-![Proximity Sensor](https://upload.wikimedia.org/wikipedia/commons/2/27/Sharp_GP2Y0A21YK_IR_proximity_sensor_cropped.jpg)
+<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Sharp_GP2Y0A21YK_IR_proximity_sensor_cropped.jpg" alt="Proximity Sensor" height="300">
 
 - Measures distance to a surface by shining infrared light.
 - Connects to analog input of RoboRIO.
