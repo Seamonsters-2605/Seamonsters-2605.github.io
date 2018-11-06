@@ -50,9 +50,9 @@ You can read more about ["Control Theory"](https://en.wikipedia.org/wiki/Control
 
 Steps of a feedback loop:
 
-- Establish a "set point" or target position of the sensor
+- Establish a "Set Point" (SP) or target position of the sensor
 - Repeat continuously while running:
-    - Read the current sensor value (the "process variable")
-    - Determine the "error" (difference between current sensor value and the set point)
+    - Read the current sensor value (the "Process Variable" PV)
+    - Determine the "error" (difference between Process Variable and Set Point)
     - Apply a function to the error to determine correction output (with correct sign)
     - Update motors or other output devices to correct error
