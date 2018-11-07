@@ -44,7 +44,9 @@
 
 ## Feedback loops
 
-The purpose of a feedback loop is to use sensors and output devices (usually motors) to maintain a state. For example, we can use the NavX and drivetrain motors to keep the robot pointed in a direction. Specifically, this is a *negative* feedback loop, because if a sensor value moves too far in one direction, the motors will be driven in the opposite direction to compensate.
+Feedback means that the output of a system directly affects the input. For example, the shaft of a motor is connected to an encoder, meaning that the motor output directly changes the encoder input. We can then use the encoder input in our program to change the output of the motor, completing the loop. This is known as "closed-loop" control.
+
+In robotics programming we often use *negative* feedback loops, which attempt to maintain a state by dampening the stimulus of the input. For example we can use the NavX and drivetrain motors to keep the robot pointed in a direction. When the robot rotates too far in one direction, the code will compensate by running the motors in the opposite direction (negative feedback).
 
 You can read more about ["Control Theory"](https://en.wikipedia.org/wiki/Control_theory) on Wikipedia.
 
