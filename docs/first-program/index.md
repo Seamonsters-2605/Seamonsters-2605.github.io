@@ -147,7 +147,7 @@ If the "Communications" light on Driver Station doesn't turn green when you conn
 
 - Make sure the team number is set to 2605. Click the Gear tab on the left side of the window and check.
 - Try disconnecting and reconnecting. You usually have to do this the first time you connect after turning on the robot.
-- Click the Gear tab on the left side of the window, and try changing the team number to "10.26.5.22". If this works for you, you'll probably have to do that every time you start Driver Station. This is a problem that seems to affect certain laptops in combination with the new WiFi routers.
+- Click the Gear tab on the left side of the window, and try changing the team number to "10.26.5.2". If this works for you, you'll probably have to do that every time you start Driver Station. This is a problem that seems to affect certain laptops in combination with the new WiFi routers.
 
 ## Next Steps
 
