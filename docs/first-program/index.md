@@ -33,7 +33,7 @@ class MyRobot (wpilib.IterativeRobot):
         self.rightBack.set(rightSpeed)
 
 if __name__ == "__main__":
-    wpilib.run(MyRobot)
+    wpilib.run(MyRobot, physics_enabled=True)
 ```
 
 ## Explanation
@@ -106,10 +106,10 @@ Finally there are these 2 lines:
 
 ```python
 if __name__ == "__main__":
-    wpilib.run(MyRobot)
+    wpilib.run(MyRobot, physics_enabled=True)
 ```
 
-These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
+These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code. It also has a switch to enable "physics," or running the robot in the simulator.
 
 ## Deploy the robot code
 *(if somebody else is using the robot, you may want to try the [robot simulator](../robot-sim) which lets you test your code without a robot.)*
