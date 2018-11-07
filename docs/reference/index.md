@@ -136,7 +136,7 @@ To use talons you will need to `import ctre` at the top of your code. Create a T
 - 2: Front left
 - 3: Back right
 
-`talon.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
+`.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
 
 ### Using Encoders
 
@@ -144,16 +144,16 @@ Encoders track the rotation and speed of the motor. They count upwards continuou
 
 Encoders will *not* work in the simulator.
 
-- `talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
-- `talon.getSelectedSensorPosition(0)`: Get the position of the encoder.
-- `talon.getSelectedSensorVelocity(0)`: Get the velocity of the encoder, in ticks per 100ms.
+- `.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)`: Required before using encoders. Tells the talon what type of encoder to check for.
+- `.getSelectedSensorPosition(0)`: Get the position of the encoder.
+- `.getSelectedSensorVelocity(0)`: Get the velocity of the encoder, in ticks per 100ms.
 
 The `talon.set` function has an optional first argument that allows different control modes:
 
-- `talon.set(ctre.ControlMode.PercentOutput, speed)`: The default. Drive in voltage mode. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
-- `talon.set(ctre.ControlMode.Position, position)`: move to an encoder position.
-- `talon.set(ctre.ControlMode.Velocity, speed)`:  move at a target speed, in encoder ticks per 100ms.
-- `talon.config_kP/I/D/F(0, value, 0)`: The PID values control how the talon tries to approach a position or speed. These take experimentation to figure out. Try an I value of 0 and a D value between 3 and 6, and adjust the P value to control how strongly the talon tries to approach a position (in our competition robot we used P values anywhere from 0.15 to 30).
+- `.set(ctre.ControlMode.PercentOutput, speed)`: The default. Drive in voltage mode. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
+- `.set(ctre.ControlMode.Position, position)`: move to an encoder position.
+- `.set(ctre.ControlMode.Velocity, speed)`:  move at a target speed, in encoder ticks per 100ms.
+- `.config_kP/I/D/F(0, value, 0)`: The PID values control how the talon tries to approach a position or speed. These take experimentation to figure out. Try an I value of 0 and a D value between 3 and 6, and adjust the P value to control how strongly the talon tries to approach a position (in our competition robot we used P values anywhere from 0.15 to 30).
 
 [Complete reference](http://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
 
@@ -161,12 +161,12 @@ The `talon.set` function has an optional first argument that allows different co
 
 Create a Joystick in `robotInit`: `self.joystick = wpilib.Joystick(0)`. The number identifies the joystick.
 
-- `joystick.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
-- `joystick.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
-- `joystick.getMagnitude()`: Returns the distance from the center. 0 to 1.
-- `joystick.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
-- `joystick.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
-- `joystick.getRawAxis(number)`: Get an axis of the joystick, from -1 to 1. Axes include X/Y movement, twist, throttles, and anything else on the joystick that isn't just on or off. The axes are numbered, and you can figure out which is which using Driver Station.
+- `.getX()`: Returns the position of the joystick on the X axis. -1 (left) to 1 (right).
+- `.getY()`: Returns the position of the joystick on the Y axis. -1 (down) to 1 (up).
+- `.getMagnitude()`: Returns the distance from the center. 0 to 1.
+- `.getDirectionDegrees()` or `joystick.getDirectionRadians()`: Returns direction the joystick moves in. 0 is up, positive numbers move clockwise.
+- `.getRawButton(number)`: Returns whether the button is pressed. Each button has a number. 1 is the trigger. Other numbers can be found from the labels on the joystick, or with Driver Station.
+- `.getRawAxis(number)`: Get an axis of the joystick, from -1 to 1. Axes include X/Y movement, twist, throttles, and anything else on the joystick that isn't just on or off. The axes are numbered, and you can figure out which is which using Driver Station.
 
 [Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/Joystick.html)
 

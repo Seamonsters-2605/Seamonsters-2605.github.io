@@ -20,8 +20,9 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [Robot Simulator](docs/robot-sim): How to set up and use the simulator to test your robot code
 - [More Teleop Programming Practice](docs/more-teleop)
     - [Solutions](docs/more-teleop/solutions)
-- [Challenge: Obstacle Course](docs/obstacle-course)
+- [Challenge: Line Follower](docs/obstacle-course)
 - [Using Generators](docs/generators)
+- [Sensors and Feedback Loops](docs/sensors)
 - [How to Program a Mecanum Drive](docs/mecanum) (interactive!)
     - [Drivetrain Simulator](sketches/mecanum)
 
