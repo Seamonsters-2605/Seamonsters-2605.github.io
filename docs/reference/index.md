@@ -144,7 +144,7 @@ Encoders track the rotation and speed of the motor. They count upwards continuou
 
 Encoders will *not* work in the simulator.
 
-- `talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder)`: Required before using encoders. Tells the talon what type of encoder to check for.
+- `talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)`: Required before using encoders. Tells the talon what type of encoder to check for.
 - `talon.getSelectedSensorPosition(0)`: Get the position of the encoder.
 - `talon.getSelectedSensorVelocity(0)`: Get the velocity of the encoder, in ticks per 100ms.
 
