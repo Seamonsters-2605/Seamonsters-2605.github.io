@@ -61,8 +61,8 @@ Steps of a feedback loop:
 
 ## Your Task
 
-- Choose a sensor from the list above
-- Write code that will read the value of the sensor and print it continuously to the Driver Station console
-- Deploy and observe how you can change the value of the sensor
-- Come up with a scenario in which a feedback loop might be needed for this sensor
-- Write a feedback loop and test
+- Choose a sensor from the list above.
+- Write code that will read some measurement from the sensor and print it continuously to the Driver Station console.
+- Deploy and observe how you can change the value of the sensor. What range of values does it produce?
+- Come up with a scenario in which a feedback loop might be needed for this sensor.
+- Write a feedback loop and test.
