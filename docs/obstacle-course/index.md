@@ -1,4 +1,4 @@
-# Obstacle Course
+# Line Follower
 
 **Challenge:** Make a virtual robot follow a path.
 
