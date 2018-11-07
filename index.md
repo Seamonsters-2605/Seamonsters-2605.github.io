@@ -34,6 +34,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 ## Documentation
 
 - **[Robot Programming Reference](docs/reference)**
+- [IP Addresses](docs/ip-addresses)
 - [RobotPy documentation](http://robotpy.readthedocs.io/en/latest/)
 - [CTRE library documentation](https://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
 - [RobotPy utilities documentation](http://robotpy-wpilib-utilities.readthedocs.io/en/latest/)
