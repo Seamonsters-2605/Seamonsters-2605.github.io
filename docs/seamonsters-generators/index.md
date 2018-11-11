@@ -131,10 +131,12 @@ def generators_in_parallel():
     yield from sea.parallel(generator1(), generator2())
 ```
 
+For each iteration of `generators_in_parallel`, one iteration each will be completed of `generator1` and `generator2`. `sea.parallel` will continue until all of the given generators have completed.
+
 Here are some others:
 
 - `sea.wait(count)`: Yield a given number of iterations. You can use this to wait for an amount of time&mdash;`yield from sea.wait(50)` will wait 1 second. Equivalent to `WaitCommand`.
-- `sea.watch`: Like `sea.parallel`, except all generators will be stopped when the last one that you specified ends. So you can have the end of one action depend on an unrelated event. For example, drive forward until the camera sees a target.
+- `sea.watch(generators...)`: Like `sea.parallel`, except all generators will be stopped when the last one that you specified ends. So you can have the end of one action depend on an unrelated event. For example, drive forward until the camera sees a target.
 - `sea.timeLimit(generator, count)`: Run a generator with a time limit. After a number of iterations it will be stopped (catch the `GeneratorExit` exception to handle this).
 
 From their original purpose as iterators, generators can yield values. This can be a very useful property. We had a generator function last year which would yield `True` or `False` if a vision target was visible. We could call it with `sea.untilTrue(generator)`, which would stop it once it yielded True. Or we could call it with `sea.ensureTrue(generator, count)`, which would stop it *only* if it yielded True a certain number of times in a row, to prevent noise.
