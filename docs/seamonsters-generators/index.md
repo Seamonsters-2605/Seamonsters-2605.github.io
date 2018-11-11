@@ -1,6 +1,6 @@
 # Generators in the Seamonsters Library
 
-The [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) has a framework for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based code looks prettier and is more Pythonic too.
+The [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) has a framework for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based code looks cleaner and is more Pythonic too.
 
 ## But what is a generator??
 
@@ -143,7 +143,7 @@ From their original purpose as iterators, generators can yield values. This can 
 
 ## Conclusion
 
-Generators are neat and they worked pretty well for us! Here are some examples of how we used generators last year:
+Generators are neat, and they worked well for us last year! Though there was a learning curve as a different paradigm for programming, they ultimately made it easier for new programmers to see what was happening in autonomous sequences. Here are some examples of how we used generators last year:
 
 - [shooter.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/shooter.py): This was code for the conveyor. You can see a simple teleop loop, along with some functions for autonomous sequences. There are try/finally constructions for end conditions, and examples of `sea.wait` and `sea.watch`. Since this implements `GeneratorBot` it could be deployed to the robot as a standalone file, but for our final `robot.py` we ran this and a few other robot modules together using a `sea.parallel`.
 - [auto_strategies.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/auto_strategies.py). We built a library of generators for all of the actions of our robot, then in this file built a function for each autonomous sequence. Mostly these are sequential combinations, but you can also see usage of `sea.timeLimit`, `sea.ensureTrue`, `sea.watch`, etc.
