@@ -141,6 +141,15 @@ Here are some others:
 
 Usually our robot generators don't yield values (they just yield for timing). But yielding values each iteration can be a useful property that commands lack. We had a generator function last year which would yield `True` or `False` if a vision target was visible. We could call it with `sea.untilTrue(generator)`, which would stop it once it yielded True. Or we could call it with `sea.ensureTrue(generator, count)`, which would stop it *only* if it yielded True a certain number of times in a row, to prevent noise.
 
+Generators can also return values after they complete. So the equivalent to a `ConditionalCommand` would look like this:
+
+```python
+if yield from conditional_generator():
+    yield from generator1()
+else:
+    yield from generator2()
+```
+
 ## Conclusion
 
 Generators are neat, and they worked well for us last year! Though there was a learning curve as a different paradigm for programming, they ultimately made it easier for new programmers to see what was happening in autonomous sequences. Here are some examples of how we used generators last year:
