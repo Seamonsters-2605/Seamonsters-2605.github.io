@@ -23,6 +23,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [Challenge: Line Follower](docs/obstacle-course)
 - [Using Generators](docs/generators)
 - [Sensors and Feedback Loops](docs/sensors)
+- [PID Controllers](docs/pid-controllers)
 - [How to Program a Mecanum Drive](docs/mecanum) (interactive!)
     - [Drivetrain Simulator](sketches/mecanum)
 
