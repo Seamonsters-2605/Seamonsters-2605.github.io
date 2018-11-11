@@ -4,7 +4,7 @@ The [Seamonsters Python Library](https://github.com/seamonsters-2605/Seamonsters
 
 ## But what is a generator??
 
-Generators are a way to build iterators, to be used in a for loop. Instead of having to build a class which implements the iterable pattern, a generator can be a single function. Generators use the `yield` command to produce values for iteration. For example:
+Generators are a way to build iterators, to be used in a "for" loop. Instead of having to build a class which implements the iterator pattern, a generator can be expressed as a single function. Generators use the `yield` command to produce values for iteration. For example:
 
 ```python
 def my_generator():
