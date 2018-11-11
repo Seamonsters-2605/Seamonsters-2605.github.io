@@ -30,6 +30,8 @@ In this way generators can act like coroutines&mdash;functions can suspend at th
 
 The seamonsters library has a class called `GeneratorBot`. It is modelled after `IterativeRobot`, but instead of having, for example, `teleopInit` and `teleopPeriodic` functions, it has a `teleop` *generator*. This generator completes an iteration 50 times per second, locked to the Driver Station update interval (just like `teleopPeriodic`). This means that the `yield` command is equivalent to saying "pause for 1/50th of a second."
 
+Like Commands, this is a way to avoid using state variables to make complex sequences. Generators have some implicit state in that they save their location and variable values when they yield.
+
 ## Comparing commands to generators
 
 Commands in RobotPy take the form of classes, which look like this:
