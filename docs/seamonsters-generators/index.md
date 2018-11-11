@@ -1,6 +1,6 @@
 # Generators in the Seamonsters Library
 
-The [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) has a framework for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based code looks cleaner and is more Pythonic too.
+Last year we added a framework to our [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based autonomous code looks cleaner and is more Pythonic too.
 
 ## But what is a generator??
 
@@ -24,7 +24,7 @@ for x in my_generator():
 
 The `yield` command "pauses" the function and gives control over to the for loop. It saves the location in the function and all of the variable values, and when one loop iteration has completed, it returns back to where it left off.
 
-In this way generators can act like coroutines&mdash;functions can suspend at their current location and resume later.
+In this way generators act similar to coroutines&mdash;functions can suspend at their current location and resume later.
 
 ## Building a robot using generators
 
@@ -83,7 +83,7 @@ def my_generator():
         while not isFinished():
             execute()
             yield
-    except GeneratorExit:
+    except GeneratorExit: # when the loop breaks or generator is otherwise interrupted
         interrupted()
     finally:
         end()
@@ -114,7 +114,7 @@ def generator_sequence():
 >     yield
 > ```
 
-This is more intuitive than the Command example. Instead of building a group object and adding commands to it at the start of autonomous, you're just running each of them in order, with a function that seems to stay running throughout the autonomous period. You can even insert extra code in between. This is something that is very simple with generators but would require you to build entire new Command subclasses:
+This is more intuitive than the Command example. Instead of building a group object and adding commands to it at the start of autonomous, you're just calling each of them in order, with a function that seems to stay running throughout the autonomous period. You can even insert extra code in between. This is something that is very simple with generators but would require you to build entire new Command subclasses:
 
 ```python
 def generator_sequence():
@@ -124,7 +124,7 @@ def generator_sequence():
     yield from generator2()
 ```
 
-The seamonsters library comes with several functions to replicate the utility of commands. For example, you can **run generators in parallel:**
+The seamonsters library includes several functions to replicate the utility of commands. For example, you can **run generators in parallel:**
 
 ```python
 def generators_in_parallel():
@@ -136,10 +136,10 @@ For each iteration of `generators_in_parallel`, one iteration each will be compl
 Here are some others:
 
 - `sea.wait(count)`: Yield a given number of iterations. You can use this to wait for an amount of time&mdash;`yield from sea.wait(50)` will wait 1 second. Equivalent to `WaitCommand`.
-- `sea.watch(generators...)`: Like `sea.parallel`, except all generators will be stopped when the last one that you specified ends. So you can have the end of one action depend on an unrelated event. For example, drive forward until the camera sees a target.
 - `sea.timeLimit(generator, count)`: Run a generator with a time limit. After a number of iterations it will be stopped (catch the `GeneratorExit` exception to handle this).
+- `sea.watch(generators...)`: Like `sea.parallel`, except all generators will be stopped when the last one that you specified ends. So you can have the end of one action depend on an unrelated event. For example, drive forward until the camera sees a target.
 
-From their original purpose as iterators, generators can yield values. This can be a very useful property. We had a generator function last year which would yield `True` or `False` if a vision target was visible. We could call it with `sea.untilTrue(generator)`, which would stop it once it yielded True. Or we could call it with `sea.ensureTrue(generator, count)`, which would stop it *only* if it yielded True a certain number of times in a row, to prevent noise.
+Usually our robot generators don't yield values (they just yield for timing). But yielding values each iteration can be a useful property that commands lack. We had a generator function last year which would yield `True` or `False` if a vision target was visible. We could call it with `sea.untilTrue(generator)`, which would stop it once it yielded True. Or we could call it with `sea.ensureTrue(generator, count)`, which would stop it *only* if it yielded True a certain number of times in a row, to prevent noise.
 
 ## Conclusion
 
