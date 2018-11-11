@@ -1,6 +1,6 @@
 # Generators in the Seamonsters Library
 
-Last year we added a framework to our [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based autonomous code looks cleaner and is more Pythonic too.
+Last year we added a framework to our [Seamonsters Python Library](https://github.com/seamonsters-2605/SeamonstersTemplate) for building robots using Python [Generators](https://wiki.python.org/moin/Generators). The goal was to replace RobotPy's Command framework, which we used in 2017. Generator-based autonomous code looks cleaner and more concise than equivalent Command-based code.
 
 ## But what is a generator??
 
