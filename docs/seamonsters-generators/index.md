@@ -143,4 +143,7 @@ From their original purpose as iterators, generators can yield values. This can 
 
 ## Conclusion
 
-Generators are neat and they worked pretty well for us! Here's an example of how we used generators last year: [auto_strategies.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/auto_strategies.py). We built a library of generators for all of the actions of our robot, then built a function for each autonomous sequence. Mostly these are sequential combinations, but you can also see usage of `sea.timeLimit`, `sea.ensureTrue`, `sea.watch`, etc.
+Generators are neat and they worked pretty well for us! Here are some examples of how we used generators last year:
+
+- [shooter.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/shooter.py): This was code for the conveyor. You can see a simple teleop loop, along with some functions for autonomous sequences. There are try/finally constructions for end conditions, and examples of `sea.wait` and `sea.watch`. Since this implements `GeneratorBot` it could be deployed to the robot as a standalone file, but for our final `robot.py` we ran this and a few other robot modules together using a `sea.parallel`.
+- [auto_strategies.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/auto_strategies.py). We built a library of generators for all of the actions of our robot, then in this file built a function for each autonomous sequence. Mostly these are sequential combinations, but you can also see usage of `sea.timeLimit`, `sea.ensureTrue`, `sea.watch`, etc.
