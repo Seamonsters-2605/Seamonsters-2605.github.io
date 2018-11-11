@@ -151,3 +151,9 @@ Generators are neat, and they worked well for us last year! Though there was a l
 
     Here you can also see one downside of generators&mdash;they lack the "Subsystem" feature of commands for preventing conflicts. We had to use a flag called `teleopLock` which would be set whenever an autonomous function started, to temporarily pause the teleop loop from running.
 - [auto_strategies.py](https://github.com/Seamonsters-2605/CompetitionBot2018/blob/master/auto_strategies.py). We built a library of generators for all of the actions of our robot, then in this file built a function for each autonomous sequence. Mostly these are sequential combinations, but you can also see usage of `sea.timeLimit`, `sea.ensureTrue`, `sea.watch`, etc.
+
+
+Finally, here is the code for our implementation of generators for robots:
+
+- [bot.py](https://github.com/Seamonsters-2605/SeamonstersTemplate/blob/master/seamonsters/bot.py) for the GeneratorBot
+- [generators.py](https://github.com/Seamonsters-2605/SeamonstersTemplate/blob/master/seamonsters/generators.py) for general utilities
