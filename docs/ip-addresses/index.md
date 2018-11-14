@@ -7,6 +7,7 @@ All addresses on the robot network follow the format `10.26.5.X`. `26.5` comes f
 - WiFi Router / "Gateway": `10.26.5.1`
 - RoboRIO: `10.26.5.2`
 - Limelight: `10.26.5.6`
+- Your laptop: open Command Prompt and type `ipconfig`
 
 ## Web Interfaces
 
