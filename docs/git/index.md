@@ -7,17 +7,17 @@ A Git **repository** holds all the files for your project. GitHub is a website t
 To practice Git you will start by making your own personal repository on GitHub.
 
 - Log in to github.com
-- Click the `+` in the top right corner and choose `New repository`
-- Type a name and optional description. Make it Public, choose to add a README, and don't add a .gitignore or license.
-- Choose Create repository
+- Click the `+` in the top right corner and choose *New repository*
+- Type a name, make it Public, choose to add a README, and don't add a .gitignore or license.
+- Click *Create repository*
 
 You have a public repository now! It's availible for anyone to view at `github.com/your-name/your-repository-name`. You'll see a list of files&mdash;right now there's just one, `README.md` where you can put information to introduce your project.
 
 Now you are going to **clone** the repository to your computer. This not only downloads all the files, but links them with Git to the repository on GitHub, so any changes you make can be "pushed" online and "pulled" back to your computer.
 
-- Click the green "Clone or download" button to the right of the repository page. You will see a link that starts with `https://github.com/....`. Click the clipboard button to the right of this to copy the link. (there have been problems in the past with manually selecting this text and copying it).
-- Open Command Prompt. Type `cd Documents` and press enter. This will navigate to your Documents folder.
-- Type `git clone ` followed by a space, then paste the link you copied and press enter.
+- With the repository open, copy the URL in your web browser. It should look like `https://github.com/your-name/your-repository-name`
+- Open Command Prompt. Use `cd` to navigate to your Documents folder.
+- Type `git clone ` followed by a space, then right click to paste the link you copied. Press enter.
 
 If it worked you should see something like this:
 
