@@ -18,7 +18,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [RoboRIO I/O](#roborio-io)
-- [`AHRS`](#ahrs): The NavX, to detect rotation and motion of the robot
+- [`navx.AHRS`](#navxahrs): The NavX, to detect rotation and motion of the robot
 - [Vision](#vision)
 
 ## Deploying Code
@@ -179,19 +179,19 @@ Create a Joystick in `robotInit`: `self.joystick = wpilib.Joystick(0)`. The numb
 - [`AnalogInput(channel)`](https://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/AnalogInput.html#wpilib.analoginput.AnalogInput)
     - `.getVoltage()`: Returns volts as a Float
 
-## `AHRS`
+## `navx.AHRS`
 
 The NavX is a device which detects movement and rotation of the robot. An "AHRS" object represents a reference to the NavX.
 
 The NavX *will* work in the simulator!
 
-You will need to import AHRS: `from robotpy_ext.common_drivers.navx import AHRS`
+You will need to import navx: `import navx`
 
-Create an AHRS in `robotInit`: `self.ahrs = AHRS.create_spi()`
+Create an AHRS in `robotInit`: `self.ahrs = navx.AHRS.create_spi()`
 
 - `self.ahrs.getAngle()`: Returns the *total* rotation of the robot in degrees. For example, if the robot rotates clockwise for 2 full rotations, this will be 720.
 
-[Complete reference](http://robotpy.readthedocs.io/projects/utilities/en/latest/robotpy_ext.common_drivers.navx.html#robotpy_ext.common_drivers.navx.ahrs.AHRS)
+[Complete reference](https://robotpy.readthedocs.io/projects/navx/en/latest/api.html)
 
 ## Vision
 
