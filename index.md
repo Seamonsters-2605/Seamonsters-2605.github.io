@@ -4,7 +4,7 @@ This is a collection of tutorials and resources for learning robot programming, 
 
 The Seamonsters programming department uses [Python](https://www.python.org/) with the [pyfrc](http://pyfrc.readthedocs.io/en/latest/) library for writing robot code, and [GitHub](https://github.com/Seamonsters-2605) for collaboration on code.
 
-[Competition robot code for 2018](https://github.com/seamonsters-2605/CompetitionBot2018).
+[Competition robot code for 2019](https://github.com/seamonsters-2605/CompetitionBot2019).
 
 ## General Programming
 
