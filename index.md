@@ -6,13 +6,13 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 
 [Competition robot code for 2019](https://github.com/seamonsters-2605/CompetitionBot2019).
 
-## General Programming
+## General Programming Tutorials
 
 - [Learn Python](docs/learn-python): Links to resources for leaning Python
 - [Best Practices for Programming](docs/programming-best-practices)
 - [Python Namespaces](https://bytebaker.com/2008/07/30/python-namespaces/)
 
-## Robot Programming
+## Robot Programming Tutorials
 
 - [Micro:Bits](docs/microbit): Intro to robotics programming
 - [Setup Instructions](docs/setup): Tools you should have for robot programming
@@ -36,6 +36,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 ## Documentation
 
 - **[Robot Programming Reference](docs/reference)**
+- [Update RobotPy](docs/update-robotpy) during competition season
 - [IP Addresses](docs/ip-addresses)
 - [RobotPy documentation](http://robotpy.readthedocs.io/en/latest/)
 - [CTRE library documentation](https://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
