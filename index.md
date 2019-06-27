@@ -14,7 +14,6 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 
 ## Robot Programming Tutorials
 
-- [Micro:Bits](docs/microbit): Intro to robotics programming
 - [Setup Instructions](docs/setup): Tools you should have for robot programming
 - [First Program](docs/first-program): Writing your first robot program in Python
 - [Robot Simulator](docs/robot-sim): How to set up and use the simulator to test your robot code
@@ -25,8 +24,6 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [Sensors and Feedback Loops](docs/sensors)
 - [PID Controllers](docs/pid-controllers)
 - [Subsystem Controller Classes](docs/subsystems)
-- [How to Program a Mecanum Drive](docs/mecanum) (interactive!)
-    - [Drivetrain Simulator](sketches/mecanum)
 
 ## Git
 
@@ -48,3 +45,4 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 
 - [Control Systems tutorials on ScreenStepsLive](https://wpilib.screenstepslive.com/s/4485/m/13503#)
 - [Chief Delphi programming forum](https://www.chiefdelphi.com/forums/forumdisplay.php?f=51)
+- [Drivetrain Simulator](sketches/mecanum)
