@@ -21,6 +21,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
     - [Solutions](docs/more-teleop/solutions)
 - [Challenge: Line Follower](docs/obstacle-course)
 - [Using Generators](docs/generators)
+- [Creating a Dashboard](docs/dashboard)
 - [Sensors and Feedback Loops](docs/sensors)
 - [PID Controllers](docs/pid-controllers)
 - [Subsystem Controller Classes](docs/subsystems)
