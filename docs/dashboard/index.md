@@ -57,6 +57,7 @@ This defines the *function* `main()` that all dashboard classes need to have. It
 - All functions in classes need to have a `self` perameter. `self` refrences the `PracticeDashboard` class.
 - `robot` is the robot that the dashboard is attached to.
 - `appCallback` is the function called after `main` is done running. (You don't need to worry about this one)
+
 ```python
 root = gui.VBox(gui.Label("Drive Controls"), width = 600, margin = "0px auto")
 ```
@@ -75,6 +76,7 @@ driveForwardButton.set_on_click_listener(robot.c_driveForward)     driveBox.appe
 - The first line creates a new `Button` that says "Drive Forward" on it
 - The second line adds an event to be called when the button is pressed. `c_driveForward` is a function of the robot that the dashboard is attached to. 
 - The third line adds the button to the `driveBox` that was created earlier.
+
 ```python
 stopButton = gui.Button("Stop")
 stopButton.set_on_click_listener(robot.c_stop)
