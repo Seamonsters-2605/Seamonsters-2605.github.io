@@ -105,13 +105,13 @@ def teleop(self):
 ```
 ```python
 def updateDashboardGenerator(self):
+    if self.app is not None:
+        self.app.clearEvents()
+    while True:
+        v = None
         if self.app is not None:
-            self.app.clearEvents()
-        while True:
-            v = None
-            if self.app is not None:
-                v = self.app.doEvents()
-            yield v
+            v = self.app.doEvents()
+        yield v
 ```
 `teleop` just continually calls `updateDashboardGenerator` which goes through the events queued by the dashboard and executes them. The reason that `updateDashboardGenerator` does not cause the code to get stuck in an infinite loop from `while True:` is because it yields a value, making it a generator. Every time `teleop` is called (50 times per second) it yields from the `updateDashboardGenerator` function and then continues on. In this case, there is nothing else in the `teleop` function but if there was, it would run too.
 ```python

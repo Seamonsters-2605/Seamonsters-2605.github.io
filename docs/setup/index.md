@@ -44,7 +44,7 @@ Visual Studio Code is our recommended program for writing Python code. (It is di
 
 ## Install Driver Station
 
-*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.*
+*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.* **Drivers station does not work on the school laptops.**
 
 Driver Station is used to control the robot from your computer using a joystick or gamepad. It only works on Windows.
 
