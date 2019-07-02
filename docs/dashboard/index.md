@@ -113,7 +113,7 @@ def updateDashboardGenerator(self):
             v = self.app.doEvents()
         yield v
 ```
-`teleop` just continually calls `updateDashboardGenerator` which goes through the events queued by the dashboard and executes them. The reason that `updateDashboardGenerator` does not cause the code to get stuck in an infinite loop from `while True:` is because it yields a value, making it a generator. Every time `teleop` is called (50 times per second) it yields from the `updateDashboardGenerator` function and then continues on. In this case, there is nothing else in the `teleop` function but if there was, it would run too.
+`teleop` just continually calls `updateDashboardGenerator` which goes through the events queued by the dashboard and executes them. Since `updateDashboardGenerator` has a `yield` in it, it is a generator. If you wanted to run a second generator at the same time (like if you wanted to be able to drive the robot manually) you would use `sea.parallel()` and it will run all the generators imputted at the same time.
 ```python
 @sea.queuedDashboardEvent
 def c_driveForward(self, button):
