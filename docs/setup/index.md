@@ -7,7 +7,7 @@ You should have a laptop for writing robot code. You can use any OS to write and
 All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
-- Download the latest version of **Python 3** (NOT Python 2). The current version (as of July 2018) is 3.7.0.
+- Download the latest version of **Python 3** (NOT Python 2). The current version (as of March 2019) is 3.7.3.
 - Run the installer, and change the following options:
     - On Windows, check the box to "Add Python 3.7 to PATH"
     - If you are using a school laptop, uncheck "Install launcher for all users"
@@ -73,3 +73,13 @@ All of our robot code will be on GitHub, so anybody can view it, download it, an
 
 - If you don't already have a GitHub account, create one here: [github.com/join](https://github.com/join)
 - Send me your username on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
+
+## Clone the Seamonsters Repository
+
+Open Command Prompt and type these commands:
+```
+cd Documents
+git clone https://github.com/seamonsters-2605/SeamonstersTemplate
+```
+>This will navigate to your Documents folder and download a repository hosted on GitHub called SeamonstersTemplate. This is a template that we use for robot development, including some Python libraries we have developed over the years.
+

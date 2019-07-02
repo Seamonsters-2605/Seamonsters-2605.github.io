@@ -9,7 +9,7 @@ We will be using the [remi library](https://buildmedia.readthedocs.org/media/pdf
 cd Documents
 git clone https://github.com/Seamonsters-2605/practice-dashboard
 ```
->This will navigate to your documents folder and clone the [practice-dashboard](https://github.com/Seamonsters-2605/practice-dashboard) repository on to your computer from GitHub.
+>This will navigate to your Documents folder and clone the [practice-dashboard](https://github.com/Seamonsters-2605/practice-dashboard) repository on to your computer from GitHub.
 
 - Open the repository in VSCode and find the file called `dashboard.py` (it should be an empty file) and write this code. *Please don't copy and paste, it will not help you learn*
 
