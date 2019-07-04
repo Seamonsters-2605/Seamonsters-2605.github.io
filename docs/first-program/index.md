@@ -1,116 +1,157 @@
 # Writing your first program for the robot
 
-Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, and Driver Station.
+Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, Driver Station, and the seamonsters library.
 
 Open Visual Studio Code. Choose "Open folder", and create a new folder inside Documents to contain your robot code. Now that you have the folder open, create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
 
-We will be writing code for last year's robot. This is an example of a simple "Tank Drive." A Tank Drive is driven with two joysticks, one each to drive the left and right sides of the robot.
+We will be writing a simple tank drive with two wheels, one on each side of the robot. Here is a visual if that helps, the numbers are in feet:
 
-Type in your own version of the following code. *Please don't copy and paste!*
+![(robot example)](tank-drive.png)
+
+Follow along and write your own version of each of the lines of code. *Please don't copy and paste*
 
 ```python
 import wpilib
 import ctre
+import seamonsters as sea 
+import math
+```
+Each of these lines starts with the word `import`. This makes it so you can refrence a library in your code. A library is a collection of code that can be used in another file.
+- `wpilib`: for controling the robot
+- `ctre`: for sending commands to talons that control motors
+- `seamonsters`: code that we have written over the years to improve on existing libraries and add helper functions
+- `math`: python's built in math library
 
-class MyRobot (wpilib.IterativeRobot):
+The part in line three that says `as sea` means when refrencing the `seamonsters` library, all you need to do is write `sea`.
+```python
+class PracticeBot(sea.GeneratorBot):
+```
+Here, we are creating a *class* which is a data type like an integer or string. Classes have their own functions and variables that are universal to all members of that class. Our class is named `PracticeBot` and it is using the class `GeneratorBot` from the seamonsters library to build off of.
+
+```python
+    def robotInit(self):
+```
+This line defines the function `robotInit` with the argument of `self`. All robots need to have the `robotInit` function to work. It is the first thing that is called when the robot is created and it is where you put all of your variables like the talons or joysticks. The word `self` in parenthesis refers to your `PracticeBot` class. All functions in a class need to have the `self` keyword in parentheisis. Notice this line is indented, this means that it is inside of the `PracticeBot` class.
+```python
+        self.joystick = wpilib.Joystick(0)
+```
+This line is indented one step farther, meaning that it is part of the `robotInit` function which is part of the `PracticeBot` class. Python uses colons and indentation to indicate the structure of code. First, we declare a variable named `joystick`. It has the word `self` in front of it that represents the `PracticeBot` class and then a period, followed by it's name (`joystick`), meaning that it can be refrenced from any part in the class and outside of it. We set the `joystick` to a `Joystick` object from the `wpilib` library. (notice the difference in capitalization, classes always have the first letter capitalized while variables are camel cased) The 0 in parenthesis means that you are talking about the first joystick you have plugged in to the computer. If you wanted to have a second joystick, you would make another variable and set it to `wpilib.Joystick(1)`.
+```python
+        self.initDrivetrain()
+```
+This line is at the same level of indentation as the line before, meaning that it is also part of the `robotInit` function. Here we are calling the `initDrivetrain` function that is part of the `PracticeBot` class which we will define next.
+```python
+    def initDrivetrain(self):
+```
+This is the start of the `initDrivetrain` function. Like `robotInit`, it has the word `self` in parenthesis which is how we were able to call it by saying `self.initDrivetrain()`. You need to include the parenthesis in a function call. Notice that this line has only one layer of indentation. This means that it is not part of the `robotInit` function but *is* part of `PracticeBot`.
+```python
+        leftTalon = ctre.WPI_TalonSRX(0)
+        rightTalon = ctre.WPI_TalonSRX(1)
+```
+Here we are defining two variables to represent the talons that control the motors. The numbers 0 and 1 do **not** represent the first and second talons connected to the robot, but the talons that are numbered 0 and 1 (there is a way to change the numbers but we won't talk about that yet) The `leftTalon` and `rightTalon` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
+```python
+        for talon in [leftTalon, rightTalon]:
+            talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)
+```
+This uses a for loop to go through and call the `configSelectedFeedbackSensor` function on both of the talons to set them up to use the [quadrature](https://www.dynapar.com/technology/encoder_basics/quadrature_encoder/) configuration. Basicallly if we did not do this, there is a chance that some of the encoders would have one type of output while others had a diffenent type of output and the robot would not drive properly.
+```python
+        leftWheel = sea.AngledWheel(leftTalon, -1, 0, math.pi/2, 31291.1352, 16)
+        rightWheel = sea.AngledWheel(rightTalon, 1, 0, math.pi/2, 31291.1352, 16)
+```
+Here we make two wheel objects from the `seamonsters` library. To create an `AngledWheel` you must give it the following perameters: 
+- A ctre.WPI_TalonSRX (the leftTalon or rightTalon)
+- The x and y position of the wheel in feet. If you look at the example image of our robot, you can see that the middle of the left wheel is at (-1, 0) and the right one is at (1, 0)
+- The direction the wheel is facing in radians. 0 is right and our wheels are facing forward so that is 90 degrees. 90 in radians is pi / 2.
+- The encoder counts per foot. For the encoders we use with our wheel size and gear ratio, it is 31291.1352.
+- The velocity at 100% in voltage mode. Our motors are 16 feet per second
+```python
+        self.drivetrain = sea.SuperHolonomicDrive()
+        self.drivetrain.addWheel(leftWheel)
+        self.drivetrain.addWheel(rightWheel)
+```
+First we create a `SuperHolonomicDrive` object from the `seamonsters` library and name it `drivetrain`. The `SuperHolomicDrive` class is a universal drivetrain controller that works with all types of drivetrains. Since `drivetrain` has the word `self` in front of it, it can be refrenced outside of `initDrivetrain`. Then we add the left and right wheels to the drivetrain.
+```python
+        for wheel in self.drivetrain.wheels:
+            wheel.driveMode = ctre.ControlMode.PercentOutput
+```
+These lines loop through the wheels in the drivetrain and set their mode to `PercentOutput` so all the motors are consistent and the robot drives correctly.
+```python
+        sea.setSimulatedDrivetrain(self.drivetrain)
+```
+This allows the drivetrain to work in the robot simulator when you go to the debug tab in VSCode and run the simulation mode.
+```python
+    def teleop(self):
+        while True:
+            #the next part goes here          
+            yield
+```
+These lines define the `teleop` function which is called once initally and then *iterated* 50 times per second. `yield` completes one iteration. If the `while True` was not there, everything would only run one time and not execute 50 times per second. Make sure `yield` is the last line in `teleop`, we will write the next few blocks of code in between `while True` and `yield`.
+```python
+            mag = sea.deadZone(self.joystick.getY())
+            mag *= 5
+```
+First we define the variable `mag` which we will use as the speed we drive the robot. `self.joystick.getY()` returns a number between -1 and 1 for how far the `joystick` object we made earlier is being pushed on the y axis. The `deadZone` function, which is part of the `seamonsters` library, makes tiny values outputted by the joystick not affect robot movement. Then we multiply `mag` by 5 because that is the maximum feet per second that the robot can go.
+```python
+            turn = sea.deadZone(self.joystick.getX())
+            turn *= math.radians(300)
+```
+Here we make the variable `turn` which will be used to tell the robot how fast to turn. It is set to how far the joystick is being pushed on its x axis with the dead zone applied like what we did for `mag`. Then `turn` is multiplied by 300 in radians because that is the maximum radians per second that the robot can drive.
+```python
+            self.drivetrain.drive(mag, math.pi/2, turn)
+```
+Now we are ready to drive the robot. We get to call the `drive` function on the `drivetrain` which takes in the arguments magnitude, direction, and turn. We set the magnitude and turn to `mag` and `turn` that we just defined. Direction is set to pi / 2 which is forwards.
+```python
+if __name__ == "__main__":
+    wpilib.run(PracticeBot)
+```
+These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
+```python
+import wpilib
+import ctre
+import seamonsters as sea 
+import math
+
+class PracticeBot(sea.GeneratorBot):
 
     def robotInit(self):
-        self.leftFront = ctre.WPI_TalonSRX(2)
-        self.rightFront = ctre.WPI_TalonSRX(1)
-        self.leftBack = ctre.WPI_TalonSRX(0)
-        self.rightBack = ctre.WPI_TalonSRX(3)
+        self.joystick = wpilib.Joystick(0)
 
-        self.leftJoystick = wpilib.Joystick(0)
-        self.rightJoystick = wpilib.Joystick(1)
+        self.initDrivetrain()
+    
+    def initDrivetrain(self):
+        leftTalon = ctre.WPI_TalonSRX(0)
+        rightTalon = ctre.WPI_TalonSRX(1)
+        
+        for talon in [leftTalon, rightTalon]:
+            talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)
 
-    def teleopPeriodic(self):
-        leftSpeed = self.leftJoystick.getY()
-        rightSpeed = self.rightJoystick.getY()
+        leftWheel = sea.AngledWheel(leftTalon, -1, 0, math.pi/2, 31291.1352, 16)
+        rightWheel = sea.AngledWheel(rightTalon, 1, 0, math.pi/2, 31291.1352, 16)
 
-        self.leftFront.set(leftSpeed)
-        self.leftBack.set(leftSpeed)
-        self.rightFront.set(rightSpeed)
-        self.rightBack.set(rightSpeed)
+        self.drivetrain = sea.SuperHolonomicDrive()
+        self.drivetrain.addWheel(leftWheel)
+        self.drivetrain.addWheel(rightWheel)
+
+        for wheel in self.drivetrain.wheels:
+            wheel.driveMode = ctre.ControlMode.PercentOutput
+
+        sea.setSimulatedDrivetrain(self.drivetrain)
+
+    def teleop(self):
+        while True:
+            mag = sea.deadZone(self.joystick.getY())
+            mag *= 5 
+            turn = sea.deadZone(self.joystick.getX())
+            turn *= math.radians(300)
+
+            self.drivetrain.drive(mag, math.pi/2, turn)
+            
+            yield
 
 if __name__ == "__main__":
-    wpilib.run(MyRobot, physics_enabled=True)
+    wpilib.run(PracticeBot)
 ```
-
-## Explanation
-
-```python
-import wpilib
-import ctre
-```
-This includes Python libraries for you to use in your program. `wpilib` is the library for programming FRC robots, and `ctre` allows you to control the motors using the "Talon" motor controllers.
-
-```python
-class MyRobot (wpilib.IterativeRobot):
-```
-
-This line creates your robot *class*, which contains all the code for your robot. In parentheses is `wpilib.IterativeRobot`, which is the base class that all robot code is built off of.
-
-```python
-def robotInit(self):
-```
-
-This line defines a *function* inside the robot class (it is indented to show that it's inside the class). Functions group together code that can be used/"called" later. Certain functions are special for an IterativeRobot&mdash;for example, any code in `robotInit` will be called when the program first starts. So this is where we do all the necessary setup, like getting the motors and joysticks.
-
-The `self` in parentheses is an *argument* to a function. Any function inside a class at least needs "self" as an argument. `self` is a reference to the robot *object* which has all of the functions and variables of the robot.
-
-```python
-self.leftFront = ctre.WPI_TalonSRX(2)
-self.rightFront = ctre.WPI_TalonSRX(1)
-self.leftBack = ctre.WPI_TalonSRX(0)
-self.rightBack = ctre.WPI_TalonSRX(3)
-```
-
-This creates `WPI_TalonSRX` objects for each of the 4 wheels on the robot (we use `ctre.WPI_TalonSRX` because WPI_TalonSRX is part of the ctre library we imported earlier). Talons are controllers connected to each motor&mdash;creating these objects lets us send commands to them (over the *CAN network*) to drive the motors. The numbers in parentheses are unique identifier numbers for each Talon.
-
-The WPI_TalonSRX objects are then stored in variables which are named based on the location of the wheels. Prefixing the variable name with `self.` means that the variable belons to the robot object, not the function. This means we can access those variables in other functions, so we can use the Talons later.
-
-```python
-self.leftJoystick = wpilib.Joystick(0)
-self.rightJoystick = wpilib.Joystick(1)
-```
-
-Here two joysticks are defined, and again stored in `self.` variables so we can access them later. `wpilib.Joystick` means that `Joystick` is part of the `wpilib` library which we imported earlier.
-
-```python
-def teleopPeriodic(self):
-```
-
-This is another special IterativeRobot function. Any code in `teleopPeriodic` will be called *50 times per second* while the robot is enabled. So 50 times a second, we can do things like check the joystick input and update the motor output.
-
-```python
-leftSpeed = self.leftJoystick.getY()
-rightSpeed = self.rightJoystick.getY()
-```
-
-Here we read the **Y** position (the up/down movement) of each joystick. We use the left/right joystick objects we created earlier in `robotInit` and call the `getY()` function (because it's a function, it needs a set of parentheses) which gives the y position. Then that value is stored in a variable (`leftSpeed` and `rightSpeed`).
-
-Y positions are between -1 (fully down) and 1 (fully up).
-
-```python
-self.leftFront.set(leftSpeed)
-self.leftBack.set(leftSpeed)
-self.rightFront.set(rightSpeed)
-self.rightBack.set(rightSpeed)
-```
-
-Now we use the WPI_TalonSRX objects we created earlier in `robotInit`, to drive each of the motors. The `set()` function lets you control the speed of each motor. It takes as input a number between -1 (full speed reverse) and 1 (full speed forward), which conveniently is the same range of values that the joystick `getY()` function gave us.
-
-Again, all this code is run 50 times per second. So, 50 times per second, the positions of the left and right joysticks are read, and the speeds of all 4 motors are updated accordingly.
-
-Finally there are these 2 lines:
-
-```python
-if __name__ == "__main__":
-    wpilib.run(MyRobot, physics_enabled=True)
-```
-
-These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code. It also has a switch to enable "physics," or running the robot in the simulator.
-
+This is what the code should look like
 ## Deploy the robot code
 *(if somebody else is using the robot, you may want to try the [robot simulator](../robot-sim) which lets you test your code without a robot.)*
 
