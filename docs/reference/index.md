@@ -11,8 +11,7 @@ import seamonsters as sea
 If you want to use the seamonsters library or the robot simulator, you will need to clone with Git or download [SeamonstersTemplate](https://github.com/seamonsters-2605/SeamonstersTemplate), and make your `robot.py` file in this folder. [Here](../robot-sim) is a tutorial on using the robot simulator.
 
 - [Deploying Code](#deploying-code)
-- [`wpilib.IterativeRobot`](#wpilibiterativerobot): All of your robot code goes here
-- [`sea.GeneratorBot`](#seageneratorbot): An alternative to IterativeRobot, for more complex sequences
+- [`sea.GeneratorBot`](#seageneratorbot): All of your robot code goes here
 - [Making a Generator](#making-a-generator)
 - [Building an Autonomous Sequence](#building-an-autonomous-sequence)
 - [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
@@ -25,36 +24,9 @@ If you want to use the seamonsters library or the robot simulator, you will need
 
 Open your code in VS Code, switch to the Debug tab on the left, select the "Deploy" configuration, and click the green play button.
 
-## `wpilib.IterativeRobot`
-
-This is where all of your robot code will go.
-
-Define an IterativeRobot:
-
-```python
-import wpilib
-
-class MyRobot (wpilib.IterativeRobot):
-
-    # put robot functions here
-
-if __name__ == "__main__":
-    wpilib.run(MyRobot, physics_enabled=True)
-```
-
-You can include special functions which are called at different points in your IterativeRobot. These include:
-
-- `def robotInit(self)`: Called when the robot turns on.
-- `def teleopInit(self)`: Called when the robot is enabled in teleop mode.
-- `def teleopPeriodic(self)`: Called 50 times per second in teleop mode.
-- `def autonomousInit(self)`: Called when the robot is enabled in autonomous mode.
-- `def autonomousPeriodic(self)`: Called 50 times per second in autonomous mode.
-
-[Complete reference](http://robotpy.readthedocs.io/projects/wpilib/en/latest/wpilib/IterativeRobot.html)
-
 ## `sea.GeneratorBot`
 
-An alternative to IterativeRobot, for more complex sequences.
+This is where all of your robot code will go.
 
 Define a GeneratorBot:
 
@@ -70,7 +42,7 @@ if __name__ == "__main__":
     wpilib.run(MyRobot, physics_enabled=True)
 ```
 
-GeneratorBot supports a different set of robot functions. See the next section for how to make a generator.
+You can include special functions which are called at different points in your GeneratorBot. These include:
 
 - `def robotInit(self)`: Called when the robot turns on.
 - `def teleop(self)`: The teleop Generator. Use `yield` to wait for 1/50th of a second.
@@ -124,6 +96,24 @@ def generatorsInParallel():
 ```
 
 You can find more Generator tricks [here](../generators/#seamonsters-features)
+
+## `sea.SuperHolonomicDrive`
+
+A universal drivetrain controller. Works on all types of drivetrains.
+
+To use the SuperHolonomicDrive you need to `import seamonsters as sea`. Create a SuperHolonomicDrive in `robotInit` : `self.drivetrain = sea.SuperHolonomicDrive()`. Add wheels to the drivetrain with `self.drivetrain.addWheel(leftFrontWheel)`.
+
+### Wheel types
+
+- `AngledWheel`: A wheel oriented in a fixed direction
+- `MechanumWheel`: An angled Mechanum wheel
+- `SwerveWheel`: An `AngledWheel` that can rotate (like a shopping cart)
+
+```
+for wheel in self.drivetrain.wheels:
+    wheel.driveMode = ctre.ControlMode.PercentOutput
+```
+It is important to set all the wheels to the same control mode before driving. The modes are `PercentOutput`, `Velocity`, and `Position`. `PercentOutput` is sent a percentage of the total voltage and because of that can be unreliable. `Velocit` and `Position` are given a target velocity/position and try to get to that. They are more reliable.
 
 ## `ctre.WPI_TalonSRX`
 
