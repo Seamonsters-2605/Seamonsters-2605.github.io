@@ -14,6 +14,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [`sea.GeneratorBot`](#seageneratorbot): All of your robot code goes here
 - [Making a Generator](#making-a-generator)
 - [Building an Autonomous Sequence](#building-an-autonomous-sequence)
+- [`sea.SuperHolonomicDrive`](#seasuperholonomicdrive)
 - [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [RoboRIO I/O](#roborio-io)
