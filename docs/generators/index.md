@@ -1,17 +1,5 @@
 # Generators
 
-This is a new way to build robots!
-
-One difficulty with building a robot program is timing. The program has to synchronize with other important systems, like constantly reading data from the Driver Station or sending data to Talons. That's why we've been writing robot programs the way we have so far, with a function that is called 50 times a second, and saves important state so it will know where it is when it's called again. You can't just have a function that runs continuously for the lifetime of the robot, it has to work around the timing of the robot program.
-
-*...except you actually can!*
-
-We can use a feature of Python called Generators. The original purpose of Generators was to produce sequences, however what makes them useful to us is that they can "pause" themselves at any point, to be returned to later. The important command here is `yield`, which causes execution to temporarily leave the function, to return later (this is built in to Python). We can use generators in our robots to assemble complex sequences.
-
-But first...
-
-## What is a generator?
-
 *Any function that has the `yield` command is a Generator*.
 
 Yield is like a "pause" command for a function. It saves the place in the function, including all of the variable values, and exits to return later. Since generators are "pausable," they aren't called like a normal function. They don't have a single return value, and they stay "active" over a period of time. The simplest way to call them is to use a `for` loop.
@@ -49,65 +37,6 @@ End
 ```
 
 Notice how execution alternates between the `my_generator` function and the body of the `for` loop.
-
-## Writing robots with generators
-
-The "seamonsters" Python library allows us to use Generators for writing robots. The Seamonsters Library is availible in the SeamonstersTemplate repository on GitHub. You can import it and use it in your code by writing `import seamonsters as sea` at the top of the file.
-
-To make a robot using generators, you extend from `sea.GeneratorBot` instead of `wpilib.IterativeRobot`. Then, instead of defining, for example, `teleopInit` and `teleopPeriodic` function, you define a `teleop` *generator*, which is iterated 50 times per second. *When you use the `yield` command in a robot, it means wait for 1/50th of a second*.
-
-We can use the line follower challenge as an example. Here was the first general way we solved it.
-
-```python
-class Robot(wpilib.IterativeRobot):
-    def robotInit(self):
-        # create talons...
-
-    def autonomousInit(self):
-        self.count = 0
-
-    def autonomousPeriodic(self):
-        self.count += 1
-        if self.count <= 46:
-            [drive forward code]
-        else if self.count <= 62:
-            [turn right code]
-        else if self.count <= 108:
-            [drive forward code]
-        else if self.count <= 124:
-            [turn left code]
-        # etc...
-```
-
-Notice how we use the `self.count` variable as "state" to keep track of where we are in the sequence. This is necessary because the `autonomousPeriodic` function constantly starts over 50 times per second, so we have to save our place.
-
-Here's how you could solve the obstacle course using Generators:
-
-```python
-class Robot(sea.GeneratorBot):
-    def robotInit(self):
-        # create CANTalons, etc.
-
-    def autonomous(self):
-        [drive forward code]
-        for i in range(46):
-            yield
-        [turn right code]
-        for i in range(62):
-            yield
-        [drive forward code]
-        for i in range(108):
-            yield
-        [turn left code]
-        # etc...
-```
-
-The first thing to notice is that we no longer need `self.count`. There is also no longer `autonomousInit` and `autonomousPeriodic`, just `autonomous`. *The `autonomous` function stays "running" throughout the time the robot is enabled.* It just pauses occasionally to create timing and to synchronize with Driver Station. Remember that `yield` in this case means "wait 1/50th second", so when we write:
-```python
-for i in range(100):
-    yield
-```
-This means "yield 100 times" or "wait 2 seconds." During those two seconds, *only* those two lines in the function are running until 100 iterations are complete. This is unlike the previous model when the entire `autonomousPeriodic` function was called repeatedly.
 
 ## Combining Generators
 
