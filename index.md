@@ -20,6 +20,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [More Teleop Programming Practice](docs/more-teleop)
     - [Solutions](docs/more-teleop/solutions)
 - [Challenge: Line Follower](docs/obstacle-course)
+    - [Solutions](docs/obstacle-course/solutions)
 - [Using Generators](docs/generators)
 - [Creating a Dashboard](docs/dashboard)
 - [Sensors and Feedback Loops](docs/sensors)
