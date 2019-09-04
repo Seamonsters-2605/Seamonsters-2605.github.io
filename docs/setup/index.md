@@ -23,7 +23,7 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 ```
 python -m pip install --upgrade pip
-python -m pip install --upgrade pylint pyfrc robotpy-ctre robotpy-navx pygame remi
+python -m pip install --upgrade pylint pyfrc robotpy-ctre robotpy-rev robotpy-navx pygame remi
 ```
 
 > `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. The first command updates pip to the latest version. The second command installs 5 packages which give you the necessary libraries for writing and testing robot code.
@@ -44,7 +44,7 @@ Visual Studio Code is our recommended program for writing Python code. (It is di
 
 ## Install Driver Station
 
-*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.* **Drivers station does not work on the school laptops.**
+*The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.* **Driver station does not work on the school laptops.**
 
 Driver Station is used to control the robot from your computer using a joystick or gamepad. It only works on Windows.
 
