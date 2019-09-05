@@ -23,13 +23,13 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 ```
 python -m pip install --upgrade pip
-python -m pip install --upgrade pylint pyfrc robotpy-ctre robotpy-rev robotpy-navx pygame remi
+python -m pip install --upgrade pylint pyfrc robotpy-rev robotpy-navx pygame remi
 ```
 
 > `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. The first command updates pip to the latest version. The second command installs 5 packages which give you the necessary libraries for writing and testing robot code.
 > - `pylint`: A tool for modifying Python code&mdash;it will give VS Code the ability to, for example, change the name of a variable by analyzing its usage in a file.
 > - `pyfrc`: A Python port of `wpilib`, a library for controlling FRC robots
-> - `robotpy-ctre`: For sending commands to the Talon motor controllers
+> - `robotpy-rev`: For sending commands to the Spark Max  motor controllers
 > - `robotpy-navx`: For accessing the NavX gyroscope.
 > - `pygame`: A set of libraries for building games with Python. This is used by the robot simulator for joystick input.
 > - `remi`: For building interfaces that run in a web browser&mdash;we will use this to build a "dashboard" web interface for the robot
