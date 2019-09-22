@@ -7,8 +7,8 @@
 <img src="https://media.digikey.com/photos/CUI%20Photos/AMT103-V.jpg" alt="AMT-103 Encoder" height="300">
 
 - Measures rotation of motor shaft.
-- Connects to Talon, which tracks cumulative position and velocity.
-- RoboRIO requests and receives encoder data from Talon over CAN bus.
+- Embedded in the Spark Max, which tracks cumulative position and velocity.
+- RoboRIO requests and receives encoder data from Spark Max over CAN bus.
 - [Reference](../reference/#using-encoders)
 - Works in simulator.
 

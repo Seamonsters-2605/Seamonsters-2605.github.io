@@ -13,6 +13,5 @@ All addresses on the robot network follow the format `10.26.5.X`. `26.5` comes f
 
 You can type these into a web browser.
 
-- RoboRIO/Talon configuration (IE only): `10.26.5.2`
 - Dashboard: `10.26.5.2:5805`
 - Limelight configuration: `10.26.5.6:5801`

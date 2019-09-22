@@ -12,13 +12,13 @@ Follow along and write your own version of each of the lines of code. *Please do
 
 ```python
 import wpilib
-import ctre
+import rev
 import seamonsters as sea 
 import math
 ```
 Each of these lines starts with the word `import`. This makes it so you can refrence a library in your code. A library is a collection of code that can be used in another file.
 - `wpilib`: for controling the robot
-- `ctre`: for sending commands to talons that control motors
+- `rev`: for sending commands to sparks that control motors
 - `seamonsters`: code that we have written over the years to improve on existing libraries and add helper functions
 - `math`: python's built in math library
 
@@ -31,7 +31,7 @@ Here, we are creating a *class* which is a data type like an integer or string. 
 ```python
     def robotInit(self):
 ```
-This line defines the function `robotInit` with the argument of `self`. All robots need to have the `robotInit` function to work. It is the first thing that is called when the robot is created and it is where you put all of your variables like the talons or joysticks. The word `self` in parenthesis refers to your `PracticeBot` class. All functions in a class need to have the `self` keyword in parentheisis. Notice this line is indented, this means that it is inside of the `PracticeBot` class.
+This line defines the function `robotInit` with the argument of `self`. All robots need to have the `robotInit` function to work. It is the first thing that is called when the robot is created and it is where you put all of your variables like the sparks or joysticks. The word `self` in parenthesis refers to your `PracticeBot` class. All functions in a class need to have the `self` keyword in parentheisis. Notice this line is indented, this means that it is inside of the `PracticeBot` class.
 ```python
         self.joystick = wpilib.Joystick(0)
 ```
@@ -45,25 +45,26 @@ This line is at the same level of indentation as the line before, meaning that i
 ```
 This is the start of the `initDrivetrain` function. Like `robotInit`, it has the word `self` in parenthesis which is how we were able to call it by saying `self.initDrivetrain()`. You need to include the parenthesis in a function call. Notice that this line has only one layer of indentation. This means that it is not part of the `robotInit` function but *is* part of `PracticeBot`.
 ```python
-        leftTalon = ctre.WPI_TalonSRX(0)
-        rightTalon = ctre.WPI_TalonSRX(1)
+        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
+        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
 ```
-Here we are defining two variables to represent the talons that control the motors. The numbers 0 and 1 do **not** represent the first and second talons connected to the robot, but the talons that are numbered 0 and 1 (there is a way to change the numbers but we won't talk about that yet) The `leftTalon` and `rightTalon` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
+Here we are defining two variables to represent the sparks that control the motors. The numbers 1 and 0 represent the first and second sparks connected to the robot. `rev.MotorType.kBrushless` is the type of motor we are using that we need to put into the constructor of the `CANSparkMax` motor controllers so they don't get confused. The `leftSpark` and `rightSpark` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
 ```python
-        for talon in [leftTalon, rightTalon]:
-            talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)
+        for spark in [leftSpark, rightSpark]:
+            spark.restoreFactoryDefaults()
+            spark.setIdleMode(rev.IdleMode.kBrake)
 ```
-This uses a for loop to go through and call the `configSelectedFeedbackSensor` function on both of the talons to set them up to use the [quadrature](https://www.dynapar.com/technology/encoder_basics/quadrature_encoder/) configuration. Basicallly if we did not do this, there is a chance that some of the encoders would have one type of output while others had a diffenent type of output and the robot would not drive properly.
+This uses a for loop to go through and call the `restoreFactoryDefaults` and `setIdleMode` functions on both of the sparks to reset them to their factory defaults for consistancy reasons and set them to brake mode when not moving.
 ```python
-        leftWheel = sea.AngledWheel(leftTalon, -1, 0, math.pi/2, 31291.1352, 16)
-        rightWheel = sea.AngledWheel(rightTalon, 1, 0, math.pi/2, 31291.1352, 16)
+        leftWheel = sea.AngledWheel(leftSpark, -1, 0, math.pi/2, 1, 16)
+        rightWheel = sea.AngledWheel(rightSpark, 1, 0, math.pi/2, 1, 16)
 ```
 Here we make two wheel objects from the `seamonsters` library. To create an `AngledWheel` you must give it the following perameters: 
-- A ctre.WPI_TalonSRX (the leftTalon or rightTalon)
+- A rev.CANSparkMax (the leftSpark or rightSpark)
 - The x and y position of the wheel in feet. If you look at the example image of our robot, you can see that the middle of the left wheel is at (-1, 0) and the right one is at (1, 0)
 - The direction the wheel is facing in radians. 0 is right and our wheels are facing forward so that is 90 degrees. 90 in radians is pi / 2.
-- The encoder counts per foot. For the encoders we use with our wheel size and gear ratio, it is 31291.1352.
-- The velocity at 100% in voltage mode. Our motors are 16 feet per second
+- The encoder counts per foot. Our encoders have a value of 1.0 per rotation so we will just put it at 1 because we don't have any specific wheel size.
+- The velocity at 100% in voltage mode. Our motors are 16 feet per second.
 
 ```python
         self.drivetrain = sea.SuperHolonomicDrive()
@@ -73,9 +74,9 @@ Here we make two wheel objects from the `seamonsters` library. To create an `Ang
 First we create a `SuperHolonomicDrive` object from the `seamonsters` library and name it `drivetrain`. The `SuperHolomicDrive` class is a universal drivetrain controller that works with all types of drivetrains. Since `drivetrain` has the word `self` in front of it, it can be refrenced outside of `initDrivetrain`. Then we add the left and right wheels to the drivetrain.
 ```python
         for wheel in self.drivetrain.wheels:
-            wheel.driveMode = ctre.ControlMode.PercentOutput
+            wheel.driveMode = rev.ControlType.kPosition
 ```
-These lines loop through the wheels in the drivetrain and set their mode to `PercentOutput` so all the motors are consistent and the robot drives correctly.
+These lines loop through the wheels in the drivetrain and set their mode to `kPosition` mode so all the motors are consistent and the robot drives correctly.
 ```python
         sea.setSimulatedDrivetrain(self.drivetrain)
 ```
@@ -108,7 +109,7 @@ if __name__ == "__main__":
 These lines are required at the bottom of a `robot.py` file and they allow you to deploy code to the robot, which we will do next. The first line checks if you are running the file directly, and the second line calls a function in the `wpilib` library to deploy the code.
 ```python
 import wpilib
-import ctre
+import rev
 import seamonsters as sea 
 import math
 
@@ -120,21 +121,22 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftTalon = ctre.WPI_TalonSRX(0)
-        rightTalon = ctre.WPI_TalonSRX(1)
-        
-        for talon in [leftTalon, rightTalon]:
-            talon.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)
+        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
+        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
 
-        leftWheel = sea.AngledWheel(leftTalon, -1, 0, math.pi/2, 31291.1352, 16)
-        rightWheel = sea.AngledWheel(rightTalon, 1, 0, math.pi/2, 31291.1352, 16)
+        for spark in [leftSpark, rightSpark]:
+            spark.restoreFactoryDefaults()
+            spark.setIdleMode(rev.IdleMode.kBrake)
+
+        leftWheel = sea.AngledWheel(leftSpark, -1, 0, math.pi/2, 1, 16)
+        rightWheel = sea.AngledWheel(rightSpark, 1, 0, math.pi/2, 1, 16)
 
         self.drivetrain = sea.SuperHolonomicDrive()
         self.drivetrain.addWheel(leftWheel)
         self.drivetrain.addWheel(rightWheel)
 
         for wheel in self.drivetrain.wheels:
-            wheel.driveMode = ctre.ControlMode.PercentOutput
+            wheel.driveMode = rev.ControlType.kPosition
 
         sea.setSimulatedDrivetrain(self.drivetrain)
 
