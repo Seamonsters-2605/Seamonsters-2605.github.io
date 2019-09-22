@@ -114,7 +114,7 @@ To use the SuperHolonomicDrive you need to `import seamonsters as sea`. Create a
 for wheel in self.drivetrain.wheels:
     wheel.driveMode = ctre.ControlMode.PercentOutput
 ```
-It is important to set all the wheels to the same control mode before driving. The modes are `PercentOutput`, `Velocity`, and `Position`. `PercentOutput` is sent a percentage of the total voltage and because of that can be unreliable. `Velocit` and `Position` are given a target velocity/position and try to get to that. They are more reliable.
+It is important to set all the wheels to the same control mode before driving. The modes are `PercentOutput`, `Velocity`, and `Position`. `PercentOutput` is sent a percentage of the total voltage and because of that can be unreliable. `Velocity` and `Position` are given a target velocity/position and try to get to that. They are more reliable.
 
 ## `ctre.WPI_TalonSRX`
 
