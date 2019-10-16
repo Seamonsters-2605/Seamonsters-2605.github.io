@@ -32,16 +32,6 @@
 - [Reference](../reference/#vision)
 - Works in simulator, with some configuration.
 
-### Proximity Sensor
-
-<img src="https://upload.wikimedia.org/wikipedia/commons/2/27/Sharp_GP2Y0A21YK_IR_proximity_sensor_cropped.jpg" alt="Proximity Sensor" height="300">
-
-- Measures distance to a surface by shining infrared light.
-- Connects to analog input of RoboRIO.
-- Approximate distance can be calculated based on voltage curve.
-- [Analog input reference](../reference/#roborio-io)
-- Doesn't work in simulator
-
 ## Feedback loops
 
 Feedback means that the output of a system directly affects the input. For example, the shaft of a motor is connected to an encoder, meaning that the motor output directly changes the encoder input. We can then use the encoder input in our program to change the output of the motor, completing the loop. This is known as "closed-loop" control.
