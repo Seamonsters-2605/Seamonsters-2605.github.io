@@ -4,7 +4,7 @@ You will need to import various libraries before you can use them.
 
 ```
 import wpilib
-import ctre
+import rev
 import seamonsters as sea
 ```
 
@@ -15,7 +15,7 @@ If you want to use the seamonsters library or the robot simulator, you will need
 - [Making a Generator](#making-a-generator)
 - [Building an Autonomous Sequence](#building-an-autonomous-sequence)
 - [`sea.SuperHolonomicDrive`](#seasuperholonomicdrive)
-- [`ctre.WPI_TalonSRX`](#ctrewpi_talonsrx) to drive motors
+- [`rev.CANSparkMax`](#rev_sparkmax) to drive motors
 - [`wpilib.Joystick`](#wpilibjoystick) to get joystick input
 - [RoboRIO I/O](#roborio-io)
 - [`navx.AHRS`](#navxahrs): The NavX, to detect rotation and motion of the robot
@@ -60,7 +60,7 @@ def myGeneratorFunction(arguments...):
     # code goes here
 ```
 
-Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like Talons and Joysticks).
+Arguments go between the parentheses and they will include parameters to control the generator (like a speed, direction, or time limit), and objects that the generator will use (like Sparks and Joysticks).
 
 ## Building an Autonomous Sequence
 
@@ -110,43 +110,35 @@ To use the SuperHolonomicDrive you need to `import seamonsters as sea`. Create a
 - `MechanumWheel`: An angled Mechanum wheel
 - `SwerveWheel`: An `AngledWheel` that can rotate (like a shopping cart)
 
-```
+``` python
 for wheel in self.drivetrain.wheels:
-    wheel.driveMode = ctre.ControlMode.PercentOutput
+    wheel.driveMode = rev.ControlType.kVelocity
 ```
-It is important to set all the wheels to the same control mode before driving. The modes are `PercentOutput`, `Velocity`, and `Position`. `PercentOutput` is sent a percentage of the total voltage and because of that can be unreliable. `Velocity` and `Position` are given a target velocity/position and try to get to that. They are more reliable.
+It is important to set all the wheels to the same control mode before driving. The modes are `kVoltage`, `kVelocity`, and `kPosition`. `kVoltage` is sent a certain amount of volts so it can be unreliable. `kVelocity` and `kPosition` are given a target velocity/position and try to get to that. They are more reliable.
 
-## `ctre.WPI_TalonSRX`
+## `rev.CANSparkMax`
 
-Talons are motor controllers. You can send messages to them to drive the motors.
+Sparks are motor controllers. You can send messages to them to drive the motors.
 
-To use talons you will need to `import ctre` at the top of your code. Create a Talon in `robotInit`: `self.talon = ctre.WPI_TalonSRX(0)`. The number identifies the Talon.
+To use sparks you will need to `import rev` at the top of your code. Create a Spark in `robotInit`: `self.spark = rev.CANSparkMax(1)`. The number identifies the Spark.
 
-- 0: Back left
-- 1: Front right
-- 2: Front left
-- 3: Back right
+`.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards). For more advanced motor controlling, get the sparks PID controller with `.getPIDController()` and call `.setReference(speed, controlType)` on it to drive in `kVoltage`, `kVelocity`, or `kPosition`. The speed has a different range depending on the drive mode.
 
-`.set(speed)`: Drive the motor. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
+- `kVoltage`: The number of volts, between 0 and 12 (+ or -)
+- `kVelocity`: The RPM of the motor, between 0 and 5676 (+ or -)
+- `kPosition`: The number of rotations for the motor to go, any number (+ or -)
 
 ### Using Encoders
 
-Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Talon can try to approach a target position or velocity using encoders.
+Encoders track the rotation and speed of the motor. They count upwards continuously as the motor rotates forwards and downwards as it rotates backwards. The Spark can try to approach a target position or velocity using encoders.
 
-Encoders will *not* work in the simulator.
+Encoders *will* work in the simulator.
 
-- `.configSelectedFeedbackSensor(ctre.FeedbackDevice.QuadEncoder, 0, 0)`: Required before using encoders. Tells the talon what type of encoder to check for.
-- `.getSelectedSensorPosition(0)`: Get the position of the encoder.
-- `.getSelectedSensorVelocity(0)`: Get the velocity of the encoder, in ticks per 100ms.
+- `.getEncoder()`: Returns the encoder when called on a Spark
+- `.getPosition`: Get the position of the encoder, in motor rotations.
+- `.getVelocity(0)`: Get the velocity of the encoder, in RPM.
 
-The `talon.set` function has an optional first argument that allows different control modes:
-
-- `.set(ctre.ControlMode.PercentOutput, speed)`: The default. Drive in voltage mode. Speed is any number between -1 (full speed backwards) and 1 (full speed forwards).
-- `.set(ctre.ControlMode.Position, position)`: move to an encoder position.
-- `.set(ctre.ControlMode.Velocity, speed)`:  move at a target speed, in encoder ticks per 100ms.
-- `.config_kP/I/D/F(0, value, 0)`: The PID values control how the talon tries to approach a position or speed. These take experimentation to figure out. Try an I value of 0 and a D value between 3 and 6, and adjust the P value to control how strongly the talon tries to approach a position (in our competition robot we used P values anywhere from 0.15 to 30).
-
-[Complete reference](http://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
+[Complete reference](https://robotpy.readthedocs.io/projects/rev/en/latest/api_mot.html)
 
 ## `wpilib.Joystick`
 

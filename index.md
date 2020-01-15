@@ -38,7 +38,7 @@ The Seamonsters programming department uses [Python](https://www.python.org/) wi
 - [Update RobotPy](docs/update-robotpy) during competition season
 - [IP Addresses](docs/ip-addresses)
 - [RobotPy documentation](http://robotpy.readthedocs.io/en/latest/)
-- [CTRE library documentation](https://robotpy.readthedocs.io/projects/ctre/en/latest/api.html)
+- [REV library documentation](https://robotpy.readthedocs.io/projects/rev/en/latest/api.html)
 - [RobotPy utilities documentation](http://robotpy-wpilib-utilities.readthedocs.io/en/latest/)
 - [Seamonsters library documentation](https://seamonsters-2605.github.io/SeamonstersTemplate/seamonsters/docs/_build/html/index.html)
 - [Limelight documentation](http://docs.limelightvision.io/en/latest/)

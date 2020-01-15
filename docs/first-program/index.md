@@ -1,8 +1,8 @@
 # Writing your first program for the robot
 
-Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, Driver Station, and the seamonsters library.
+Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, Driver Station, and download the seamonsters library.
 
-Open Visual Studio Code. Choose "Open folder", and create a new folder inside Documents to contain your robot code. Now that you have the folder open, create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
+Open Visual Studio Code. Choose "Open folder", and navigate to the folder called "SeamonstersTemplate" that you downloaded from GitHub. Now that you have the folder open, create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
 
 We will be writing a simple tank drive with two wheels, one on each side of the robot. Here is a visual if that helps, the numbers are in feet:
 
@@ -74,9 +74,9 @@ Here we make two wheel objects from the `seamonsters` library. To create an `Ang
 First we create a `SuperHolonomicDrive` object from the `seamonsters` library and name it `drivetrain`. The `SuperHolomicDrive` class is a universal drivetrain controller that works with all types of drivetrains. Since `drivetrain` has the word `self` in front of it, it can be refrenced outside of `initDrivetrain`. Then we add the left and right wheels to the drivetrain.
 ```python
         for wheel in self.drivetrain.wheels:
-            wheel.driveMode = rev.ControlType.kPosition
+            wheel.driveMode = rev.ControlType.kVelocity
 ```
-These lines loop through the wheels in the drivetrain and set their mode to `kPosition` mode so all the motors are consistent and the robot drives correctly.
+These lines loop through the wheels in the drivetrain and set their mode to `kVelocity` mode so all the motors are consistent and the robot drives correctly.
 ```python
         sea.setSimulatedDrivetrain(self.drivetrain)
 ```
@@ -136,7 +136,7 @@ class PracticeBot(sea.GeneratorBot):
         self.drivetrain.addWheel(rightWheel)
 
         for wheel in self.drivetrain.wheels:
-            wheel.driveMode = rev.ControlType.kPosition
+            wheel.driveMode = rev.ControlType.kVelocity
 
         sea.setSimulatedDrivetrain(self.drivetrain)
 

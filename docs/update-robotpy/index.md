@@ -2,7 +2,7 @@
 
 ## On your computer
 
-Run this command: `python -m pip install --upgrade pyfrc robotpy-ctre robotpy-navx remi`
+Run this command: `python -m pip install --upgrade pyfrc robotpy-rev robotpy-navx remi`
 
 ## On the robot
 
@@ -12,7 +12,7 @@ Run this command: `python -m pip install --upgrade pyfrc robotpy-ctre robotpy-na
 
 ```
 python installer.py download-robotpy
-python installer.py download-opkg python37-robotpy-ctre python37-robotpy-cscore
+python installer.py download-opkg python37-robotpy-rev python37-robotpy-cscore
 python installer.py download-pip robotpy-navx remi
 ```
 
@@ -22,6 +22,6 @@ python installer.py download-pip robotpy-navx remi
 
 ```
 python installer.py install-robotpy
-python installer.py install-opkg python37-robotpy-ctre python37-robotpy-cscore
+python installer.py install-opkg python37-robotpy-rev python37-robotpy-cscore
 python installer.py install-pip robotpy-navx remi
 ```
