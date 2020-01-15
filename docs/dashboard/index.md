@@ -13,6 +13,8 @@ git clone https://github.com/Seamonsters-2605/practice-dashboard
 
 - Open the repository in VSCode and find the file called `dashboard.py` (it should be an empty file) and write this code. *Please don't copy and paste, it will not help you learn*
 
+If you are using a school laptop, you will need to turn off wifi to run the dashboard because otherwise the computer will block it.
+
 ``` python
 import remi.gui as gui
 import seamonsters as sea
