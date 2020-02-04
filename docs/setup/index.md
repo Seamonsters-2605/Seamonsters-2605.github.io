@@ -7,7 +7,7 @@ You should have a laptop for writing robot code. You can use any OS to write and
 All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
-- Download the latest version of **Python 3** (NOT Python 2). The current version (as of March 2019) is 3.7.3.
+- Download the latest version of **Python 3** (NOT Python 2). The current version (as of Decemder 2019) is 3.8.1.
 - Run the installer, and change the following options:
     - On Windows, check the box to "Add Python 3.7 to PATH"
     - If you are using a school laptop, uncheck "Install launcher for all users"
