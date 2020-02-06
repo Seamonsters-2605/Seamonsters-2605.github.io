@@ -2,7 +2,7 @@
 
 ## On your computer
 
-Run this command: `python -m pip install --upgrade pyfrc robotpy-rev robotpy-navx remi`
+Run this command: `python -m pip install --upgrade pyfrc robotpy-rev robotpy-navx robotpy-rev-color remi`
 
 ## On the robot
 
@@ -11,9 +11,10 @@ Run this command: `python -m pip install --upgrade pyfrc robotpy-rev robotpy-nav
 - While connected to the internet, run the following commands:
 
 ```
-python installer.py download-robotpy
-python installer.py download-opkg python37-robotpy-rev python37-robotpy-cscore
-python installer.py download-pip robotpy-navx remi
+py -3 -m pip install robotpy-installer
+py -3 -m robotpy_installer download-robotpy
+py -3 -m robotpy_installer download-opkg robotpy-navx robotpy-rev robotpy-rev-color
+py -3 -m robotpy_installer download remi
 ```
 
 (NOTE: update the package names / python version numbers when necessary. Package lists are [here](https://www.tortall.net/~robotpy/feeds/))
@@ -21,7 +22,7 @@ python installer.py download-pip robotpy-navx remi
 - Connect to the robot WiFi and run the following commands:
 
 ```
-python installer.py install-robotpy
-python installer.py install-opkg python37-robotpy-rev python37-robotpy-cscore
-python installer.py install-pip robotpy-navx remi
+py -3 -m robotpy_installer install-robotpy
+py -3 -m robotpy_installer install-opkg robotpy-navx robotpy-rev robotpy-rev-color
+py -3 -m robotpy_installer install remi
 ```
