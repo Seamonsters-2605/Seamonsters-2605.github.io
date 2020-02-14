@@ -7,7 +7,7 @@ You should have a laptop for writing robot code. You can use any OS to write and
 All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
 - Go to [python.org/downloads](https://www.python.org/downloads/)
-- Download the latest version of **Python 3** (NOT Python 2). The current version (as of Decemder 2019) is 3.8.1.
+- Download the latest **64 bit** (NOT 32 bit) version version of **Python 3** (NOT Python 2). The current version (as of Decemder 2019) is 3.8.1.
 - Run the installer, and change the following options:
     - On Windows, check the box to "Add Python 3.7 to PATH"
     - If you are using a school laptop, uncheck "Install launcher for all users"
@@ -41,6 +41,13 @@ Visual Studio Code is our recommended program for writing Python code. (It is di
 - Download it here: [code.visualstudio.com](https://code.visualstudio.com/) and run the installer. The default options are fine.
 - Start Visual Studio Code
 - On the right side under the *Customize* header there should be a link to install Python support. Click the link to install it in the background&mdash;the window will refresh when it is finished.
+
+## Install 2019 C++ Redistributable
+
+The Python libraries we use for the robot are actually written in C++ and are ported over so we can write our code in Python, this means for the libraries to run you must have C++ installed.
+
+- You can download it [here](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) if you have admin access on your computer.
+- If you are using a school laptop, you can download it from the software center.
 
 ## Install Driver Station
 
