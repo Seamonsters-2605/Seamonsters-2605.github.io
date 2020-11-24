@@ -6,16 +6,16 @@ You should have a laptop for writing robot code. You can use any OS to write and
 
 All robot code is written in Python. See [this page](../learn-python) for some Python tutorials.
 
-- Go to [python.org/downloads](https://www.python.org/downloads/)
-- Download the latest **64 bit** (NOT 32 bit) version version of **Python 3** (NOT Python 2). The current version (as of November 2020) is 3.9.0.
+- Go to [python.org/downloads](https://www.python.org/downloads/release/python-386/)
+- Download "Windows x86-64 executable installer" at the bottom of the page, (Make sure it is python version 3.8 64 bit).
 - Run the installer, and change the following options:
-    - On Windows, check the box to "Add Python 3.9 to PATH"
+    - On Windows, check the box to "Add Python 3.8 to PATH"
     - If you are using a school laptop, uncheck "Install launcher for all users"
 - Open Command Prompt (search "cmd"). Type `python` and press Enter. If that doesn't work, try `py` instead.
 
 > This is Python's interactive mode. You can type Python code in and press Enter to run it immediately.
 
-- Verify that the version number listed is Python 3.x.x and NOT Python 2.x.x. Then type `exit()` and press Enter to exit Python.
+- Verify that the version number listed is Python 3.8.x and NOT Python 2.8.x. Then type `exit()` and press Enter to exit Python.
 
 ## Install Python libraries
 
@@ -42,13 +42,6 @@ Visual Studio Code is our recommended program for writing Python code. (It is di
 - Start Visual Studio Code
 - On the right side under the *Customize* header there should be a link to install Python support. Click the link to install it in the background&mdash;the window will refresh when it is finished.
 
-## Install 2019 C++ Redistributable
-
-The Python libraries we use for the robot are actually written in C++ and are ported over so we can write our code in Python, this means for the libraries to run you must have C++ installed.
-
-- You can download it [here](https://support.microsoft.com/en-us/help/2977003/the-latest-supported-visual-c-downloads) if you have admin access on your computer.
-- If you are using a school laptop, you can download it from the software center.
-
 ## Install Driver Station
 
 *The installation process for Driver Station is SLOW! While you are working on this you can continue on some of the other sections.* **Driver station does not work on the school laptops.**
@@ -64,6 +57,13 @@ Driver Station is used to control the robot from your computer using a joystick 
 - Once Driver Station is installed, open it. When you first start it, you might receive a Windows Firewall warning. Make sure to check the box that allows communication on private networks.
 - In Driver Station, click the gear button on the left side of the bottom window. **Set the Team Number to 2605**, and change the dashboard type to LabVIEW. Without a team number you won't be able to connect to the robot.
 
+## Create a GitHub account
+
+All of our robot code will be on GitHub, so anybody can view it, download it, and edit it.
+
+- If you don't already have a GitHub account, create one here: [github.com/join](https://github.com/join)
+- Send me your username on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
+
 ## Install Git
 
 Git is software for "version control," which allows us all to collaborate on the code and manage multiple versions and branches of it.
@@ -73,13 +73,6 @@ Git is software for "version control," which allows us all to collaborate on the
     - `git config --global user.email "your email goes here"`
     - `git config --global user.name "Your Name"`
     - `git config --global core.editor "code --wait"`
-
-## Create a GitHub account
-
-All of our robot code will be on GitHub, so anybody can view it, download it, and edit it.
-
-- If you don't already have a GitHub account, create one here: [github.com/join](https://github.com/join)
-- Send me your username on Slack, and I will add you to the [Seamonsters team](https://github.com/seamonsters-2605/)
 
 ## Clone the Seamonsters Repository
 
