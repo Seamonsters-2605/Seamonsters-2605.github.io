@@ -48,7 +48,7 @@ This is the start of the `initDrivetrain` function. Like `robotInit`, it has the
         leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
         rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
 ```
-Here we are defining two variables to represent the sparks that control the motors. The numbers 1 and 0 represent the first and second sparks connected to the robot. `rev.MotorType.kBrushless` is the type of motor we are using that we need to put into the constructor of the `CANSparkMax` motor controllers so they don't get confused. The `leftSpark` and `rightSpark` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
+Here we are defining two variables to represent the sparks that control the motors. The numbers 1 and 2 represent the first and second sparks connected to the robot. `rev.MotorType.kBrushless` is the type of motor we are using that we need to put into the constructor of the `CANSparkMax` motor controllers so they don't get confused. The `leftSpark` and `rightSpark` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
 ```python
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -92,7 +92,7 @@ These lines define the `teleop` function which is called once initally and then 
             mag = sea.deadZone(self.joystick.getY())
             mag *= 5
 ```
-First we define the variable `mag` which we will use as the speed we drive the robot. `self.joystick.getY()` returns a number between -1 and 1 for how far the `joystick` object we made earlier is being pushed on the y axis. The `deadZone` function, which is part of the `seamonsters` library, makes tiny values outputted by the joystick not affect robot movement. Then we multiply `mag` by 5 because that is the maximum feet per second that the robot can go.
+First we define the variable `mag` which we will use as the magnitude of speed to drive the robot. `self.joystick.getY()` returns a number between -1 and 1 for how far the `joystick` object we made earlier is being pushed on the y axis. The `deadZone` function, which is part of the `seamonsters` library, makes tiny values outputted by the joystick not affect robot movement. Then we multiply `mag` by 5 because that is the maximum feet per second that the robot can go.
 ```python
             turn = sea.deadZone(self.joystick.getX())
             turn *= math.radians(300)
