@@ -49,6 +49,8 @@ You can include special functions which are called at different points in your G
 - `def teleop(self)`: The teleop Generator. Use `yield` to wait for 1/50th of a second.
 - `def autonomous(self)`: The autonomous Generator. Use `yield` to wait for 1/50th of a second.
 
+> **Note:** sea.GeneratorBot is intended for use on the real robot. To test a robot on the simulator, use sea.SimulationRobot instead.
+
 ## Making a Generator
 
 [This page](../generators) has more detailed information on what Generators are and how they work.
