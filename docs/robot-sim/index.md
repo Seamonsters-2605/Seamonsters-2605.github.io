@@ -11,7 +11,7 @@ sea.setSimulatedDrivetrain("""put your drivetrian here""")
 ```
 - Before starting the simulator, plug a joystick (or however many you need for your bot). It is also possible to control the robot without joysticks.
 - With your file open in VS Code, switch to the Debug tab on the left (the no-bug icon). At the top of the Debug panel, change the configuration to "Simulate". Then click the green play button.
-- You have a robot simulator! The joystick movement should show feedback in the window. Click the "Teleoperated" option to enable your robot and drive it around. If you don't have joysticks, click in the X/Y axis boxes below Stick 0 and Stick 1.
+- You have a robot simulator! Drag the joystick from System Joysticks to Joystick[0] under the Joysticks tab. The joystick movement should show feedback in the window. Click the "Teleoperated" option to enable your robot and drive it around.
 
 ## Debugging the simulator in VS Code
 
