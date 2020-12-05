@@ -62,6 +62,30 @@ appCallback(self)
 return root
 ```
 `appCallback(self)` tells the computer that the dashboard was initialized and adds it to the robot. `return root` gives the robot the full GUI that was put together within the `main` function.
+``` python
+import remi.gui as gui
+import seamonsters as sea
+
+class PracticeDashboard(sea.Dashboard):
+
+    def main(self, robot, appCallback):
+
+        root = gui.VBox(gui.Label("Drive Controls"), width = 600, margin = "0px auto")  
+
+        driveBox = gui.VBox()
+        root.append(driveBox)
+
+        driveForwardButton = gui.Button("Drive Forward")
+        driveForwardButton.set_on_click_listener(robot.c_driveForward)
+        driveBox.append(driveForwardButton)
+
+        stopButton = gui.Button("Stop")
+        stopButton.set_on_click_listener(robot.c_stop)
+        driveBox.append(stopButton)
+
+        appCallback(self)
+        return root
+```
 # Setting up the Dashboard on the Robot
 Open up `robot.py`, we are going to take a look at how the robot creates and manages the dashboard and its callbacks.
 ```python
@@ -98,28 +122,3 @@ def c_stop(self, button):
     self.drivetrain.drive(0,0,0)
 ```
 These are the two functions called when buttons are pressed because they were set as the callback when the buttons were defined in the dashboard. `@sea.queuedDashboardEvent` adds the function to the dashboard event queue when it is called. Then it runs when the dashboard is updated (as described above).
-
-``` python
-import remi.gui as gui
-import seamonsters as sea
-
-class PracticeDashboard(sea.Dashboard):
-
-    def main(self, robot, appCallback):
-
-        root = gui.VBox(gui.Label("Drive Controls"), width = 600, margin = "0px auto")  
-
-        driveBox = gui.VBox()
-        root.append(driveBox)
-
-        driveForwardButton = gui.Button("Drive Forward")
-        driveForwardButton.set_on_click_listener(robot.c_driveForward)
-        driveBox.append(driveForwardButton)
-
-        stopButton = gui.Button("Stop")
-        stopButton.set_on_click_listener(robot.c_stop)
-        driveBox.append(stopButton)
-
-        appCallback(self)
-        return root
-```
