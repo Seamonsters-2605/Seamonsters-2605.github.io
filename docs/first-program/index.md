@@ -2,7 +2,11 @@
 
 Make sure you have followed all of the [Setup Instructions](../setup) to install Python 3, pyfrc, Visual Studio Code with Python support, Driver Station, and download the seamonsters library.
 
-Open Visual Studio Code. Choose "Open folder", and navigate to the folder called "SeamonstersTemplate" that you downloaded from GitHub. Now that you have the folder open, create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
+Open Visual Studio Code. Choose "Open folder", and navigate to the folder called "SeamonstersTemplate" that you downloaded from GitHub. Open a terminal by selecting Terminal then New Terminal. Run the command:
+```
+git checkout practice-teleop
+```
+  Create a new file and save it inside the folder with the name `robot.py`&mdash;it's important that it has this exact name, with no capital letters.
 
 We will be writing a simple tank drive with two wheels, one on each side of the robot. Here is a visual if that helps, the numbers are in feet:
 
