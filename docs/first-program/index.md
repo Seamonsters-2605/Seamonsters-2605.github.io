@@ -24,9 +24,9 @@ Each of these lines starts with the word `import`. This makes it so you can refr
 
 The part in line three that says `as sea` means when refrencing the `seamonsters` library, all you need to do is write `sea`.
 ```python
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationBot):
 ```
-Here, we are creating a *class* which is a data type like an integer or string. Classes have their own functions and variables that are universal to all members of that class. Our class is named `PracticeBot` and it is using the class `GeneratorBot` from the seamonsters library to build off of.
+Here, we are creating a *class* which is a data type like an integer or string. Classes have their own functions and variables that are universal to all members of that class. Our class is named `PracticeBot` and it is using the class `SimulationBot` from the seamonsters library to build off of. `SimulationBot` should only be used when running the simulator, otherwise use `GeneratorBot`.
 
 ```python
     def robotInit(self):
@@ -45,10 +45,10 @@ This line is at the same level of indentation as the line before, meaning that i
 ```
 This is the start of the `initDrivetrain` function. Like `robotInit`, it has the word `self` in parenthesis which is how we were able to call it by saying `self.initDrivetrain()`. You need to include the parenthesis in a function call. Notice that this line has only one layer of indentation. This means that it is not part of the `robotInit` function but *is* part of `PracticeBot`.
 ```python
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 ```
-Here we are defining two variables to represent the sparks that control the motors. The numbers 1 and 2 represent the first and second sparks connected to the robot. `rev.MotorType.kBrushless` is the type of motor we are using that we need to put into the constructor of the `CANSparkMax` motor controllers so they don't get confused. The `leftSpark` and `rightSpark` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
+Here we are defining two variables to represent the sparks that control the motors. The numbers 1 and 2 represent the first and second sparks connected to the robot. `rev.MotorType.kBrushless` is the type of motor we are using. The `leftSpark` and `rightSpark` variables are *local* and can only be refrenced inside of `initDrivetrain` because they do not have the word `self` in front.
 ```python
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -60,7 +60,7 @@ This uses a for loop to go through and call the `restoreFactoryDefaults` and `se
         rightWheel = sea.AngledWheel(rightSpark, 1, 0, math.pi/2, 1, 16)
 ```
 Here we make two wheel objects from the `seamonsters` library. To create an `AngledWheel` you must give it the following perameters: 
-- A rev.CANSparkMax (the leftSpark or rightSpark)
+- A motor controller (the leftSpark or rightSpark)
 - The x and y position of the wheel in feet. If you look at the example image of our robot, you can see that the middle of the left wheel is at (-1, 0) and the right one is at (1, 0)
 - The direction the wheel is facing in radians. 0 is right and our wheels are facing forward so that is 90 degrees. 90 in radians is pi / 2.
 - The encoder counts per foot. Our encoders have a value of 1.0 per rotation so we will just put it at 1 because we don't have any specific wheel size.
@@ -113,7 +113,7 @@ import rev
 import seamonsters as sea 
 import math
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
         self.joystick = wpilib.Joystick(0)
@@ -121,8 +121,8 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
