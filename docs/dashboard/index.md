@@ -4,43 +4,15 @@ We will be using the [remi library](https://buildmedia.readthedocs.org/media/pdf
 
 - Make sure you have the remi library installed (this should be done if you followed the [Setup Instructions](../setup))
 
-- Open Command Prompt and type in these commands:
+- Go to your Seamonsters Template and open it in VSCode
+- Open the terminal and run:
 ```
-cd Documents
-git clone https://github.com/Seamonsters-2605/practice-dashboard
+git checkout practice-dashboard
 ```
->This will navigate to your Documents folder and clone the [practice-dashboard](https://github.com/Seamonsters-2605/practice-dashboard) repository on to your computer from GitHub.
 
-- Open the repository in VSCode and find the file called `dashboard.py` (it should be an empty file) and write this code. *Please don't copy and paste, it will not help you learn*
+ - Find the file called `dashboard.py` (it should be an empty file) and write this code. *Please don't copy and paste, it will not help you learn*
 
 If you are using a school laptop, you will need to turn off wifi to run the dashboard because otherwise the computer will block it.
-
-``` python
-import remi.gui as gui
-import seamonsters as sea
-
-class PracticeDashboard(sea.Dashboard):
-
-    def main(self, robot, appCallback):
-
-        root = gui.VBox(gui.Label("Drive Controls"), width = 600, margin = "0px auto")  
-
-        driveBox = gui.VBox()
-        root.append(driveBox)
-
-        driveForwardButton = gui.Button("Drive Forward")
-        driveForwardButton.set_on_click_listener(robot.c_driveForward)
-        driveBox.append(driveForwardButton)
-
-        stopButton = gui.Button("Stop")
-        stopButton.set_on_click_listener(robot.c_stop)
-        driveBox.append(stopButton)
-
-        appCallback(self)
-        return root
-```
-
-## Explaination
 
 ```python
 import remi.gui as gui
@@ -126,3 +98,28 @@ def c_stop(self, button):
     self.drivetrain.drive(0,0,0)
 ```
 These are the two functions called when buttons are pressed because they were set as the callback when the buttons were defined in the dashboard. `@sea.queuedDashboardEvent` adds the function to the dashboard event queue when it is called. Then it runs when the dashboard is updated (as described above).
+
+``` python
+import remi.gui as gui
+import seamonsters as sea
+
+class PracticeDashboard(sea.Dashboard):
+
+    def main(self, robot, appCallback):
+
+        root = gui.VBox(gui.Label("Drive Controls"), width = 600, margin = "0px auto")  
+
+        driveBox = gui.VBox()
+        root.append(driveBox)
+
+        driveForwardButton = gui.Button("Drive Forward")
+        driveForwardButton.set_on_click_listener(robot.c_driveForward)
+        driveBox.append(driveForwardButton)
+
+        stopButton = gui.Button("Stop")
+        stopButton.set_on_click_listener(robot.c_stop)
+        driveBox.append(stopButton)
+
+        appCallback(self)
+        return root
+```
