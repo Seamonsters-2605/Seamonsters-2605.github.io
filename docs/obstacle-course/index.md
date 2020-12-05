@@ -2,14 +2,11 @@
 
 **Challenge:** Make a virtual robot follow a path.
 
-Open Command Prompt and clone the Obstacle Course repository by typing:
+Open the Seamonsters Template in VS Code and checkout to the practice-autonomous branch by typing this in the terminal:
 
 ```
-cd Documents
-git clone https://github.com/Seamonsters-2605/practice-autonomous
+git checkout practice-autonomous
 ```
-
-There will be a folder in your Documents folder called `practice-autonomous`. Open this folder in Visual Studio Code.
 
 In VS Code, click the Debug icon on the left side (the no-bug icon). At the top of the panel, the configuration should be set to "Simulate Robot." Click the green play button next to this.
 

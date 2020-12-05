@@ -10,7 +10,7 @@ import rev
 import seamonsters as sea 
 import math
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
         self.joystick = wpilib.Joystick(0)
@@ -18,8 +18,8 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -60,7 +60,7 @@ import rev
 import seamonsters as sea 
 import math
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
         self.joystick = wpilib.Joystick(0)
@@ -68,8 +68,8 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -114,7 +114,7 @@ import rev
 import seamonsters as sea 
 import math
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
         self.joystick = wpilib.Joystick(0)
@@ -122,8 +122,8 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -153,7 +153,7 @@ class PracticeBot(sea.GeneratorBot):
                 mag *= 2
                 turn *= 2
             elif self.joystick.getRawButton(2):
-                # fast
+                # slow
                 mag *= 0.5
                 turn *= 0.5
 
@@ -173,7 +173,7 @@ import rev
 import seamonsters as sea 
 import math
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
         self.joystick = wpilib.Joystick(0)
@@ -181,8 +181,8 @@ class PracticeBot(sea.GeneratorBot):
         self.initDrivetrain()
     
     def initDrivetrain(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()

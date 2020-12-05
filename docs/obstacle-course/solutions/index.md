@@ -4,14 +4,15 @@ import wpilib
 import rev
 import math
 
-TIME_TO_DRIVE_A_SECTION = 110
-TIME_TO_TURN = 31
+TIME_TO_DRIVE_LONG_SECTION = 78
+TIME_TO_DRIVE_SHORT_SECTION = 43
+TIME_TO_TURN = 18
 
-class PracticeBot(sea.GeneratorBot):
+class PracticeBot(sea.SimulationRobot):
 
     def robotInit(self):
-        leftSpark = rev.CANSparkMax(1, rev.MotorType.kBrushless)
-        rightSpark = rev.CANSparkMax(2, rev.MotorType.kBrushless)
+        leftSpark = sea.createSpark(1, rev.MotorType.kBrushless)
+        rightSpark = sea.createSpark(2, rev.MotorType.kBrushless)
 
         for spark in [leftSpark, rightSpark]:
             spark.restoreFactoryDefaults()
@@ -30,12 +31,16 @@ class PracticeBot(sea.GeneratorBot):
         sea.setSimulatedDrivetrain(self.drivetrain)
 
     def autonomous(self):
-        turnList = [-1,1,1,-1,-1,1,1]
+        turnList = [1,1,-1,-1,1,1,-1,-1,1,1]
+        driveLong = True
         for turnDir in turnList:
-            yield from self.driveASection()
+            yield from self.driveASection(driveLong)
             yield from self.turn(turnDir)
-        yield from self.driveASection()
-        yield from self.stop()
+            driveLong = not driveLong
+        yield from self.driveASection(driveLong)
+
+        while True:
+            yield from self.stop()
 
     def turn(self, speed):
         self.drivetrain.drive(0, math.pi/2, math.radians(150) * speed)
@@ -44,9 +49,12 @@ class PracticeBot(sea.GeneratorBot):
     def stop(self):
         yield self.drivetrain.drive(0,0,0)
 
-    def driveASection(self):
+    def driveASection(self, long):
         self.drivetrain.drive(5, math.pi/2, 0)
-        yield from sea.wait(TIME_TO_DRIVE_A_SECTION)
+        if long:
+            yield from sea.wait(TIME_TO_DRIVE_LONG_SECTION)
+        else:
+            yield from sea.wait(TIME_TO_DRIVE_SHORT_SECTION)
 
 if __name__ == "__main__":
     wpilib.run(PracticeBot)
