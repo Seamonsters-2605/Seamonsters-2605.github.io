@@ -86,6 +86,7 @@ class PracticeDashboard(sea.Dashboard):
         appCallback(self)
         return root
 ```
+This is what the dashboard code should look like.
 # Setting up the Dashboard on the Robot
 Open up `robot.py`, we are going to take a look at how the robot creates and manages the dashboard and its callbacks.
 ```python
