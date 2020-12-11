@@ -28,7 +28,7 @@ Each of these lines starts with the word `import`. This makes it so you can refr
 
 The part in line three that says `as sea` means when refrencing the `seamonsters` library, all you need to do is write `sea`.
 ```python
-class PracticeBot(sea.SimulationBot):
+class PracticeBot(sea.SimulationRobot):
 ```
 Here, we are creating a *class* which is a data type like an integer or string. Classes have their own functions and variables that are universal to all members of that class. Our class is named `PracticeBot` and it is using the class `SimulationBot` from the seamonsters library to build off of. `SimulationBot` should only be used when running the simulator, otherwise use `GeneratorBot`.
 
