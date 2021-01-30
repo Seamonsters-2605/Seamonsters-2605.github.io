@@ -23,7 +23,7 @@ All robot code is written in Python. See [this page](../learn-python) for some P
 
 ```
 python -m pip install --upgrade pip
-python -m pip install --upgrade pylint pyfrc robotpy-rev robotpy-rev.color robotpy-navx pygame remi
+python -m pip install --upgrade pylint pyfrc robotpy robotpy-rev robotpy-rev.color robotpy-navx pygame remi
 ```
 
 > `pip` is a tool for installing and upgrading packages for Python, to add extra functionality. The first command updates pip to the latest version. The second command installs 5 packages which give you the necessary libraries for writing and testing robot code.
